@@ -6,11 +6,11 @@ import model.UserInfo;
 
 public interface UserInfoDao {
 
-	public Integer save(UserInfo user);
+	public Integer save(UserInfo userinfo);
 
-	public void delete(UserInfo user);
+	public void delete(UserInfo userinfo);
 
-	public void update(UserInfo user);
+	public void update(UserInfo userinfo);
 
 	public UserInfo getUserInfoById(int id);
 
