@@ -3,10 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<<<<<<< HEAD
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+=======
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 @import url(http://fonts.googleapis.com/css?family=Roboto);
+>>>>>>> 5d351350d17c0f04b538212d705a890702cb1793
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
@@ -103,7 +110,11 @@
   font-size: 12px;
 }</style>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<<<<<<< HEAD
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+=======
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+>>>>>>> 5d351350d17c0f04b538212d705a890702cb1793
 <script type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
