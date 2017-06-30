@@ -2,14 +2,12 @@ package dao.impl;
 
 import java.util.List;
 
-import model.User;
-import model.UserInfo;
-
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.UserInfoDao;
+import model.UserInfo;
 
-public class UserInfoDaoImpl extends HibernateDaoSupport implements UserInfoDao {
+class UserInfoDaoImpl extends HibernateDaoSupport implements UserInfoDao  {
 
 	@Override
 	public Integer save(UserInfo userinfo) {
@@ -31,20 +29,17 @@ public class UserInfoDaoImpl extends HibernateDaoSupport implements UserInfoDao 
 	@Override
 	public UserInfo getUserInfoById(int id) {
 		@SuppressWarnings("unchecked")
-		List<UserInfo> userinfos = (List<UserInfo>) getHibernateTemplate().find(
-				"from UserInfo as u where u.userid=?", id);
-		UserInfo userinfo = userinfos.size() > 0 ? userinfos.get(0) : null;
-		return userinfo;
+		List<UserInfo> users = (List<UserInfo>) getHibernateTemplate().find(
+				"from UserInfo as u where u.id=?", id);
+		UserInfo user = users.size() > 0 ? users.get(0) : null;
+		return user;
 	}
 
 	@Override
-	public List<UserInfo> getAllUserInfo() {
+	public List<UserInfo> getAllUserInfos() {
 		@SuppressWarnings("unchecked")
 		List<UserInfo> users = (List<UserInfo>) getHibernateTemplate()
 				.find("from UserInfo");
 		return users;
 	}
-
-
-
 }

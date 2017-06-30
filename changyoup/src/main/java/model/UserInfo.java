@@ -2,58 +2,67 @@ package model;
 
 import java.sql.Date;
 
-public class UserInfo implements java.io.Serializable {
+public class UserInfo {
 
-	private Integer userid;
+	private int id;
 	private String nickname;
+	private String email;
+	private String area;
 	private int sex;
-	private String realname;
 	private Date birthday;
-	
+
 	public UserInfo() {
 	}
 
-	public UserInfo(String nickname,int sex, String realname,Date birthday) {
+	public UserInfo(String nickname, String email, String area, int sex, Date birthday) {
 		this.nickname=nickname;
-		this.sex = sex;
-		this.realname = realname;
+		this.email=email;
+		this.area=area;
+		this.sex=sex;
 		this.birthday=birthday;
 	}
 
-	public Integer getUserid() {
-		return this.userid;
+	public int getId() {
+		return id;
 	}
 
-	public void setUserid(Integer userid) {
-		this.userid = userid;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNickname() {
-		return this.nickname;
+		return nickname;
 	}
 
 	public void setNickname(String nickname) {
-		this.nickname = nickname;
+		this.nickname=nickname;
 	}
 
-	public int getsex() {
-		return this.sex;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setsex(int sex) {
-		this.sex = sex;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getRealname() {
-		return this.realname;
+	public String getArea(){
+		return area;
 	}
-
-	public void setRealname(String realname) {
-		this.realname = realname;
+	
+	public void setArea(String area){
+		this.area=area;
+	}
+	public int getSex(){
+		return sex;
+	}
+	
+	public void setSex(int sex){
+		this.sex=sex;
 	}
 	
 	public Date getBirthday(){
-		return this.birthday;
+		return birthday;
 	}
 	
 	public void setBirthday(Date birthday){

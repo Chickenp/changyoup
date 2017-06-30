@@ -14,6 +14,6 @@ public interface UserInfoDao {
 
 	public UserInfo getUserInfoById(int id);
 
-	public List<UserInfo> getAllUserInfo();
-
+	public List<UserInfo> getAllUserInfos();
+	
 }
