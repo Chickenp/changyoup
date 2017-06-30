@@ -173,7 +173,7 @@
 			var lcase = new RegExp("[a-z]+");
 			var num = new RegExp("[0-9]+");
 
-			if ($("#password1").val().length >= 8) {
+			if ($("#password").val().length >= 8) {
 				$("#8char").removeClass("glyphicon-remove");
 				$("#8char").addClass("glyphicon-ok");
 				$("#8char").css("color", "#00A41E");
@@ -183,7 +183,7 @@
 				$("#8char").css("color", "#FF0004");
 			}
 
-			if (ucase.test($("#password1").val())) {
+			if (ucase.test($("#password").val())) {
 				$("#ucase").removeClass("glyphicon-remove");
 				$("#ucase").addClass("glyphicon-ok");
 				$("#ucase").css("color", "#00A41E");
@@ -193,7 +193,7 @@
 				$("#ucase").css("color", "#FF0004");
 			}
 
-			if (lcase.test($("#password1").val())) {
+			if (lcase.test($("#password").val())) {
 				$("#lcase").removeClass("glyphicon-remove");
 				$("#lcase").addClass("glyphicon-ok");
 				$("#lcase").css("color", "#00A41E");
@@ -203,7 +203,7 @@
 				$("#lcase").css("color", "#FF0004");
 			}
 
-			if (num.test($("#password1").val())) {
+			if (num.test($("#password").val())) {
 				$("#num").removeClass("glyphicon-remove");
 				$("#num").addClass("glyphicon-ok");
 				$("#num").css("color", "#00A41E");
@@ -213,7 +213,7 @@
 				$("#num").css("color", "#FF0004");
 			}
 
-			if ($("#password1").val() == $("#password2").val()) {
+			if ($("#password").val() == $("#password2").val()) {
 				$("#pwmatch").removeClass("glyphicon-remove");
 				$("#pwmatch").addClass("glyphicon-ok");
 				$("#pwmatch").css("color", "#00A41E");
@@ -242,12 +242,13 @@
 								<div class="row"></div>
 								<div class="row">
 									<div class="col-sm-6 col-sm-offset-3">
+										<form method="post" id="passwordForm" action="Register">
 										<input type="text" class="input-lg form-control"
-											name="Username" id="Username" placeholder="Username"
+											name="username" id="username" placeholder="Username"
 											autocomplete="off">
-										<form method="post" id="passwordForm">
+										
 											<input type="password" class="input-lg form-control"
-												name="password1" id="password1" placeholder="Your Password"
+												name="password" id="password" placeholder="Your Password"
 												autocomplete="off">
 											<div class="row">
 												<div class="col-md-6">
