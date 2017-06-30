@@ -76,6 +76,11 @@
             <result name="success">/changyoup/jsp/index.jsp</result>
         </action>
         
+        <!-- Account -->
+        <action name="Account" class="action.GetUserInfoAction">
+            <result name="success">/changyoup/jsp/UserCenter.jsp</result>
+        </action>
+        
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">
 			<result name="success">/changyoup/jsp/usercart.jsp</result>
