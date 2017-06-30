@@ -23,6 +23,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>model/User.hbm.xml</value>
+				<value>model/UserInfo.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
@@ -41,7 +42,9 @@
 	<bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean id="userinfoDao" class="dao.impl.UserInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!-- Service -->
 	<bean id="appService" class="service.impl.AppServiceImpl">
 		<!-- DAO -->
