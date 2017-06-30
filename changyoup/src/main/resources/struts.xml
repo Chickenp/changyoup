@@ -80,6 +80,9 @@
         <action name="Account" class="action.GetUserInfoAction">
             <result name="success">/changyoup/jsp/UserCenter.jsp</result>
         </action>
+        <action name="updateAccount" class="action.UpdateUserInfoAction">
+            <result name="success">/changyoup/jsp/UserCenter.jsp</result>
+        </action>
         
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">

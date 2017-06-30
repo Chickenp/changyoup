@@ -93,7 +93,7 @@
 								<td><%=userinfo.getSex()%></td>
 								<td><%=userinfo.getBirthday()%></td>
 								<td>
-									<button class="btn btn-default btn-info" type="button"
+									<button class="btn btn-info edit" type="button"
 										data-id="<%=userinfo.getId()%>"
 										data-nickname="<%=userinfo.getNickname()%>"
 										data-email="<%=userinfo.getEmail()%>"
@@ -117,5 +117,50 @@
 </div>
 <!-- /.row -->
 </div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="modalTitle"></h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<form role="form">
+								<div class="form-group">
+									<label>Nickname</label> <input class="form-control" name="nickname">
+								</div>
+								<div class="form-group">
+									<label>Email</label> <input class="form-control"
+										name="email">
+								</div>
+								<div class="form-group">
+									<label>Area</label> <input class="form-control" name="area">
+								</div>
+								<div class="form-group">
+									<label>Sex</label> <input class="form-control" name="sex">
+								</div>
+								<div class="form-group">
+									<label>Birthday</label> <input class="form-control" name="birthday">
+								</div>																
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="save">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="../js/userinfo.js"></script>
+
 </body>
 </html>

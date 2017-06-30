@@ -2,13 +2,10 @@ package action;
 
 import java.util.List;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 import model.UserInfo;
 import service.UserInfoService;
-import javax.servlet.http.HttpSession;
 
-public class GetUserInfoAction extends ActionSupport{
+public class GetUserInfoAction extends BaseAction{
 	
 	/**
 	 * 
