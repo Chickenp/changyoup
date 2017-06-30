@@ -8,7 +8,7 @@
 </head>
 <body>
 <% request.getSession().invalidate();//销毁用户的session
-request.getRequestDispatcher("/bookstore/jsp/index.jsp").forward(request, response);//重新跳转到主页
+request.getRequestDispatcher("/changyoup/jsp/index.jsp").forward(request, response);//重新跳转到主页
 %>
 </body>
 </html>

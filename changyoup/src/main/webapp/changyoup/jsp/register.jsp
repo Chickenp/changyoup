@@ -255,11 +255,21 @@
 								<div class="row">
 									<div class="col-sm-6 col-sm-offset-3">
 										<form method="post" id="passwordForm" action="Register">
+<<<<<<< HEAD
 											<input type="text" class="input-lg form-control"
 												name="username" id="username" placeholder="Username"
 												autocomplete="off"> <input type="password"
 												class="input-lg form-control" name="password" id="password"
 												placeholder="Your Password" autocomplete="off">
+=======
+										<input type="text" class="input-lg form-control"
+											name="username" id="username" placeholder="Username"
+											autocomplete="off">
+										
+											<input type="password" class="input-lg form-control"
+												name="password" id="password" placeholder="Your Password"
+												autocomplete="off">
+>>>>>>> 9cd70ca978eb990c3e9ea4e1c71f406ddc312fa1
 											<div class="row">
 												<div class="col-md-6">
 													<span id="8char" class="glyphicon glyphicon-remove"
