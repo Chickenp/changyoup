@@ -117,7 +117,18 @@
 									</ul>
 								</li>
 								<li><a href="contact.html">Contact</a></li>
-								<li><a data-toggle="modal" href="#myModal">User Center</a></li>
+								<%
+		                        if ((session.getAttribute("uid") == null)|| (session.getAttribute("uid") == "")) {
+	                            %>
+	                            <li><a data-toggle="modal" href="#myModal">User Center</a></li>
+	                            <%
+	                            } else {
+ 		                        %>
+ 		                        <li><a href="Usercenter.jsp">User Center</a></li>
+ 		                        <% 
+ 	                            }
+		                        %>		
+								
 								<%
 		                        if ((session.getAttribute("uid") == null)|| (session.getAttribute("uid") == "")) {
 	                            %>
