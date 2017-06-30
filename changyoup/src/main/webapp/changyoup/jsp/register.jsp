@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+	pageEncoding="BIG5"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Listing &mdash; 100% Free Fully Responsive HTML5 Template </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Listing &mdash; 100% Free Fully Responsive HTML5 Template
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Template by FREEHTML5" />
+<meta name="keywords"
+	content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+
 <!-- Modernizr JS -->
 <script src="/changyoup/changyoup/js/modernizr-2.6.2.min.js"></script>
 <script src="/changyoup/changyoup/js/jquery.min.js"></script>
@@ -173,7 +177,7 @@
 			var lcase = new RegExp("[a-z]+");
 			var num = new RegExp("[0-9]+");
 
-			if ($("#password1").val().length >= 8) {
+			if ($("#password").val().length >= 8) {
 				$("#8char").removeClass("glyphicon-remove");
 				$("#8char").addClass("glyphicon-ok");
 				$("#8char").css("color", "#00A41E");
@@ -183,7 +187,7 @@
 				$("#8char").css("color", "#FF0004");
 			}
 
-			if (ucase.test($("#password1").val())) {
+			if (ucase.test($("#password").val())) {
 				$("#ucase").removeClass("glyphicon-remove");
 				$("#ucase").addClass("glyphicon-ok");
 				$("#ucase").css("color", "#00A41E");
@@ -193,7 +197,7 @@
 				$("#ucase").css("color", "#FF0004");
 			}
 
-			if (lcase.test($("#password1").val())) {
+			if (lcase.test($("#password").val())) {
 				$("#lcase").removeClass("glyphicon-remove");
 				$("#lcase").addClass("glyphicon-ok");
 				$("#lcase").css("color", "#00A41E");
@@ -203,7 +207,7 @@
 				$("#lcase").css("color", "#FF0004");
 			}
 
-			if (num.test($("#password1").val())) {
+			if (num.test($("#password").val())) {
 				$("#num").removeClass("glyphicon-remove");
 				$("#num").addClass("glyphicon-ok");
 				$("#num").css("color", "#00A41E");
@@ -213,7 +217,7 @@
 				$("#num").css("color", "#FF0004");
 			}
 
-			if ($("#password1").val() == $("#password2").val()) {
+			if ($("#password").val() == $("#password2").val()) {
 				$("#pwmatch").removeClass("glyphicon-remove");
 				$("#pwmatch").addClass("glyphicon-ok");
 				$("#pwmatch").css("color", "#00A41E");
@@ -222,6 +226,14 @@
 				$("#pwmatch").addClass("glyphicon-remove");
 				$("#pwmatch").css("color", "#FF0004");
 			}
+			if(($("#password").val() == $("#password2").val())&&(ucase.test($("#password").val()))&&($("#password").val().length >= 8)&&(lcase.test($("#password").val()))&&(num.test($("#password").val()))){
+				$("#submitbutton").removeClass("disabled");
+				$("#submitbutton").addClass("active");
+			}else{
+				$("#submitbutton").removeClass("active");
+				$("#submitbutton").addClass("disabled");
+			}
+				
 		})
 	});
 	(jQuery);
@@ -242,13 +254,12 @@
 								<div class="row"></div>
 								<div class="row">
 									<div class="col-sm-6 col-sm-offset-3">
-										<input type="text" class="input-lg form-control"
-											name="Username" id="Username" placeholder="Username"
-											autocomplete="off">
-										<form method="post" id="passwordForm">
-											<input type="password" class="input-lg form-control"
-												name="password1" id="password1" placeholder="Your Password"
-												autocomplete="off">
+										<form method="post" id="passwordForm" action="Register">
+											<input type="text" class="input-lg form-control"
+												name="username" id="username" placeholder="Username"
+												autocomplete="off"> <input type="password"
+												class="input-lg form-control" name="password" id="password"
+												placeholder="Your Password" autocomplete="off">
 											<div class="row">
 												<div class="col-md-6">
 													<span id="8char" class="glyphicon glyphicon-remove"
@@ -273,6 +284,7 @@
 												</div>
 											</div>
 											<input type="submit"
+												id="submitbutton" name="submitbutton"
 												class="col-xs-12 btn btn-primary btn-load btn-lg"
 												data-loading-text="Changing Password..."
 												value="Change Password">
@@ -288,63 +300,38 @@
 
 				</div>
 				<header id="fh5co-header-section">
-				<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true"
-				style="display: none;">
-				<div class="modal-dialog">
-					<div class="loginmodal-container">
-						<h1>Login to Your Account</h1>
-						<br>
-						<form method="post" action="Login">
-							<input type="text" name="username" placeholder="username">
-							<input type="password" name="password" placeholder="password">
-							<input type="submit" name="Submits"
-								class="login loginmodal-submit" value="login">
-						</form>
+					<div class="modal fade" id="login-modal" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+						style="display: none;">
+						<div class="modal-dialog">
+							<div class="loginmodal-container">
+								<h1>Login to Your Account</h1>
+								<br>
+								<form method="post" action="Login">
+									<input type="text" name="username" placeholder="username">
+									<input type="password" name="password" placeholder="password">
+									<input type="submit" name="Submits"
+										class="login loginmodal-submit" value="login">
+								</form>
 
-						<div class="login-help">
-							<a href="register.jsp">Register</a> - <a href="#">Forgot Password</a>
+								<div class="login-help">
+									<a href="register.jsp">Register</a> - <a href="#">Forgot
+										Password</a>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo">
-							<a href="index.html">Listing</a>
-						</h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li><a href="listing.html" class="fh5co-sub-ddown">Listing</a>
-								<ul class="fh5co-sub-menu">
-									<li><a
-										href="#/preview/?item=build-free-html5-bootstrap-template"
-										target="_blank">Build</a></li>
-									<li><a
-										href="#/preview/?item=work-free-html5-template-bootstrap"
-										target="_blank">Work</a></li>
-									<li><a
-										href="#/preview/?item=light-free-html5-template-bootstrap"
-										target="_blank">Light</a></li>
-									<li><a
-										href="#/preview/?item=relic-free-html5-template-using-bootstrap"
-										target="_blank">Relic</a></li>
-									<li><a
-										href="#/preview/?item=display-free-html5-template-using-bootstrap"
-										target="_blank">Display</a></li>
-									<li><a
-										href="#/preview/?item=sprint-free-html5-template-bootstrap"
-										target="_blank">Sprint</a></li>
-								</ul></li>
-							<li><a href="#" class="fh5co-sub-ddown">Dropdown</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="left-sidebar.html">Web Development</a></li>
-									<li><a href="right-sidebar.html">Branding &amp;
-											Identity</a></li>
-									<li><a href="#" class="fh5co-sub-ddown">Free HTML5</a>
+					<div class="container">
+						<div class="nav-header">
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+							<h1 id="fh5co-logo">
+								<a href="index.html">Listing</a>
+							</h1>
+							<!-- START #fh5co-menu-wrap -->
+							<nav id="fh5co-menu-wrap" role="navigation">
+								<ul class="sf-menu" id="fh5co-primary-menu">
+									<li class="active"><a href="index.html">Home</a></li>
+									<li><a href="listing.html" class="fh5co-sub-ddown">Listing</a>
 										<ul class="fh5co-sub-menu">
 											<li><a
 												href="#/preview/?item=build-free-html5-bootstrap-template"
@@ -365,17 +352,44 @@
 												href="#/preview/?item=sprint-free-html5-template-bootstrap"
 												target="_blank">Sprint</a></li>
 										</ul></li>
-									<li><a href="#">UI Animation</a></li>
-									<li><a href="#">Copywriting</a></li>
-									<li><a href="#">Photography</a></li>
-								</ul></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+									<li><a href="#" class="fh5co-sub-ddown">Dropdown</a>
+										<ul class="fh5co-sub-menu">
+											<li><a href="left-sidebar.html">Web Development</a></li>
+											<li><a href="right-sidebar.html">Branding &amp;
+													Identity</a></li>
+											<li><a href="#" class="fh5co-sub-ddown">Free HTML5</a>
+												<ul class="fh5co-sub-menu">
+													<li><a
+														href="#/preview/?item=build-free-html5-bootstrap-template"
+														target="_blank">Build</a></li>
+													<li><a
+														href="#/preview/?item=work-free-html5-template-bootstrap"
+														target="_blank">Work</a></li>
+													<li><a
+														href="#/preview/?item=light-free-html5-template-bootstrap"
+														target="_blank">Light</a></li>
+													<li><a
+														href="#/preview/?item=relic-free-html5-template-using-bootstrap"
+														target="_blank">Relic</a></li>
+													<li><a
+														href="#/preview/?item=display-free-html5-template-using-bootstrap"
+														target="_blank">Display</a></li>
+													<li><a
+														href="#/preview/?item=sprint-free-html5-template-bootstrap"
+														target="_blank">Sprint</a></li>
+												</ul></li>
+											<li><a href="#">UI Animation</a></li>
+											<li><a href="#">Copywriting</a></li>
+											<li><a href="#">Photography</a></li>
+										</ul></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="#" data-toggle="modal"
+										data-target="#login-modal">Login</a></li>
 
-						</ul>
-						</nav>
+								</ul>
+							</nav>
+						</div>
 					</div>
-				</div>
 				</header>
 
 			</div>
@@ -387,7 +401,7 @@
 			<div class="fh5co-section"></div>
 
 			<footer>
-			<div id="footer"></div>
+				<div id="footer"></div>
 			</footer>
 
 
@@ -400,7 +414,7 @@
 	<!-- jQuery -->
 
 
-	
+
 
 </body>
 </html>
