@@ -229,9 +229,11 @@
 			if(($("#password").val() == $("#password2").val())&&(ucase.test($("#password").val()))&&($("#password").val().length >= 8)&&(lcase.test($("#password").val()))&&(num.test($("#password").val()))){
 				$("#submitbutton").removeClass("disabled");
 				$("#submitbutton").addClass("active");
+				$("#submitbutton").prop('disabled', false);
 			}else{
 				$("#submitbutton").removeClass("active");
 				$("#submitbutton").addClass("disabled");
+				$("#submitbutton").prop('disabled', true);
 			}
 				
 		})
@@ -285,9 +287,8 @@
 											</div>
 											<input type="submit"
 												id="submitbutton" name="submitbutton"
-												class="col-xs-12 btn btn-primary btn-load btn-lg"
-												data-loading-text="Changing Password..."
-												value="Change Password">
+												class="col-xs-12 btn btn-primary disabled btn-lg"												
+												value="Register">
 										</form>
 									</div>
 									<!--/col-sm-6-->
