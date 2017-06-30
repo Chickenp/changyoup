@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import model.UserInfo;
 import service.UserInfoService;
 
-public class GetUserInfoAction extends ActionSupport{
+public class UpdateUserInfoAction extends ActionSupport{
 	
 	/**
 	 * 
