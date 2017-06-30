@@ -13,8 +13,8 @@
 	<!-- Bean -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost:3306/changyou" p:user="root"
-		p:password="" p:maxPoolSize="40" p:minPoolSize="1"
+		p:jdbcUrl="jdbc:mysql://localhost:3606/changyou" p:user="root"
+		p:password="mysql666" p:maxPoolSize="40" p:minPoolSize="1"
 		p:initialPoolSize="1" p:maxIdleTime="20" />
 
 	<bean id="sessionFactory"
@@ -23,7 +23,6 @@
 		<property name="mappingResources">
 			<list>
 				<value>model/User.hbm.xml</value>
-				<value>model/UserInfo.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
@@ -42,9 +41,7 @@
 	<bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="userinfoDao" class="dao.impl.UserInfoDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+
 	<!-- Service -->
 	<bean id="appService" class="service.impl.AppServiceImpl">
 		<!-- DAO -->
@@ -79,15 +76,9 @@
     </bean>
 
     <!-- service注入dao id为下面的ref class为service实现类 -->
-    <!-- login -->
     <bean id="logins" class="service.impl.LoginServiceImpl">
         <property name="logindao" ref="logind"></property>
     </bean>
-
-    <!-- UserinfoService -->
-	<bean id="userinfoService" class="service.impl.UserInfoServiceImpl">
-		<property name="userinfoDao" ref="userinfoDao"></property>
-	</bean>
 
     <!-- Action注入service id="" 注入 class="action路径" name="loginservice"与LoginAction中声明的要保持一致 
         ref随便取 -->
