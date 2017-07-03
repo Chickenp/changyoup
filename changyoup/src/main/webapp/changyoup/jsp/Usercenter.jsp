@@ -86,8 +86,13 @@
 									</thead>
 									<tbody>
 										<% 
-											int uid = (int)session.getAttribute("uid");
-											UserInfo userinfo = userinfoList.get(uid);
+											int uid = (Integer)session.getAttribute("uid");
+											for(int i = 0; i < userinfoList.size(); i++){
+												UserInfo userinfo = userinfoList.get(i);
+												if(uid != userinfo.getId()){
+													continue;
+												}
+											
 										%>
 										<tr>
 											<td id="id"><%=userinfo.getId()%></td>
@@ -97,6 +102,9 @@
 											<td class="userinfo" id="sex"><%=userinfo.getSex()%></td>
 											<td class="userinfo" id="birthday"><%=userinfo.getBirthday()%></td>
 										</tr>
+										<% 
+											}
+										%>
 									</tbody>
 								</table>          
                                 </div>                            
