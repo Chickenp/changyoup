@@ -80,7 +80,7 @@
         <action name="Account" class="action.GetUserInfoAction">
             <result name="success">/changyoup/jsp/UserCenter.jsp</result>
         </action>
-        <action name="updateAccount" class="action.UpdateUserInfoAction">
+        <action name="updateUserInfo" class="action.UpdateUserInfoAction">
             <result name="success">/changyoup/jsp/UserCenter.jsp</result>
         </action>
         
