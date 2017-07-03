@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="model.UserInfo"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -27,9 +28,9 @@
 
 <body>
 	<%
-		UserInfo userinfo=new UserInfo();
-		if(request.getAttribute("userinfo")!=null){
-			userinfo=(UserInfo)request.getAttribute("userinfo");
+		ArrayList<UserInfo> userinfoList = new ArrayList<UserInfo>();
+		if(request.getAttribute("userinfos")!=null){
+			userinfoList=(ArrayList<UserInfo>)request.getAttribute("userinfos");
 		}
 	%>
 		
@@ -84,6 +85,10 @@
 										</tr>
 									</thead>
 									<tbody>
+										<% 
+											int uid = (int)session.getAttribute("uid");
+											UserInfo userinfo = userinfoList.get(uid);
+										%>
 										<tr>
 											<td id="id"><%=userinfo.getId()%></td>
 											<td class="userinfo" id="nickname"><%=userinfo.getNickname()%></td>
@@ -99,7 +104,7 @@
                             </div>
                             <div class="tm-welcome-box">
                                 <div class="tm-welcome-text">
-                                    <h2 class="tm-section-title">Lorem ipsum dolor</h2>
+                                    <h2 class="tm-section-title">Wallet</h2>
                                     <p>Vivamus eleifend ac turpis sit amet maximus. Nulla in faucibus nisl, ut ultrices magna.</p>    
                                 </div>                            
                                 <a href="#" class="tm-welcome-link tm-button">Read Details</a>

@@ -11,17 +11,7 @@ public class GetUserInfoAction extends BaseAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
 	private UserInfoService userinfoService;
-	
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 	
 	public void setUserinfoService(UserInfoService userinfoService){
 		this.userinfoService=userinfoService;
@@ -29,8 +19,8 @@ public class GetUserInfoAction extends BaseAction{
 	
 	@Override
 	public String execute() throws Exception{
-		UserInfo userinfo=userinfoService.getUserInfoById(id);
-		request().setAttribute("userinfo",userinfo);
+		List<UserInfo> userinfos=userinfoService.getAllUserInfos();
+		request().setAttribute("userinfos",userinfos);
 		
 		return SUCCESS;
 	}
