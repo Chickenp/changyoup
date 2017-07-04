@@ -1,13 +1,12 @@
 package action;
 
 import java.sql.Date;
-
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 
 import model.UserInfo;
 import service.UserInfoService;
 
-public class UpdateUserInfoAction extends ActionSupport{
+public class UserInfoAction extends BaseAction{
 	
 	/**
 	 * 
@@ -73,8 +72,15 @@ public class UpdateUserInfoAction extends ActionSupport{
 		this.userinfoService=userinfoService;
 	}
 	
-	@Override
-	public String execute() throws Exception {
+	public String execute() throws Exception{
+		List<UserInfo> userinfos=userinfoService.getAllUserInfos();
+		request().setAttribute("userinfos",userinfos);
+		
+		return SUCCESS;
+	}
+	
+	
+	public String update() throws Exception {
 
 		UserInfo userinfo = userinfoService.getUserInfoById(id);
 		userinfo.setNickname(nickname);
@@ -86,4 +92,10 @@ public class UpdateUserInfoAction extends ActionSupport{
 
 		return SUCCESS;
 	}	
+	
+	public String getInfobyId()throws Exception{
+		UserInfo info=userinfoService.getUserInfoById(id);
+		request().setAttribute("info", info);
+		return SUCCESS;
+	}
 }

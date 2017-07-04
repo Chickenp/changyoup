@@ -77,10 +77,10 @@
         </action>
         
         <!-- Account -->
-        <action name="Account" class="action.GetUserInfoAction">
+        <action name="Account" class="action.UserInfoAction" method="getInfobyId">
             <result name="success">/changyoup/jsp/UserCenter.jsp</result>
         </action>
-        <action name="updateUserInfo" class="action.UpdateUserInfoAction">
+        <action name="updateUserInfo" class="action.UserInfoAction" method="update">
             <result name="success">/changyoup/jsp/UserCenter.jsp</result>
         </action>
         
