@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-7-10 15:39:43 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="Routeinfo" table="routeinfo" catalog="changyou">
+        <id name="routeid" type="java.lang.Integer">
+            <column name="routeid" />
+            <generator class="identity" />
+        </id>
+        <property name="routedays" type="int">
+            <column name="routedays" not-null="true" />
+        </property>
+        <property name="routepublisher" type="int">
+            <column name="routepublisher" not-null="true" />
+        </property>
+        <set name="routes" table="route" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="routeid" not-null="true" />
+            </key>
+            <one-to-many class="Route" />
+        </set>
+    </class>
+</hibernate-mapping>
