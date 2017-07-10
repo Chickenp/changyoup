@@ -3,21 +3,35 @@ package service.impl;
 import java.util.List;
 
 
+
 import model.User;
 import service.AppService;
-
 import dao.UserDao;
-
+import dao.IMGDao;
 
 public class AppServiceImpl implements AppService {
 
 
 	private UserDao userDao;
+	private IMGDao imgDao;
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	/**
+	     * @return the imgDao
+	     */
+	    public IMGDao getImgDao() {
+	        return imgDao;
+	    }
 
+
+	    /**
+	     * @param imgDao the imgDao to set
+	     */
+	    public void setImgDao(IMGDao imgDao) {
+	        this.imgDao = imgDao;
+	    }
 
 	/**
 	 * user
@@ -43,7 +57,12 @@ public class AppServiceImpl implements AppService {
 		return userDao.getAllUsers();
 	}
 	
-	
+	public String getIMG() throws Exception{
+	    return imgDao.getIMG();
+	}
+
+
+    
 	
 
 }
