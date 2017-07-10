@@ -5,16 +5,6 @@ pageEncoding="utf-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>Release Travel Plan</title>
-	
-    <style type="text/css">
-        .toolbar {
-            border: 1px solid #ccc;
-        }
-        .text {
-            border: 1px solid #ccc;
-            height: 600px;
-        }
-    </style>	
     
 	<script language="javascript">
 		function confirmclear(){
@@ -23,9 +13,14 @@ pageEncoding="utf-8"%>
 			}
 		}
 	</script>
-	<link href="../css/Releaseplan.css" rel="stylesheet">
+	<link href="../css/Releaseplan.css" rel="stylesheet" type="text/css">
 </head>
-	<b>本页面用于发布旅游攻略，暂时做成独立页面，此后可以整合进AdminCenter</b>
+
+	
+<body>
+
+	<b>本页面用于发布旅游攻略，暂时做成独立页面，此后可以整合进AdminCenter<br></b>
+	<b>本页面也可以用于游客发布游记和评论等，待整合</b>
 	<br></br>
 	
 	<div class="container">
@@ -57,7 +52,7 @@ pageEncoding="utf-8"%>
     	<script type="text/javascript" src="../js/wangEditor/wangEditor.min.js"></script>
     	<script type="text/javascript">
         	var E = window.wangEditor
-        	var editor = new E('#toolbar_div','text_div')	// 或者 var editor = new E( document.getElementById('#editor') )
+        	var editor = new E('#toolbar_div','#text_div')	// 或者 var editor = new E( document.getElementById('#editor') )
         	editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
         	editor.create()
         
@@ -80,8 +75,5 @@ pageEncoding="utf-8"%>
     	
     
 	</div>
-	
-<body>
-
 </body>
 </html>
