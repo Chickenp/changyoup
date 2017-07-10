@@ -22,6 +22,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title><%=nickname%>'s UserCenter</title>
+<!-- load stylesheets -->
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400">
+<!-- Google web font "Open Sans", https://fonts.google.com/ -->
+<link rel="stylesheet"
+	href="../Usercenter/font-awesome-4.6.3/css/font-awesome.min.css">
+<!-- Font Awesome, http://fontawesome.io/ -->
+<link rel="stylesheet" href="../Usercenter/css/bootstrap.min.css">
+<!-- Bootstrap style, http://v4-alpha.getbootstrap.com/ -->
+<link rel="stylesheet" href="../Usercenter/css/magnific-popup.css">
+<!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
+<link rel="stylesheet" href="../Usercenter/css/templatemo-style.css">
+<!-- Templatemo style -->
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
