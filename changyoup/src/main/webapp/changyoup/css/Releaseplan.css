@@ -22,3 +22,11 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+.toolbar {
+	border: 1px solid #ccc;
+}
+.text {
+	border: 1px solid #ccc;
+	height: 600px;
+}
