@@ -45,13 +45,13 @@
 
 </head>
 <%
-int uid=0;
-String sid = (String)session.getAttribute("uid");
-try {
-    uid = Integer.parseInt(sid);
-} catch (NumberFormatException e) {
-    uid=0;
-}
+	int uid = 0;
+	String sid = (String) session.getAttribute("uid");
+	try {
+		uid = Integer.parseInt(sid);
+	} catch (NumberFormatException e) {
+		uid = 0;
+	}
 %>
 <body>
 	<div class="navbar-default sidebar" role="navigation">
@@ -80,7 +80,7 @@ try {
 								id="dataTables">
 								<thead>
 									<tr>
-										<th>ID</th>
+										<th>Nickname</th>
 										<th>Email</th>
 										<th>Sex</th>
 										<th>Area</th>
@@ -91,13 +91,16 @@ try {
 										
 									%>
 									<tr>
-										<td><%=userinfo.getId()%></td>
+										<td><%=userinfo.getNickname()%></td>
 										<td><%=userinfo.getEmail()%></td>
 										<td><%=userinfo.getSex()%></td>
 										<td><%=userinfo.getArea()%></td>
 									</tr>
 								</tbody>
 							</table>
+							<button class="btn btn-default" type="button" id="editinfo"	
+													data-id="<%=userinfo.getId()%>"
+													>Edit Info</button>
 						</div>
 					</div>
 					<!-- /.panel-body -->
@@ -110,5 +113,7 @@ try {
 	</div>
 	<!-- /#page-wrapper -->
 	</div>
+	
+	<script src="../js/userinfo.js"></script>
 </body>
 </html>
