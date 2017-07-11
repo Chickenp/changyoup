@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-7-10 15:39:43 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
-    <class name="Routeinfo" table="routeinfo" catalog="changyou">
+    <class name="model.Routeinfo" table="routeinfo" catalog="changyou">
         <id name="routeid" type="java.lang.Integer">
             <column name="routeid" />
             <generator class="identity" />
@@ -18,7 +18,7 @@
             <key>
                 <column name="routeid" not-null="true" />
             </key>
-            <one-to-many class="Route" />
+            <one-to-many class="model.Route" />
         </set>
     </class>
 </hibernate-mapping>

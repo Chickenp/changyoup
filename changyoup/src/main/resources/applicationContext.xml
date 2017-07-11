@@ -34,6 +34,8 @@
 			<list>
 				<value>model/User.hbm.xml</value>
 				<value>model/UserInfo.hbm.xml</value>
+				<value>model/Route.hbm.xml</value>
+				<value>model/Routeinfo.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
@@ -57,13 +59,20 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	
-
-	<bean id="userinfoService" class="service.impl.UserInfoServiceImpl">
-		<!-- DAO -->
-		
+	<bean id="userinfoService" class="service.impl.UserInfoServiceImpl">		
 		<property name="userinfoDao" ref="userinfoDao"></property>
 	</bean>
+	
+	<bean id="routeinfoDao" class="dao.impl.RouteInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+    <bean id="routeinfoService" class="service.impl.RouteInfoServiceImpl">
+		<property name="routeInfodao" ref="routeinfoDao"></property>
+	</bean>
+	
+	
 
 	<!-- HibernateTransactionManager -->
 	<bean id="transactionManager"
@@ -143,7 +152,7 @@
 
 	</bean>
     
-
+    
       
      <context:annotation-config />  
 </beans>

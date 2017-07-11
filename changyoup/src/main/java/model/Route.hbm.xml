@@ -3,12 +3,12 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-7-10 15:39:43 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
-    <class name="Route" table="route" catalog="changyou">
+    <class name="model.Route" table="route" catalog="changyou">
         <id name="routeMongoid" type="string">
             <column name="route_mongoid" length="20" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="routeinfo" class="Routeinfo" fetch="select">
+        <many-to-one name="routeinfo" class="model.Routeinfo" fetch="select">
             <column name="routeid" not-null="true" />
         </many-to-one>
         <property name="routedate" type="int">

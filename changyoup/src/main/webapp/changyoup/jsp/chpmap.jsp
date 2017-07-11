@@ -100,6 +100,7 @@ div.col-sm-10 div {
 			if (request.getAttribute("IMG") != null) {
 		img=(String)request.getAttribute("IMG");
 			}
+	    int date = (Integer)request.getAttribute("date");
 	%>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
@@ -261,12 +262,10 @@ div.col-sm-10 div {
 			<div class="container">
 				<div class="row" style="position: relative;">
 					<div class="btn-group-vertical" style="position: absolute">
-						<button id="but1" type="button" onClick="change_day(this.id)"
-							class="btn btn-primary">Day1</button>
-						<button id="but2" type="button" onClick="change_day(this.id)"
-							class="btn btn-primary">Day2</button>
-						<button id="but3" type="button" onClick="change_day(this.id)"
-							class="btn btn-primary">Day3</button>
+					<% for(int i=1; i<=date; i++){ %>
+						<button id="but<%=i%>" type="button" onClick="change_day(this.id)"
+							class="btn btn-primary">Day<%=i%></button>
+					<%} %>
 					</div>
 
 					<div class="col-sm-10" style="position: relative; left: 150px">
