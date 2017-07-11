@@ -4,16 +4,21 @@ $(function() {
 		var nickname = $("input[name='nickname']").val();
 		var email = $("input[name='email']").val();
 		var area = $("input[name='area']").val();
-		var sex = $("input[name='sex']").val();
+	    var radio = document.getElementsByName("sexRadios");  
+	    var sex;
+	    for (i=0; i<radio.length; i++) {  
+	        if (radio[i].checked) {  
+	            sex=radio[i].value;
+	            break;
+	        }  
+	    } 
 		var birthday = $("input[name='birthday']").val();
 		console.log(nickname, email, area, sex, birthday);
 
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-
-		if (id != "") { // Edit
 			jQuery.ajax({
-				url : 'updateAccount',
+				url : 'updateUserInfo',
 				processData : true,
 				dataType : "text",
 				data : {
@@ -26,17 +31,9 @@ $(function() {
 				},
 				success : function(data) {
 					console.log(id);
-					bootbox.alert({
-						message : 'Modify Successfully! '
-							+ 'PS: No change if foreign key does not exist!',
-						callback : function() {
-							location.reload();
-						}
-					});
+					console.log(sex)
 				}
 			});
-		}
-		$('#modal').modal('hide');
 	});
 
 	$(".edit").click(function(e) {
@@ -54,9 +51,5 @@ $(function() {
 		$("#save").attr("data-id", dataset.id);
 		$('#modal').modal('show');
 	});
-	$("#editinfo").click(function(e){
-		var url="EditInfo"+"?id="+val(dataset.id);
-		window.location.href=url;
-		
-	})
+
 });

@@ -81,7 +81,7 @@ public class UserInfoAction extends BaseAction{
 	
 	
 	public String update() throws Exception {
-
+		
 		UserInfo userinfo = userinfoService.getUserInfoById(id);
 		userinfo.setNickname(nickname);
 		userinfo.setEmail(email);
@@ -89,7 +89,7 @@ public class UserInfoAction extends BaseAction{
 		userinfo.setSex(sex);
 		userinfo.setBirthday(birthday);
 		userinfoService.updateUserInfo(userinfo);
-
+		
 		return SUCCESS;
 	}	
 	

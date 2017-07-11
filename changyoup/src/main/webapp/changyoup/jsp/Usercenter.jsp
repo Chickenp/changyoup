@@ -15,6 +15,7 @@
 	String email = userinfo.getEmail();
 	String nickname = userinfo.getNickname();
 	Date birthday = userinfo.getBirthday();
+	String area = userinfo.getArea();
 %>
 <head>
 <meta charset="utf-8">
@@ -46,7 +47,7 @@
 </head>
 <%
 	int uid = 0;
-	uid = (Integer)session.getAttribute("uid");
+	uid = (Integer) session.getAttribute("uid");
 %>
 <body>
 	<div class="navbar-default sidebar" role="navigation">
@@ -89,15 +90,16 @@
 										
 									%>
 									<tr>
-										<td><%=userinfo.getNickname()%></td>
-										<td><%=userinfo.getEmail()%></td>
-										<td><%=userinfo.getSex()%></td>
-										<td><%=userinfo.getArea()%></td>
+										<td><%=nickname%></td>
+										<td><%=email%></td>
+										<td><%=sex%></td>
+										<td><%=area%></td>
 									</tr>
 								</tbody>
 							</table>
-							<button class="btn btn-default" type="button" id="editinfo"
-								data-id="<%=userinfo.getId()%>">Edit Info</button>
+							<button class="btn btn-default"
+								onclick="window.open('UpdateAccount?id=<%=uid%>')" type="button"
+								id="editinfo">Edit Info</button>
 						</div>
 					</div>
 					<!-- /.panel-body -->
@@ -111,6 +113,8 @@
 	<!-- /#page-wrapper -->
 	</div>
 
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/userinfo.js"></script>
 </body>
 </html>
