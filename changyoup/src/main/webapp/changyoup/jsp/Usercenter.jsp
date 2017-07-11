@@ -46,12 +46,7 @@
 </head>
 <%
 	int uid = 0;
-	String sid = (String) session.getAttribute("uid");
-	try {
-		uid = Integer.parseInt(sid);
-	} catch (NumberFormatException e) {
-		uid = 0;
-	}
+	uid=(Integer)session.getAttribute("uid");
 %>
 <body>
 	<div class="navbar-default sidebar" role="navigation">

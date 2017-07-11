@@ -124,7 +124,7 @@
 	                            <%
 	                            } else {
  		                        %>
- 		                        <li><a href="Usercenter.jsp">User Center</a></li>
+ 		                        <li><a href="Account">User Center</a></li>
  		                        <% 
  	                            }
 		                        %>		
