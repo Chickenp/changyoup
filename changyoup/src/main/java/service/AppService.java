@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import model.User;
 
 /**
@@ -28,6 +29,8 @@ public interface AppService {
 	public User getUserById(int id);
 
 	public List<User> getAllUsers();
+	
+	public String getIMG() throws Exception;
 	
 	
 }
