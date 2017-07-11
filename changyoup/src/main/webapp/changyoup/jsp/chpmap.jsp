@@ -95,6 +95,12 @@ div.col-sm-10 div {
 
 </head>
 <body>
+<%
+		String img = new String();
+			if (request.getAttribute("IMG") != null) {
+		img=(String)request.getAttribute("IMG");
+			}
+	%>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 			<div id="fh5co-header">
@@ -266,7 +272,7 @@ div.col-sm-10 div {
 					<div class="col-sm-10" style="position: relative; left: 150px">
 
 						<div id="section1"></div>
-
+						<img alt="img" src="data:image/jpeg;base64,<%=(String)img%>"/>/>
 					</div>
 
 				</div>
