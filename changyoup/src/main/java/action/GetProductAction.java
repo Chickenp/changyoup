@@ -10,6 +10,9 @@ public class GetProductAction extends BaseAction{
     public String execute() throws Exception {
         String img=appService.getIMG();
         request().setAttribute("IMG", img);
+        
+        
+        
         return SUCCESS;
     }
     /**
