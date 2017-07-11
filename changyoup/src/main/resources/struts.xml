@@ -91,6 +91,12 @@
 		<action name="AddCartPro" class="action.AddCartAction">
 			<result name="success">/changyoup/jsp/usercart.jsp</result>
 		</action>
+		
+		<action name="GetProductPro" class="action.GetProductAction">
+			<result name="success">/changyoup/jsp/chpmap.jsp</result>
+		</action>
+		
+		
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>

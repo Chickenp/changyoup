@@ -272,7 +272,7 @@ div.col-sm-10 div {
 					<div class="col-sm-10" style="position: relative; left: 150px">
 
 						<div id="section1"></div>
-						<img alt="img" src="data:image/jpeg;base64,<%=(String)img%>"/>/>
+						<img alt="img" src="data:image/jpeg;base64,<%=(String)img%>"/>
 					</div>
 
 				</div>

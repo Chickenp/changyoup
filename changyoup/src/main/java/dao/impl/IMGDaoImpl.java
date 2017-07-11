@@ -16,7 +16,7 @@ public class IMGDaoImpl implements dao.IMGDao {
 //           ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //           MongoClient client = (MongoClient) context.getBean("mongoClient");
            GridFS gridFS = new GridFS(mongoClient.getDB("chp"));
-           GridFSDBFile out =gridFS.findOne( new BasicDBObject( "filename" , "setting") );
+           GridFSDBFile out =gridFS.findOne( new BasicDBObject( "filename" , "setting.png") );
            InputStream is = out.getInputStream();
            byte[] bytes = IOUtils.toByteArray(is);
            String ecstring= java.util.Base64.getEncoder().encodeToString(bytes);
