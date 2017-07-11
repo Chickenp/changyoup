@@ -54,5 +54,9 @@ $(function() {
 		$("#save").attr("data-id", dataset.id);
 		$('#modal').modal('show');
 	});
-
+	$("#editinfo").click(function(e){
+		var url="EditInfo"+"?id="+val(dataset.id);
+		window.location.href=url;
+		
+	})
 });
