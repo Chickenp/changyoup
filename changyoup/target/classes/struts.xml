@@ -78,12 +78,19 @@
         
         <!-- Account -->
         <action name="Account" class="action.UserInfoAction" method="getInfobyId">
+<<<<<<< HEAD
             <result name="success">/changyoup/jsp/Usercenter.jsp</result>
         </action>
         <action name="UpdateAccount" class="action.UserInfoAction" method="getInfobyId">
             <result name="success">/changyoup/jsp/Usercenter.jsp</result>
         </action>
         <action name="updateUserInfo" class="action.UserInfoAction" method="update">
+=======
+            <result name="success">/changyoup/jsp/UserCenter.jsp</result>
+        </action>
+        <action name="updateUserInfo" class="action.UserInfoAction" method="update">
+            <result name="success">/changyoup/jsp/UserCenter.jsp</result>
+>>>>>>> 5afb7979d62a36ffcb8e383cb5f7d0c0602c3e1c
         </action>
         
         <!-- Cart -->
@@ -93,6 +100,12 @@
 		<action name="AddCartPro" class="action.AddCartAction">
 			<result name="success">/changyoup/jsp/usercart.jsp</result>
 		</action>
+		
+		<action name="GetProductPro" class="action.GetProductAction">
+			<result name="success">/changyoup/jsp/chpmap.jsp</result>
+		</action>
+		
+		
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>
