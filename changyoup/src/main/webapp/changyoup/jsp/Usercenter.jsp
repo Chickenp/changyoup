@@ -59,8 +59,11 @@
 			<ul class="nav" id="side-menu">
 				<li><a href="Account?id=<%=uid%>" class="active"><i
 						class="fa fa-user fa-fw"></i> Userinfo</a></li>
+				<li><a href="allPlansPro"><i class="fa fa-book fa-fw"></i>
+						我的日志</a></li>
 			</ul>
 		</div>
+
 		<!-- /.sidebar-collapse -->
 	</div>
 	<div id="page-wrapper">
@@ -98,9 +101,8 @@
 									</tr>
 								</tbody>
 							</table>
-							<button class="btn btn-default" type="button" id="editinfo"	
-													data-id="<%=userinfo.getId()%>"
-													>Edit Info</button>
+							<button class="btn btn-default" type="button" id="editinfo"
+								data-id="<%=userinfo.getId()%>">Edit Info</button>
 						</div>
 					</div>
 					<!-- /.panel-body -->
@@ -113,7 +115,7 @@
 	</div>
 	<!-- /#page-wrapper -->
 	</div>
-	
+
 	<script src="../js/userinfo.js"></script>
 </body>
 </html>

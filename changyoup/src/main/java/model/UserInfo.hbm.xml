@@ -5,7 +5,7 @@
 <hibernate-mapping>
 	<class name="model.UserInfo" table="userinfo">
 		<id name="id" type="int">
-			<column name="User_id" />
+			<column name="id" />
 			<generator class="assigned" />
 		</id>
 		<property name="nickname" type="java.lang.String">
@@ -18,7 +18,7 @@
 			<column name="Area" />
 		</property>
 		<property name="sex" type="int">
-			<column name="Gender" />
+			<column name="sex" />
 		</property>
 		<property name="birthday" type="java.sql.Date">
 			<column name="Birthday" />
