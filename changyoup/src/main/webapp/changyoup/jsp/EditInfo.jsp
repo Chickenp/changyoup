@@ -15,6 +15,7 @@
 	String email = userinfo.getEmail();
 	String nickname = userinfo.getNickname();
 	Date birthday = userinfo.getBirthday();
+	String area = userinfo.getArea();
 %>
 <head>
 <meta charset="utf-8">
@@ -46,12 +47,7 @@
 </head>
 <%
 	int uid = 0;
-	String sid = (String) session.getAttribute("uid");
-	try {
-		uid = Integer.parseInt(sid);
-	} catch (NumberFormatException e) {
-		uid = 0;
-	}
+	uid = (Integer) session.getAttribute("uid");
 %>
 <body>
 	<div class="navbar-default sidebar" role="navigation">
@@ -75,30 +71,50 @@
 				<form role="form">
 					<div class="form-group">
 						<label>Nickname</label> <input class="form-control"
-							name="nickname">
+							name="nickname" value=<%=nickname%>>
 					</div>
 					<div class="form-group">
-						<label>Email</label> <input class="form-control" name="email">
+						<label>Email</label> <input type=email class="form-control"
+							name="email" value=<%=email%>>
 					</div>
 					<div class="radio">
 						<label> <input type="radio" name="sexRadios"
-							id="sexRadios1" value="option1" >man
+							id="sexRadios1" value="1">man
 						</label>
 					</div>
 					<div class="radio">
 						<label> <input type="radio" name="sexRadios"
-							id="sexRadios2" value="option2">women
+							id="sexRadios2" value="2">women
 						</label>
 					</div>
 					<div class="radio">
 						<label> <input type="radio" name="sexRadios"
-							id="sexRadios3" value="option3" checked>other
+							id="sexRadios3" value="3" checked>other
 						</label>
+					</div>
+					<div class="form-group">
+						<label>Birthday</label> <input type="date" class="form-control"
+							name="birthday" value=<%=birthday%>>
+					</div>
+					
+					<div class="form-group">
+						<label>Area</label> <input class="form-control" name="area"
+							value=<%=area%>>
 					</div>
 				</form>
+				<button type="button" class="btn btn-primary" data-id="<%=id%>"
+					id="save">Save</button>
 			</div>
 		</div>
 	</div>
-
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootbox.min.js"></script>
+	<script src="../js/userinfo.js"></script>
+	
+	
+	<script>
+	$(":radio[name='sexRadios'][value='" + <%=sex%> + "']").prop("checked", "checked");
+	</script>
 </body>
 </html>

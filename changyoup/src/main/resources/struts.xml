@@ -81,9 +81,10 @@
             <result name="success">/changyoup/jsp/Usercenter.jsp</result>
         </action>
         <action name="UpdateAccount" class="action.UserInfoAction" method="getInfobyId">
-            <result name="success">/changyoup/jsp/Usercenter.jsp</result>
+            <result name="success">/changyoup/jsp/EditInfo.jsp</result>
         </action>
         <action name="updateUserInfo" class="action.UserInfoAction" method="update">
+        	<result name="success">/changyoup/jsp/EditInfo.jsp</result>
         </action>
         
         <!-- Cart -->
