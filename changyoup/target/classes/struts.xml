@@ -77,8 +77,13 @@
         </action>
         
         <!-- Account -->
-        <action name="Account" class="action.GetUserInfoAction">
-            <result name="success">/changyoup/jsp/UserCenter.jsp</result>
+        <action name="Account" class="action.UserInfoAction" method="getInfobyId">
+            <result name="success">/changyoup/jsp/Usercenter.jsp</result>
+        </action>
+        <action name="UpdateAccount" class="action.UserInfoAction" method="getInfobyId">
+            <result name="success">/changyoup/jsp/Usercenter.jsp</result>
+        </action>
+        <action name="updateUserInfo" class="action.UserInfoAction" method="update">
         </action>
         
         <!-- Cart -->
