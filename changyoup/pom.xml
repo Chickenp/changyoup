@@ -202,6 +202,12 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.core.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.10.4.RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -241,19 +247,22 @@
 			<scope>provided</scope>
 		</dependency>
         
-        
         <!-- mongoDB -->
         <dependency>
 
 			<groupId>org.springframework.data</groupId>
 
 			<artifactId>spring-data-mongodb</artifactId>
-
+			
+	    </dependency>
+		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.10.4.RELEASE</version>
-
 		</dependency>
-        
-        
+		
+
         <dependency>
     <groupId>commons-logging</groupId>
     <artifactId>commons-logging</artifactId>
