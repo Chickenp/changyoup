@@ -72,6 +72,15 @@
 		<property name="routeInfodao" ref="routeinfoDao"></property>
 	</bean>
 	
+	<bean id="routeDao" class="dao.impl.RouteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+    <bean id="routeService" class="service.impl.RouteServiceImpl">
+		<property name="routedao" ref="routeDao"></property>
+	</bean>
+	
 	
 
 	<!-- HibernateTransactionManager -->
