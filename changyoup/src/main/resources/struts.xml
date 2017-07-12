@@ -87,6 +87,18 @@
         	<result name="success">/changyoup/jsp/EditInfo.jsp</result>
         </action>
         
+		<!-- Route -->
+		<action name="PreviousDay" class="action.RouteAction" method="previous">
+			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
+		</action>
+		<action name="ReleaseRoute" class="action.RouteAction" method="release">
+			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
+		</action>
+		<action name="NextDay" class="action.RouteAction" method="next">
+			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
+		</action>
+        
+        
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">
 			<result name="success">/changyoup/jsp/usercart.jsp</result>
@@ -95,6 +107,7 @@
 			<result name="success">/changyoup/jsp/usercart.jsp</result>
 		</action>
 		
+
 		
 		<action name="GetProductPro" class="action.GetProductAction">
 
