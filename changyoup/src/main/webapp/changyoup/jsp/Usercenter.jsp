@@ -47,7 +47,9 @@
 </head>
 <%
 	int uid = 0;
+	if (session.getAttribute("uid")!=null){
 	uid = (Integer) session.getAttribute("uid");
+	}
 %>
 <body>
 	<div class="navbar-default sidebar" role="navigation">
