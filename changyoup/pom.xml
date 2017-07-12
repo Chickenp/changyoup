@@ -30,6 +30,8 @@
 
 		<mysql.version>5.1.13</mysql.version>
 
+		<mongo.version>3.4.2</mongo.version>
+
 		<ognl.version>3.0</ognl.version>
 
 		<spring.core.version>3.0.5.RELEASE</spring.core.version>
@@ -208,7 +210,12 @@
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.10.4.RELEASE</version>
 		</dependency>
-
+		<!-- MongoDB -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${mongo.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
