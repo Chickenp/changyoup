@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Route;
@@ -8,6 +9,7 @@ import model.User;
 import service.AppService;
 import service.LoginService;
 import service.RouteInfoService;
+import service.RouteService;
 import dao.impl.RouteInfoDaoImpl;
 
 
@@ -15,6 +17,7 @@ import dao.impl.RouteInfoDaoImpl;
 public class GetProductAction extends BaseAction{
     private AppService appService;
     private RouteInfoService routeinfoService;
+    private RouteService routeService;
     private static final long serialVersionUID = 1L;
     private int routeid;
     
@@ -38,7 +41,19 @@ public class GetProductAction extends BaseAction{
         int date = rf.getRoutedays();
         request().setAttribute("date",date);
         
+        List<Route> routes = routeService.getRoutesById(routeid);
+        List<String> location_1=new ArrayList<String>();
+        List<String> location_2=new ArrayList<String>();
+        for (int i=0; i<routes.size(); i++){
+        	System.out.println(routes.get(i).getLocation1());
+        	location_1.add(routes.get(i).getLocation1());
+        	location_2.add(routes.get(i).getLocation2());
+        }
+        System.out.println(location_1);
+        System.out.println(location_2);
         
+        request().setAttribute("location_1",location_1);
+        request().setAttribute("location_2",location_2);
         
         return SUCCESS;
     }
@@ -62,6 +77,15 @@ public class GetProductAction extends BaseAction{
 
     public void setRouteinfoService(RouteInfoService routeinfoService) {
         this.routeinfoService = routeinfoService;
+    }
+    
+    public RouteService getRouteservice() {
+        return routeService;
+    }
+
+
+    public void setRouteService(RouteService routeService) {
+        this.routeService = routeService;
     }
     
     

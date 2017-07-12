@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
 	pageEncoding="utf-8"%>
+	<%@ page import="java.util.ArrayList"%>
+<%@ page import="model.Route"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -101,6 +103,14 @@ div.col-sm-10 div {
 		img=(String)request.getAttribute("IMG");
 			}
 	    int date = (Integer)request.getAttribute("date");
+	    ArrayList<String> location_1 =new ArrayList<String>();
+	    ArrayList<String> location_2 =new ArrayList<String>();
+	    if (request.getAttribute("location_1") != null) {
+	    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
+				}
+	    if (request.getAttribute("location_2") != null) {
+	    	location_2 = (ArrayList<String>) request.getAttribute("location_2");
+				}
 	%>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
@@ -358,8 +368,22 @@ div.col-sm-10 div {
 	var num=1;
 	secc.innerHTML = strarr[num];
 	var content = [ "", "普陀区粪便处理厂", "浙江省宁波市奉化市茅坑村", "想想隔壁312" ];
-	var geo = [ [ , ], [121.386378,31.294742], [121.245621,29.587441],
-			[121.443996,31.02721]];
+	var geo = new Array(<%=location_1.size()+1%>);
+	var loc = new Array();
+	<%for(int j = 1; j <= location_1.size(); j++){%>
+		var var1 = (<%=location_1.get(j-1)%>);
+		var var2 = (<%=location_2.get(j-1)%>);
+		loc[0]=var1;
+		loc[1]=var2;
+		geo[<%=j%>]=(loc);
+		loc = [ , ];
+		console.log(<%=j%>);
+		console.log(geo);
+	<%}%>
+	console.log(geo);
+	console.log(geo[1]);
+	console.log(geo[2]);
+	console.log(geo[3]);
 	var map = new BMap.Map("container2222"); // 创建Map实例
 	var point = new BMap.Point(geo[num][0], geo[num][1]);
 	map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
@@ -370,10 +394,12 @@ div.col-sm-10 div {
 	map.enableScrollWheelZoom(true);    
 	function change_day(butid) {
 		num=butid.split('but')[1];
+		console.log(num);
 		var alertstr = strarr[num];
 		//alert(alertstr);
 		var secc = document.getElementById("section1");
 		secc.innerHTML = alertstr;
+		console.log(geo[num][0], geo[num][1]);
 		var point = new BMap.Point(geo[num][0], geo[num][1]);
 		map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
 		var infoWindow = new BMap.InfoWindow(content[num]);  // 创建信息窗口对象
