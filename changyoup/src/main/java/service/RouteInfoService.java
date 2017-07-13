@@ -2,10 +2,8 @@ package service;
 
 import java.util.List;
 
-<<<<<<< HEAD
+
 import model.Route;
-=======
->>>>>>> acda1ea8d526ee6bd20a93f4eb1577d63367edb9
 import model.Routeinfo;
 
 public interface RouteInfoService {
