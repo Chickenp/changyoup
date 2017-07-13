@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <%
+	String path = request.getContextPath();
 	UserInfo userinfo = new UserInfo();
 	if (request.getAttribute("info") != null) {
 		userinfo = (UserInfo) request.getAttribute("info");
@@ -115,8 +116,8 @@
 	<!-- /#page-wrapper -->
 	</div>
 
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/userinfo.js"></script>
+	<script src="<%=path%>/changyoup/js/jquery.min.js"></script>
+	<script src="<%=path%>/changyoup/js/bootstrap.min.js"></script>
+	<script src="<%=path%>/changyoup/js/userinfo.js"></script>
 </body>
 </html>

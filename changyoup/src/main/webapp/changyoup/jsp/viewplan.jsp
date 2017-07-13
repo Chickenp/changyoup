@@ -16,6 +16,6 @@ if (request.getAttribute("cplan") != null) {
 %>
 
 <body>
-<p><%=cplan %></p>
+<%=cplan %>
 </body>
 </html>

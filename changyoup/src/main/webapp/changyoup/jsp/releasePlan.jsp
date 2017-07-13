@@ -2,6 +2,14 @@
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
+<%
+String cplan="no plan get";
+if (request.getAttribute("cplan") != null) {
+	cplan = (String) request.getAttribute("cplan");
+}
+String path = request.getContextPath();
+
+%>
 <head>
 	<meta charset="UTF-8">
 	<title>Release Travel Plan</title>
@@ -13,7 +21,7 @@ pageEncoding="utf-8"%>
 			}
 		}
 	</script>
-	<link href="../css/Releaseplan.css" rel="stylesheet" type="text/css">
+	<link href="<%=path%>/changyoup/css/Releaseplan.css" rel="stylesheet" type="text/css">
 </head>
 	<b>本页面用于发布旅游攻略，暂时做成独立页面，此后可以整合进AdminCenter</b>
 	<b>本页面也可用于游客发表攻略和评论，待整合</b>
@@ -42,7 +50,7 @@ pageEncoding="utf-8"%>
 		<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
 		
 		<div id="text_div" class="text">
-        	<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+        	<%=cplan%>
     	</div>
     	<br></br>
     	<button style="float:left;" id="btnpub">发布路线</button>
@@ -51,13 +59,14 @@ pageEncoding="utf-8"%>
     	
     	
     	<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
-    	<script type="text/javascript" src="../js/wangEditor/wangEditor.min.js"></script>
-    	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    	<script type="text/javascript" src="<%=path%>/changyoup/js/wangEditor/wangEditor.min.js"></script>
+    	<script type="text/javascript" src="<%=path%>/changyoup/js/jquery.min.js"></script>
     	<script type="text/javascript">
         	var E = window.wangEditor
         	var editor = new E('#toolbar_div','#text_div')	// 或者 var editor = new E( document.getElementById('#editor') )
         	editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
-        	editor.create()
+        	editor.create();
+        	
         	
         	document.getElementById('btn1').addEventListener('click', function () {
         		// 读取 html
