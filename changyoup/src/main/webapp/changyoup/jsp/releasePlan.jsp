@@ -67,14 +67,15 @@ pageEncoding="utf-8"%>
             document.getElementById('btnpub').addEventListener('click', function () {
         		// 读取 text
         		var plan=editor.txt.html();
-        		jQuery.ajax({
-				url:'savePlan',
-				processData : true,
-				dataType : "text",
-				data : {
-				plan : plan
-				},
-			})
+        		jQuery.ajax({	
+      				type:'POST',
+					url:'savePlan',
+					processData : true,
+					dataType : "text",
+					data : {
+					plan : plan
+					},
+				})
     		}, false)
 
     		document.getElementById('btn2').addEventListener('click', function () {

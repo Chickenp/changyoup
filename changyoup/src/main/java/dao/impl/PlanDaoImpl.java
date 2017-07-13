@@ -41,7 +41,9 @@ public class PlanDaoImpl implements PlanDao {
 		InputStream is = new ByteArrayInputStream(plan.getBytes("UTF-8"));
 		DBObject query = new BasicDBObject("_id", id);
 		GridFSDBFile gridFSDBFile = gridFS.findOne(query);
-		if (gridFSDBFile == null) {
+		if (gridFSDBFile != null){
+			gridFS.remove(query);
+		}
 			GridFSInputFile gridFSInputFile = gridFS.createFile(is);
 			gridFSInputFile.setId(id);
 			//gridFSInputFile.setFilename(fileName);
@@ -49,7 +51,6 @@ public class PlanDaoImpl implements PlanDao {
 			// gridFSInputFile.setContentType();
 			// gridFSInputFile.setMetaData();
 			gridFSInputFile.save();
-		}
 	}
 
 	@Override
@@ -60,7 +61,8 @@ public class PlanDaoImpl implements PlanDao {
 		GridFSDBFile gridFSDBFile = gridFS.findOne(query);
 		InputStream is = gridFSDBFile.getInputStream();
 		byte[] bytes = IOUtils.toByteArray(is);
-		String plan = java.util.Base64.getEncoder().encodeToString(bytes);
+		String plan=new String(bytes,"utf-8");
+		//String plan = java.util.Base64.getEncoder().encodeToString(bytes);
 		return plan;
 	}
 
