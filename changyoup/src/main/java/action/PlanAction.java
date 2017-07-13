@@ -1,7 +1,10 @@
 package action;
 
+import java.util.List;
+
 import org.springframework.aop.ThrowsAdvice;
 
+import model.Planinfo;
 import service.PlanService;
 
 public class PlanAction extends BaseAction{
@@ -9,6 +12,8 @@ public class PlanAction extends BaseAction{
 	private int planid;
 	private String plan;
 	private PlanService planService;
+	private int publisher;
+	private String title;
 	
 	public void setPlanService(PlanService planService) {
 		this.planService = planService;
@@ -30,6 +35,20 @@ public class PlanAction extends BaseAction{
 		return plan;
 	}
 	
+	public void setPublisher(int publisher) {
+		this.publisher = publisher;
+	}
+	public int getPublisher() {
+		return publisher;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getTitle() {
+		return title;
+	}
+	
 	
 	public String execute() throws Exception{
 		
@@ -44,7 +63,10 @@ public class PlanAction extends BaseAction{
 	}
 
 	public String add() throws Exception {
-		planService.addPlan(planid, plan);
+		Planinfo planinfo=new Planinfo();
+		planinfo.setPublisher(publisher);
+		planinfo.setTitle(title);
+		planService.addPlan(planinfo, plan);
 		return SUCCESS;
 	}
 	
@@ -59,5 +81,22 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
+	public String getPlanbyPublisher() throws Exception{
+		List<Planinfo> passedplans=planService.getPlanbyPublisher(publisher);
+		return SUCCESS;
+		
+	}
+	
+	public String getAllpassedPlan() throws Exception{
+		List<Planinfo> passedplans=planService.getAllpassedPlan();
+		
+		return SUCCESS;
+	}
+	
+	public String getUnpassedPlan() throws Exception{
+		List<Planinfo> passedplans=planService.getUnpassedPlan();
+		
+		return SUCCESS;
+	}
 	
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.Planinfo" table="plan">
+		<id name="id" type="int">
+			<column name="planid" />
+			<generator class="identity" />
+		</id>
+		<property name="publisher" type="int">
+			<column name="publisher" />
+		</property>
+		<property name="title" type="string">
+			<column name="title" length="255" />
+		</property>
+		<property name="pass" type="int">
+			<column name="pass" />
+		</property>
+		<property name="display" type="int">
+			<column name="display" />
+		</property>		
+	</class>
+</hibernate-mapping>
