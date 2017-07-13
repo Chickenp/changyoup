@@ -24,7 +24,7 @@ pageEncoding="utf-8"%>
 		<button id="btn2">获取text</button>
 		<br></br>
 		
-	<form action="ReleasePlan" method="post" name="planform">
+	<form name="planform">
 		<div style="float:left;">标题：</div>
 		<div><p><input name="title" id="title" type="text" maxlength="20">&nbsp;（注意：最多20个字！）</p></div>
 		
@@ -44,31 +44,45 @@ pageEncoding="utf-8"%>
 		<div id="text_div" class="text">
         	<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
     	</div>
+    	<br></br>
+    	<button style="float:left;" id="btnpub">发布路线</button>
+    	</form>
+    	&nbsp;<button onclick="confirmclear()">清空内容</button>
+    	
+    	
     	<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
     	<script type="text/javascript" src="../js/wangEditor/wangEditor.min.js"></script>
+    	<script type="text/javascript" src="../js/jquery.min.js"></script>
     	<script type="text/javascript">
         	var E = window.wangEditor
         	var editor = new E('#toolbar_div','#text_div')	// 或者 var editor = new E( document.getElementById('#editor') )
         	editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
         	editor.create()
-        
-        
+        	
         	document.getElementById('btn1').addEventListener('click', function () {
         		// 读取 html
         		alert(editor.txt.html())
    			}, false)
+
+            document.getElementById('btnpub').addEventListener('click', function () {
+        		// 读取 text
+        		var plan=editor.txt.html();
+        		jQuery.ajax({
+				url:'savePlan',
+				processData : true,
+				dataType : "text",
+				data : {
+				plan : plan
+				},
+			})
+    		}, false)
 
     		document.getElementById('btn2').addEventListener('click', function () {
         		// 读取 text
         		alert(editor.txt.text())
     		}, false)
     	</script>
-    	<br></br>
-    	
-    	<button style="float:left;">发布路线</button>
-    	</form>
-    	&nbsp;<button onclick="confirmclear()">清空内容</button>
-    	
+
     
 	</div>
 	

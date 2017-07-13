@@ -104,6 +104,13 @@
 			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
 		</action>
         
+        <!-- Plan -->
+        <action name="savePlan" class="action.PlanAction" method="add">
+			<result name="success">/changyoup/jsp/releasePlan.jsp</result>
+		</action>
+        <action name="viewPlan" class="action.PlanAction" method="getPlanbyId">
+        	<result name="success">/changyoup/jsp/viewplan.jsp</result>
+        </action>
         
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">

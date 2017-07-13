@@ -38,13 +38,14 @@ public class PlanAction extends BaseAction{
 	}
 	
 	public String getPlanbyId() throws Exception{
-		plan=planService.getPlanbyId(planid);
+		plan=planService.getPlanbyId(1);
 		request().setAttribute("cplan", plan);
 		return SUCCESS;
 	}
 
 	public String add() throws Exception {
-		planService.addPlan(planid, plan);
+		System.out.println(plan);
+		planService.updatePlan(1, plan);
 		return SUCCESS;
 	}
 	
