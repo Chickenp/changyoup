@@ -13,11 +13,32 @@ public class RouteInfoServiceImpl implements RouteInfoService{
     public void setRouteInfodao(RouteInfoDaoImpl routeinfoDao) {
         this.routeinfoDao = routeinfoDao;
     }
+
+	@Override
+	public Integer addRouteInfo(Routeinfo routeinfo) {
+		return routeinfoDao.save(routeinfo);
+	}
+
+	@Override
+	public void updateRouteInfo(Routeinfo routeinfo) {
+		routeinfoDao.update(routeinfo);
+	}
+
+	@Override
+	public void deleteRouteInfo(Routeinfo routeinfo) {
+		routeinfoDao.delete(routeinfo);
+	}
+	
+	@Override
     public Routeinfo getRouteInfoById(int routeid){
 		return routeinfoDao.getRouteInfoById(routeid);
-    	
     }
     public List<Routeinfo> getRouteInfoBySearch(String searchword){
     	return routeinfoDao.getRouteInfoBySearch(searchword);
     }
+    
+	@Override
+	public List<Routeinfo> getAllRouteInfo() {
+		return routeinfoDao.getAllRouteInfo();
+	}
 }
