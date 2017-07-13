@@ -1,6 +1,7 @@
 package model;
-// Generated 2017-7-10 15:39:42 by Hibernate Tools 3.6.0.Final
+// Generated 2017-7-13 9:53:14 by Hibernate Tools 3.6.0.Final
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,19 +13,29 @@ public class Routeinfo implements java.io.Serializable {
 	private Integer routeid;
 	private int routedays;
 	private int routepublisher;
+	private String routetitle;
+	private Date routepublishdate;
+	private String routeintro;
 	private Set routes = new HashSet(0);
 
 	public Routeinfo() {
 	}
 
-	public Routeinfo(int routedays, int routepublisher) {
+	public Routeinfo(int routedays, int routepublisher, String routetitle, Date routepublishdate, String routeintro) {
 		this.routedays = routedays;
 		this.routepublisher = routepublisher;
+		this.routetitle = routetitle;
+		this.routepublishdate = routepublishdate;
+		this.routeintro = routeintro;
 	}
 
-	public Routeinfo(int routedays, int routepublisher, Set routes) {
+	public Routeinfo(int routedays, int routepublisher, String routetitle, Date routepublishdate, String routeintro,
+			Set routes) {
 		this.routedays = routedays;
 		this.routepublisher = routepublisher;
+		this.routetitle = routetitle;
+		this.routepublishdate = routepublishdate;
+		this.routeintro = routeintro;
 		this.routes = routes;
 	}
 
@@ -50,6 +61,30 @@ public class Routeinfo implements java.io.Serializable {
 
 	public void setRoutepublisher(int routepublisher) {
 		this.routepublisher = routepublisher;
+	}
+
+	public String getRoutetitle() {
+		return this.routetitle;
+	}
+
+	public void setRoutetitle(String routetitle) {
+		this.routetitle = routetitle;
+	}
+
+	public Date getRoutepublishdate() {
+		return this.routepublishdate;
+	}
+
+	public void setRoutepublishdate(Date routepublishdate) {
+		this.routepublishdate = routepublishdate;
+	}
+
+	public String getRouteintro() {
+		return this.routeintro;
+	}
+
+	public void setRouteintro(String routeintro) {
+		this.routeintro = routeintro;
 	}
 
 	public Set getRoutes() {

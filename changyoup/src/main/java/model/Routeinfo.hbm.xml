@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-7-10 15:39:43 by Hibernate Tools 3.6.0.Final -->
+<!-- Generated 2017-7-13 9:53:14 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
     <class name="model.Routeinfo" table="routeinfo" catalog="changyou">
         <id name="routeid" type="java.lang.Integer">
@@ -13,6 +13,15 @@
         </property>
         <property name="routepublisher" type="int">
             <column name="routepublisher" not-null="true" />
+        </property>
+        <property name="routetitle" type="string">
+            <column name="routetitle" length="200" not-null="true" />
+        </property>
+        <property name="routepublishdate" type="date">
+            <column name="routepublishdate" length="10" not-null="true" />
+        </property>
+        <property name="routeintro" type="string">
+            <column name="routeintro" length="200" not-null="true" />
         </property>
         <set name="routes" table="route" inverse="true" lazy="true" fetch="select">
             <key>
