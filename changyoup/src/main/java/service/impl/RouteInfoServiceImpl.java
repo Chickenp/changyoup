@@ -38,4 +38,9 @@ public class RouteInfoServiceImpl implements RouteInfoService{
 	public List<Routeinfo> getAllRouteInfo() {
 		return routeinfoDao.getAllRouteInfo();
 	}
+	
+	@Override
+	public List<Routeinfo> getRouteInfoBySearch(String searchword) {
+		return routeinfoDao.getRouteInfoBySearch(searchword);
+	}
 }

@@ -15,5 +15,7 @@ public interface RouteInfoDao {
 	public Routeinfo getRouteInfoById(int id);
 
 	public List<Routeinfo> getAllRouteInfo();
+	
+	public List<Routeinfo> getRouteInfoBySearch(String searchword) ;
 
 }

@@ -36,5 +36,12 @@ public class RouteInfoDaoImpl extends HibernateDaoSupport implements RouteInfoDa
 				.find("from Routeinfo");
 		return routeinfo;
 	}
+	
+	public List<Routeinfo> getRouteInfoBySearch(String searchword) {
+		@SuppressWarnings("unchecked")
+		List<Routeinfo> routeinfos = (List<Routeinfo>) getHibernateTemplate().find(
+				"from Routeinfo as rf where rf.routetitle like?", '%'+searchword+'%');
+		return routeinfos;
+	}
 
 }

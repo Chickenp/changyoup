@@ -14,4 +14,6 @@ public interface RouteInfoService {
 	public Routeinfo getRouteInfoById(int routeid);
 	
 	public List<Routeinfo> getAllRouteInfo();
+	
+	public List<Routeinfo> getRouteInfoBySearch(String searchword) ;
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-7-13 9:53:14 by Hibernate Tools 3.6.0.Final -->
+<!-- Generated 2017-7-13 16:43:34 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
     <class name="model.Route" table="route" catalog="changyou">
         <id name="routeMongoid" type="string">
             <column name="route_mongoid" length="40" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="routeinfo" class="model.Routeinfo" fetch="select">
+        <property name="routeid" type="int">
             <column name="routeid" not-null="true" />
-        </many-to-one>
+        </property>
         <property name="routedate" type="int">
             <column name="routedate" not-null="true" />
         </property>
