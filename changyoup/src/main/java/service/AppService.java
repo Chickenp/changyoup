@@ -32,5 +32,6 @@ public interface AppService {
 	
 	public String getIMG() throws Exception;
 	
+	public String getHtmlById(String id) throws Exception;
 	
 }

@@ -4,8 +4,10 @@ import java.util.List;
 
 
 
+
 import model.User;
 import service.AppService;
+import dao.HtmlDao;
 import dao.UserDao;
 import dao.IMGDao;
 
@@ -14,6 +16,7 @@ public class AppServiceImpl implements AppService {
 
 	private UserDao userDao;
 	private IMGDao imgDao;
+	private HtmlDao HtmlDao;
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
@@ -61,7 +64,21 @@ public class AppServiceImpl implements AppService {
 	    return imgDao.getIMG();
 	}
 
-
+	public String getHtmlById(String id) throws Exception{
+	    return HtmlDao.getHtmlById(id);
+	}
+    /**
+     * @return the htmlDao
+     */
+    public HtmlDao getHtmlDao() {
+        return HtmlDao;
+    }
+    /**
+     * @param htmlDao the htmlDao to set
+     */
+    public void setHtmlDao(HtmlDao htmlDao) {
+        HtmlDao = htmlDao;
+    }
     
 	
 
