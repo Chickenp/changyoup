@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf8"
-	pageEncoding="utf-8"%>
-	<%@ page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="model.Route"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -10,7 +10,7 @@
 <html class="no-js">
 <!--<![endif]-->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Listing &mdash; 100% Free Fully Responsive HTML5 Template
 </title>
@@ -85,33 +85,37 @@
 }
 
 div.col-sm-10 div {
-	height: 250px;
+	height: 500px;
 	font-size: 28px;
 }
 
 #section1 {
 	color: #00000;
 	background-color: #ffffff;
+	overflow:auto;
 }
 </style>
+<%
+   
+			int date = (Integer)request.getAttribute("date");
+			    ArrayList<String> location_1 =new ArrayList<String>();
+			    ArrayList<String> location_2 =new ArrayList<String>();
+			    ArrayList<String> document =new ArrayList<String>();
+			    if (request.getAttribute("location_1") != null) {
+			    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
+						}
+			    if (request.getAttribute("location_2") != null) {
+			    	location_2 = (ArrayList<String>) request.getAttribute("location_2");
+						}
+			    if (request.getAttribute("document") != null) {
+			    	document = (ArrayList<String>) request.getAttribute("document");
+						}
+			    //System.out.println(document);
+%>
 
 </head>
 <body>
-<%
-		String img = new String();
-			if (request.getAttribute("IMG") != null) {
-		img=(String)request.getAttribute("IMG");
-			}
-	    int date = (Integer)request.getAttribute("date");
-	    ArrayList<String> location_1 =new ArrayList<String>();
-	    ArrayList<String> location_2 =new ArrayList<String>();
-	    if (request.getAttribute("location_1") != null) {
-	    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
-				}
-	    if (request.getAttribute("location_2") != null) {
-	    	location_2 = (ArrayList<String>) request.getAttribute("location_2");
-				}
-	%>
+
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 			<div id="fh5co-header">
@@ -179,30 +183,30 @@ div.col-sm-10 div {
 										</ul></li>
 									<li><a href="contact.html">Contact</a></li>
 									<%
-										if ((session.getAttribute("uid") == null)
-												|| (session.getAttribute("uid") == "")) {
+									    if ((session.getAttribute("uid") == null)
+																																																|| (session.getAttribute("uid") == "")) {
 									%>
 									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
 									<%
-										} else {
+									    } else {
 									%>
 									<li><a href="Usercenter.jsp">User Center</a></li>
 									<%
-										}
+									    }
 									%>
 
 									<%
-										if ((session.getAttribute("uid") == null)
-												|| (session.getAttribute("uid") == "")) {
+									    if ((session.getAttribute("uid") == null)
+																																																|| (session.getAttribute("uid") == "")) {
 									%>
 									<li><a href="#" data-toggle="modal"
 										data-target="#login-modal">Login</a></li>
 									<%
-										} else {
+									    } else {
 									%>
 									<li><a href="logout.jsp">Logout</a></li>
 									<%
-										}
+									    }
 									%>
 
 
@@ -236,7 +240,7 @@ div.col-sm-10 div {
 				<div class="fh5co-overlay"></div>
 				<div class="fh5co-cover text-center"
 					data-stellar-background-ratio="0.5"
-					style="background-image: url(/changyoup/changyoup/images/dmn.jpg);">
+					style="background-image: url(/changyoup/changyoup/images/cover_bg_1.jpg);">
 					<div class="desc animate-box">
 						<h2>Travel Around The World.</h2>
 						<!-- <span>Lovely Crafted by <a href="#" target="_blank" class="fh5co-site-name">FREEHTML5.co</a></span> -->
@@ -272,7 +276,7 @@ div.col-sm-10 div {
 			<div class="container">
 				<div class="row" style="position: relative;">
 					<div class="btn-group-vertical" style="position: absolute">
-					<% for(int i=1; i<=date; i++){ %>
+						<% for(int i=1; i<=date; i++){ %>
 						<button id="but<%=i%>" type="button" onClick="change_day(this.id)"
 							class="btn btn-primary">Day<%=i%></button>
 					<%} %>
@@ -281,7 +285,7 @@ div.col-sm-10 div {
 					<div class="col-sm-10" style="position: relative; left: 150px">
 
 						<div id="section1"></div>
-						<img alt="img" src="data:image/jpeg;base64,<%=(String)img%>"/>
+						
 					</div>
 
 				</div>
@@ -363,51 +367,56 @@ div.col-sm-10 div {
 
 </body>
 <script type="text/javascript">
-	var strarr = [ "", "day1:eat poo", "day2:eat shit", "day3:think about 312" ];
+	//var strarr = [ "", "day1:eat poo", "day2:eat shit", "day3:think about 312" ];
 	var secc = document.getElementById("section1");
-	var num=1;
-	secc.innerHTML = strarr[num];
+	var num = 1;
 	var content = [ "", "普陀区粪便处理厂", "浙江省宁波市奉化市茅坑村", "想想隔壁312" ];
 	var geo = new Array(<%=location_1.size()+1%>);
+	var doc = new Array();
 	var loc = new Array();
-	<%for(int j = 1; j <= location_1.size(); j++){%>
-		var var1 = (<%=location_1.get(j-1)%>);
-		var var2 = (<%=location_2.get(j-1)%>);
-		loc[0]=var1;
-		loc[1]=var2;
-		geo[<%=j%>]=(loc);
-		loc = [ , ];
-		console.log(<%=j%>);
-		console.log(geo);
-	<%}%>
-	console.log(geo);
-	console.log(geo[1]);
-	console.log(geo[2]);
-	console.log(geo[3]);
+<%for(int j = 1; j <= location_1.size(); j++){%>
+	var var1 = (<%=location_1.get(j-1)%>);
+	var var2 = (<%=location_2.get(j-1)%>);
+	var var3=('<%=document.get(j-1)%>');
+	console.log(var3);
+	loc[0] = var1;
+	loc[1] = var2;
+	geo[<%=j%>] = (loc);
+	doc[<%=j%>]=var3;
+	loc = [ , ];
+<%}%>
 	var map = new BMap.Map("container2222"); // 创建Map实例
 	var point = new BMap.Point(geo[num][0], geo[num][1]);
+	secc.innerHTML=doc[num];
 	map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
 	map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-	map.openInfoWindow(infoWindow,point); //开启信息窗口
-	var infoWindow = new BMap.InfoWindow(content[num]);  // 创建信息窗口对象
-	map.openInfoWindow(infoWindow,point); //开启信息窗口
-	map.enableScrollWheelZoom(true);    
+	map.openInfoWindow(infoWindow, point); //开启信息窗口
+	var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
+	map.openInfoWindow(infoWindow, point); //开启信息窗口
+	map.enableScrollWheelZoom(true);
 	function change_day(butid) {
-		num=butid.split('but')[1];
-		console.log(num);
-		var alertstr = strarr[num];
+		
 		//alert(alertstr);
 		var secc = document.getElementById("section1");
-		secc.innerHTML = alertstr;
-		console.log(geo[num][0], geo[num][1]);
+		num = butid.split('but')[1];		
+		secc.innerHTML=doc[num];
 		var point = new BMap.Point(geo[num][0], geo[num][1]);
 		map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
-		var infoWindow = new BMap.InfoWindow(content[num]);  // 创建信息窗口对象
-		map.openInfoWindow(infoWindow,point); //开启信息窗口
+		var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
+		map.openInfoWindow(infoWindow, point); //开启信息窗口
 	}
+	function htmlEncode(value){
+		  //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+		  //then grab the encoded contents back out.  The div never exists on the page.
+		  return $('<div/>').text(value).html();
+		}
+
+		function htmlDecode(value){
+		  return $('<div/>').html(value).text();
+		}
+
 
 	// 百度地图API功能
-	
 </script>
 </html>
 

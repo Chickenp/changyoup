@@ -131,7 +131,11 @@
 			<result name="success">/changyoup/jsp/chpmap.jsp</result>
 
 		</action>
-		
+		<action name="SearchRoutePro" class="action.SearchRouteAction">
+
+			<result name="success">/changyoup/jsp/routesearch.jsp</result>
+
+		</action>
 		
 		<action name="*">
 			<result>/{1}.jsp</result>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
     pageEncoding="BIG5"%>
+<%@ page import="model.Routeinfo" %>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -12,7 +14,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	
+	<%
+		ArrayList<Routeinfo> routeinfos = new ArrayList<Routeinfo>();
+			if (request.getAttribute("routeinfos") != null) {
+		routeinfos= (ArrayList<Routeinfo>) request.getAttribute("routeinfos");
+			}
+	%>
 
   
 	<!-- jQuery -->
@@ -197,83 +204,83 @@
 			</div>
 		</div>
 	</div>
-		<div class="fh5co-listing">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item" href="GetProductPro?routeid=1">
-							<img src="/changyoup/changyoup/images/img-1.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Paris</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="/changyoup/changyoup/images/img-2.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>New York</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="/changyoup/changyoup/images/img-3.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>London</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<!-- END 3 row -->
+<!-- 		<div class="fh5co-listing"> -->
+<!-- 			<div class="container"> -->
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col-md-4 col-sm-4 fh5co-item-wrap"> -->
+<!-- 						<a class="fh5co-listing-item" href="GetProductPro?routeid=1"> -->
+<!-- 							<img src="/changyoup/changyoup/images/img-1.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+<!-- 							<div class="fh5co-listing-copy"> -->
+<!-- 								<h2>Paris</h2> -->
+<!-- 								<span class="icon"> -->
+<!-- 									<i class="icon-chevron-right"></i> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-4 col-sm-4 fh5co-item-wrap"> -->
+<!-- 						<a class="fh5co-listing-item"> -->
+<!-- 							<img src="/changyoup/changyoup/images/img-2.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+<!-- 							<div class="fh5co-listing-copy"> -->
+<!-- 								<h2>New York</h2> -->
+<!-- 								<span class="icon"> -->
+<!-- 									<i class="icon-chevron-right"></i> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-4 col-sm-4 fh5co-item-wrap"> -->
+<!-- 						<a class="fh5co-listing-item"> -->
+<!-- 							<img src="/changyoup/changyoup/images/img-3.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+<!-- 							<div class="fh5co-listing-copy"> -->
+<!-- 								<h2>London</h2> -->
+<!-- 								<span class="icon"> -->
+<!-- 									<i class="icon-chevron-right"></i> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					END 3 row -->
 
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="/changyoup/changyoup/images/img-4.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Amsterdam</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="/changyoup/changyoup/images/img-5.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Australia</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="/changyoup/changyoup/images/img-6.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Japan</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<!-- END 3 row -->
+<!-- 					<div class="col-md-4 col-sm-4 fh5co-item-wrap"> -->
+<!-- 						<a class="fh5co-listing-item"> -->
+<!-- 							<img src="/changyoup/changyoup/images/img-4.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+<!-- 							<div class="fh5co-listing-copy"> -->
+<!-- 								<h2>Amsterdam</h2> -->
+<!-- 								<span class="icon"> -->
+<!-- 									<i class="icon-chevron-right"></i> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-4 col-sm-4 fh5co-item-wrap"> -->
+<!-- 						<a class="fh5co-listing-item"> -->
+<!-- 							<img src="/changyoup/changyoup/images/img-5.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+<!-- 							<div class="fh5co-listing-copy"> -->
+<!-- 								<h2>Australia</h2> -->
+<!-- 								<span class="icon"> -->
+<!-- 									<i class="icon-chevron-right"></i> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-4 col-sm-4 fh5co-item-wrap"> -->
+<!-- 						<a class="fh5co-listing-item"> -->
+<!-- 							<img src="/changyoup/changyoup/images/img-6.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+<!-- 							<div class="fh5co-listing-copy"> -->
+<!-- 								<h2>Japan</h2> -->
+<!-- 								<span class="icon"> -->
+<!-- 									<i class="icon-chevron-right"></i> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					END 3 row -->
 
 
-				</div>
-			</div>
-		</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
         
         
 
@@ -284,27 +291,16 @@
 					<div class="col-md-6 fh5co-news">
 						<h3>News</h3>
 						<ul>
+						<%for(int i=0;i<routeinfos.size();i++) {
+						Routeinfo routeinfo=routeinfos.get(i);%>
 							<li>
 								<a href="#">
-									<span class="fh5co-date">Sep. 10, 2016</span>
-									<h3>Newly done Bridge of London</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
+									<span class="fh5co-date"><%=routeinfo.getRoutepublishdate() %></span>
+									<h3><%=routeinfo.getRoutetitle() %></h3>
+									<p><%=routeinfo.getRouteintro() %></p>
 								</a>
 							</li>
-							<li>
-								<a href="#">
-									<span class="fh5co-date">Sep. 10, 2016</span>
-									<h3>Newly done Bridge of London</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="fh5co-date">Sep. 10, 2016</span>
-									<h3>Newly done Bridge of London</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
-								</a>
-							</li>
+							<%} %>
 						</ul>
 					</div>
 					<div class="col-md-6 fh5co-testimonial">

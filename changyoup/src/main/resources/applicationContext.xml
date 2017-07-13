@@ -137,7 +137,11 @@
 	<bean id="registera" class="action.RegisterAction" scope="prototype">
 		<property name="registerservice" ref="registers"></property>
 	</bean>
+	<bean id="HtmlDao" class="dao.impl.HtmlDaoImpl">
 
+		<property name="mongoClient" ref="mongoClient" />
+
+	</bean>
 
 
 
@@ -165,6 +169,7 @@
 		<property name="imgDao" ref="imgDao"></property>
 
 		<property name="userDao" ref="userDao"></property>
+		<property name="HtmlDao" ref="HtmlDao"></property>
 
 	</bean>
 
