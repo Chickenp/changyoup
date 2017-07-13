@@ -170,8 +170,20 @@
 			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(/changyoup/changyoup/images/cover_bg_1.jpg);">
 				<div class="desc animate-box">
 					<h2>Travel Around The World.</h2>
-					<!-- <span>Lovely Crafted by <a href="#" target="_blank" class="fh5co-site-name">FREEHTML5.co</a></span> -->
-					<span><a class="btn btn-primary btn-lg" href="#">Get Started</a></span>
+					<form method="POST" action="insert.jsp">
+<!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.txt"
+S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
+<p>　</p>
+<p>　</p>
+<p><img border="0" src="img/cisco.gif" width="70" height="81">
+<font size="5" color="#0000FF"><b>search:
+</b></font><input type="text" name="id" size="25"> <img border="0" src="img/cisco.gif" width="70" height="81">
+<p> </p>
+<p>
+<input type="submit" value="search" name="B1" style="font-size: 14pt; font-weight: bold">
+<input type="reset" value="search" name="B2" style="font-size: 14pt; font-weight: bold">
+</p>
+</form>
 				</div>
 			</div>
 

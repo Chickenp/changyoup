@@ -17,4 +17,7 @@ public class RouteInfoServiceImpl implements RouteInfoService{
 		return routeinfoDao.getRouteInfoById(routeid);
     	
     }
+    public List<Routeinfo> getRouteInfoBySearch(String searchword){
+    	return routeinfoDao.getRouteInfoBySearch(searchword);
+    }
 }
