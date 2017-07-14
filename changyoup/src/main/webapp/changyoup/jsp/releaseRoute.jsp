@@ -17,19 +17,19 @@ pageEncoding="utf-8"%>
 		
 		function preday(){
 			document.getElementById("content").value=editor.txt.html();
-			//document.forms.routeform.action="PreviousDay";
+			document.forms.routeform.action="PreviousDay";
 			document.forms.routeform.submit();
 		}
 		
 		function release(){
 			document.getElementById("content").value=editor.txt.html();
-			//document.forms.routeform.action="ReleaseRoute";
+			document.forms.routeform.action="ReleaseRoute";
 			document.forms.routeform.submit();
 		}
 		
 		function nextday(){
 			document.getElementById("content").value=editor.txt.html();
-			//document.forms.routeform.action="NextDay";
+			document.forms.routeform.action="NextDay";
 			document.forms.routeform.submit();
 		}
 	</script>
@@ -47,6 +47,14 @@ pageEncoding="utf-8"%>
 		else{
 			session.setAttribute("day", day);
 		}
+		
+		String str = "<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>";
+		if(session.getAttribute("str")!=null){
+			str=(String)session.getAttribute("str");
+		}
+		else{
+			session.setAttribute("str",str);
+		}
 	%>
 	<div class="container">
 	<div>
@@ -57,23 +65,13 @@ pageEncoding="utf-8"%>
 	<div><h3>Day <%=day%></h3></div>
 		
 	<form action="" method="post" name="routeform" id="routeform">
-		<div style="float:left;">标题：</div>
-		<div><p><input name="title" id="title" type="text" maxlength="20">&nbsp;（注意：最多20个字！）</p></div>
-
-		<div style="float:left;">路线类型：</div>
-		<div>
-			<p>
-				<input type="radio" name="routetype" id="routetype" value="individual"/>自助游&nbsp;
-				<input type="radio" name="routetype" id="routetype" value="group"/>跟团游&nbsp;
-				<input type="radio" name="routetype" id="routetype" value="selfdrive"/>自驾游
-			</p>
-		</div>
+		
 		<input type="hidden" name="day" id="day" value=<%=day%> />
 		
 		<div id="toolbar_div" class="toolbar"></div>
 		<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
 		<div id="text_div" class="text">
-        	<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+        	<%=str %>
     	</div>
     	<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
     	<script type="text/javascript" src="../js/wangEditor/wangEditor.min.js"></script>

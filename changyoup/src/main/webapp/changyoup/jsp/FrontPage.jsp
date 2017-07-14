@@ -10,7 +10,7 @@ pageEncoding="utf-8"%>
 <body>
 	<div class="container">
 	
-	<form action="newRoute" method="post">
+	<form action="AddRouteInfo" method="post">
 		<div style="float:left;">天数：</div>
 		<div><p><input type=int name="days" id="days"></p></div>
 		
