@@ -37,7 +37,7 @@ public class RouteDaoImpl extends HibernateDaoSupport implements RouteDao {
 	public List<Route> getRoutesById(int id) {
 		@SuppressWarnings("unchecked")
 		List<Route> routes = (List<Route>) getHibernateTemplate().find(
-				"from Route as r where r.routeid=?", id);
+				"from Route as r where r.routeid=? order by r.routedate asc", id);
 		Route routeinfo = routes.size() > 0 ? routes.get(0) : null;
 		return routes;
 	}
