@@ -75,8 +75,15 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
+	public String updateinfo() throws Exception{
+		
+		return SUCCESS;
+	}
+	
 	public String delete() throws Exception{
-		planService.deletePlan(planid);
+		Planinfo planinfo=new Planinfo();
+		planinfo.setPlanid(planid);
+		planService.deletePlan(planinfo);
 		
 		return SUCCESS;
 	}
@@ -89,13 +96,13 @@ public class PlanAction extends BaseAction{
 	
 	public String getAllpassedPlan() throws Exception{
 		List<Planinfo> passedplans=planService.getAllpassedPlan();
-		
+		request().setAttribute("allplans", passedplans);
 		return SUCCESS;
 	}
 	
 	public String getUnpassedPlan() throws Exception{
-		List<Planinfo> passedplans=planService.getUnpassedPlan();
-		
+		List<Planinfo> unpassedplans=planService.getUnpassedPlan();
+		request().setAttribute("unpass", unpassedplans);
 		return SUCCESS;
 	}
 	

@@ -11,7 +11,7 @@ public interface PlanService {
 	
 	public void updatePlaninfo(Planinfo planinfo);
 	
-	public void deletePlan(int planid);
+	public void deletePlan(Planinfo planinfo);
 	
 	public String getPlanbyId(int id);
 	

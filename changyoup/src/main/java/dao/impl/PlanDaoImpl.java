@@ -35,6 +35,17 @@ public class PlanDaoImpl implements PlanDao {
 		return mongoDatabase;
 	}
 
+	public void delete(int id){
+		DB database = connetdb();
+		gridFS = new GridFS(database);
+		DBObject query = new BasicDBObject("_id", id);
+		GridFSDBFile gridFSDBFile = gridFS.findOne(query);
+		if (gridFSDBFile!=null){
+			gridFS.remove(query);
+		}
+	}
+	
+	
 	public void save(int id, String plan) throws Exception {
 		DB database = connetdb();
 		gridFS = new GridFS(database);

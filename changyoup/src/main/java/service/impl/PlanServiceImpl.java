@@ -44,7 +44,16 @@ public class PlanServiceImpl implements PlanService{
 	}
 
 	@Override
-	public void deletePlan(int planid) {
+	public void deletePlan(Planinfo planinfo) {
+		int planid=planinfo.getPlanid();
+		planinfoDao.delete(planinfo);
+		try {
+			planDao.delete(planid);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
