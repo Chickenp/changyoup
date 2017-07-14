@@ -26,7 +26,6 @@ public class TagSearchAction extends BaseAction{
     	List<Routeinfo> routeinfos = routetagService.getRoutesById(tagid);
     	
     	request().setAttribute("routeinfos",routeinfos);
-    	System.out.println(tagid);
     	return SUCCESS;
     }
     

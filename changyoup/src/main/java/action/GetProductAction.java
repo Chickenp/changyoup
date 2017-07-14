@@ -5,9 +5,11 @@ import java.util.List;
 
 import model.Route;
 import model.Routeinfo;
+import model.Tag;
 import service.AppService;
 import service.RouteInfoService;
 import service.RouteService;
+import service.RouteTagService;
 
 
 public class GetProductAction extends BaseAction{
@@ -15,6 +17,7 @@ public class GetProductAction extends BaseAction{
     private static final long serialVersionUID = 1L;
     private RouteInfoService routeinfoService;
     private RouteService routeService;
+    private RouteTagService routetagService;
     private int routeid;
     @Override
     public String execute() throws Exception {
@@ -32,13 +35,21 @@ public class GetProductAction extends BaseAction{
         for (int i=0; i<routes.size(); i++){
                 location_1.add(routes.get(i).getLocation1());
                 location_2.add(routes.get(i).getLocation2());
-                System.out.println(routes.get(i).getRouteMongoid());
                 days.add(appService.getHtmlById(routes.get(i).getRouteMongoid()));
         }
+        
+        System.out.println(routetagService.getTagsById(routeid));
+        List<Tag> tags = routetagService.getTagsById(routeid);
+        List<String> tag_name=new ArrayList<String>();
+        for (int i=0; i<routes.size(); i++){
+        	tag_name.add(tags.get(i).getTagname());
+        }
+        
         
         request().setAttribute("document", days);
         request().setAttribute("location_1",location_1);
         request().setAttribute("location_2",location_2);
+        request().setAttribute("tagnames",tag_name );
         return SUCCESS;
     }
     /**
@@ -86,6 +97,18 @@ public class GetProductAction extends BaseAction{
     /**
      * @return the routeid
      */
+    
+    public void setRoutetagService(RouteTagService routetagService) {
+        this.routetagService = routetagService;
+    }
+
+    /**
+     * @return the routeinfoService
+     */
+    public RouteTagService getRoutetagService() {
+        return routetagService;
+    }
+    
     public int getRouteid() {
         return routeid;
     }

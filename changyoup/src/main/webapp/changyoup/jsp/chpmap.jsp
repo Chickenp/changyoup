@@ -101,6 +101,7 @@ div.col-sm-10 div {
 			    ArrayList<String> location_1 =new ArrayList<String>();
 			    ArrayList<String> location_2 =new ArrayList<String>();
 			    ArrayList<String> document =new ArrayList<String>();
+			    ArrayList<String> tagnames =new ArrayList<String>();
 			    if (request.getAttribute("location_1") != null) {
 			    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
 						}
@@ -110,6 +111,9 @@ div.col-sm-10 div {
 			    if (request.getAttribute("document") != null) {
 			    	document = (ArrayList<String>) request.getAttribute("document");
 						}
+			    if (request.getAttribute("tagnames") != null) {
+					tagnames = (ArrayList<String>) request.getAttribute("tagnames");
+					    }
 			    //System.out.println(document);
 %>
 
@@ -281,8 +285,19 @@ div.col-sm-10 div {
 							class="btn btn-primary">Day<%=i%></button>
 					<%} %>
 					</div>
-
-					<div class="col-sm-10" style="position: relative; left: 150px">
+                    
+                    <div class="btn-group-vertical" style="position: absolute; right: 0px">
+						<% for(int n=1; n<=tagnames.size(); n++){ %>
+						<a href = "TagSearchPro?tagid=1">
+						<button id="but<%=n%>" type="button" onClick=TagSearchPro"
+							class="btn btn-primary"><%=tagnames.get(n-1)%></button>
+						</a>
+					<%} %>
+					
+					
+					</div>
+                    
+					<div class="col-sm-10" style="position: relative; left: 100px">
 
 						<div id="section1"></div>
 						

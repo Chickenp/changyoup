@@ -37,6 +37,7 @@
 				<value>model/Route.hbm.xml</value>
 				<value>model/Routeinfo.hbm.xml</value>
 				<value>model/Routetag.hbm.xml</value>
+				<value>model/Tag.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
@@ -85,11 +86,16 @@
 	<bean id="routetagDao" class="dao.impl.RouteTagDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="tagDao" class="dao.impl.TagDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 
 	<bean id="routetagService" class="service.impl.RouteTagServiceImpl">
 		<property name="routeTagdao" ref="routetagDao"></property>
 		<property name="routeInfodao" ref="routeinfoDao"></property>
+		<property name="tagDao" ref="tagDao"></property>
 	</bean>
 
 

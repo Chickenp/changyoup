@@ -17,5 +17,12 @@ public class RouteTagDaoImpl extends HibernateDaoSupport implements RouteTagDao 
 				"from Routetag where tagid=?", id);
 		return routetags;
 	};
+	
+	public List<Routetag> getRoutetagsByRouteId(int id){
+		@SuppressWarnings("unchecked")
+		List<Routetag> routetags = getHibernateTemplate().find(
+				"from Routetag where routeid=?", id);
+		return routetags;
+	};
 
 }
