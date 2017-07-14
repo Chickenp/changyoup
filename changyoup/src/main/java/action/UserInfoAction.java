@@ -3,6 +3,8 @@ package action;
 import java.sql.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import model.UserInfo;
 import service.UserInfoService;
 
@@ -94,7 +96,12 @@ public class UserInfoAction extends BaseAction{
 	}	
 	
 	public String getInfobyId()throws Exception{
-		UserInfo info=userinfoService.getUserInfoById(id);
+		int uid=0;
+		HttpSession httpSession=session();
+		if (httpSession.getAttribute("uid")!=null){
+			uid = (Integer)httpSession.getAttribute("uid");
+			}
+		UserInfo info=userinfoService.getUserInfoById(uid);
 		request().setAttribute("info", info);
 		return SUCCESS;
 	}

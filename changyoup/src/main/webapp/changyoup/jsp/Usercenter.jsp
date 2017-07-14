@@ -56,7 +56,7 @@
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
-				<li><a href="Account?id=<%=uid%>" class="active"><i
+				<li><a href="Account" class="active"><i
 						class="fa fa-user fa-fw"></i> Userinfo</a></li>
 				<li><a href="allPlansPro"><i class="fa fa-book fa-fw"></i>
 						我的日志</a></li>
