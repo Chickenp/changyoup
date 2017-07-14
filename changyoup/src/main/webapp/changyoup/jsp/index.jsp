@@ -215,11 +215,18 @@ S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
 								 value="Search">
 							</p>
 						</form>
-
+                        <div class="btn-group-vertical" style="position: absolute">
+						<a href = "TagSearchPro?tagid=1">
+						<button id="but" type="button" onClick="TagSearchPro"
+							class="btn btn-primary">7-day-trip</button>
+					    </a>
+					    </div>
 					</div>
+					
 				</div>
 
 			</div>
+			
 
 			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true"

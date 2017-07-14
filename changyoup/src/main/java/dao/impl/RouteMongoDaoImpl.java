@@ -1,10 +1,7 @@
 package dao.impl;
 
-import dao.PlanDao;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.net.ConnectException;
 
 import org.apache.commons.io.IOUtils;
 
@@ -16,8 +13,10 @@ import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSInputFile;
 
-public class PlanDaoImpl implements PlanDao {
+import dao.RouteMongoDao;
 
+public class RouteMongoDaoImpl implements RouteMongoDao{
+	
 	private MongoClient mongoClient;
 	private GridFS gridFS;
 
@@ -34,22 +33,11 @@ public class PlanDaoImpl implements PlanDao {
 		System.out.println("Connect to plans successfully");
 		return mongoDatabase;
 	}
-
-	public void delete(int id){
+	
+	public String saveContent(int id, String content) throws Exception {
 		DB database = connetdb();
 		gridFS = new GridFS(database);
-		DBObject query = new BasicDBObject("_id", id);
-		GridFSDBFile gridFSDBFile = gridFS.findOne(query);
-		if (gridFSDBFile!=null){
-			gridFS.remove(query);
-		}
-	}
-	
-	
-	public void save(int id, String plan) throws Exception {
-		DB database = connetdb();
-		gridFS = new GridFS(database);
-		InputStream is = new ByteArrayInputStream(plan.getBytes("UTF-8"));
+		InputStream is = new ByteArrayInputStream(content.getBytes("UTF-8"));
 		DBObject query = new BasicDBObject("_id", id);
 		GridFSDBFile gridFSDBFile = gridFS.findOne(query);
 		if (gridFSDBFile!=null){
@@ -62,18 +50,21 @@ public class PlanDaoImpl implements PlanDao {
 		// gridFSInputFile.setContentType();
 		// gridFSInputFile.setMetaData();
 		gridFSInputFile.save();
+		
+		gridFSDBFile = gridFS.findOne(query);
+		return (String) gridFSDBFile.getId();
 	}
-
-	@Override
-	public String getPlanbyId(int id) throws Exception {
+	
+	
+	public String getRoutebyId(int id) throws Exception {
 		DB database = connetdb();
 		gridFS = new GridFS(database);
 		DBObject query = new BasicDBObject("_id", id);
 		GridFSDBFile gridFSDBFile = gridFS.findOne(query);
 		InputStream is = gridFSDBFile.getInputStream();
 		byte[] bytes = IOUtils.toByteArray(is);
-		String plan=new String(bytes,"utf-8");
+		String route=new String(bytes,"utf-8");
 		//String plan = java.util.Base64.getEncoder().encodeToString(bytes);
-		return plan;
+		return route;
 	}
 }

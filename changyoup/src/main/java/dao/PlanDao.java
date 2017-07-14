@@ -7,4 +7,6 @@ public interface PlanDao {
 	public String getPlanbyId(int id) throws Exception;
 	
 	public void save(int id,String plan) throws Exception;
+	
+	public void delete(int id) throws Exception;
 }

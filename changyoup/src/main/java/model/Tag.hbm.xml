@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-7-14 10:14:53 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Tag" table="tag" catalog="changyou">
+        <id name="tagid" type="java.lang.Integer">
+            <column name="tagid" />
+            <generator class="identity" />
+        </id>
+        <property name="tagname" type="string">
+            <column name="tagname" length="200" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
