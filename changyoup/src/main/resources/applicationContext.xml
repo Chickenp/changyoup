@@ -23,7 +23,7 @@
 	<!-- Bean -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://192.168.1.181:3606/changyou" p:user="root"
+		p:jdbcUrl="jdbc:mysql://192.168.1.143:3606/changyou" p:user="root"
 		p:password="mysql666" p:maxPoolSize="40" p:minPoolSize="1"
 		p:initialPoolSize="1" p:maxIdleTime="20" />
 
@@ -36,6 +36,7 @@
 				<value>model/UserInfo.hbm.xml</value>
 				<value>model/Route.hbm.xml</value>
 				<value>model/Routeinfo.hbm.xml</value>
+				<value>model/Routetag.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
@@ -79,6 +80,16 @@
 
 	<bean id="routeService" class="service.impl.RouteServiceImpl">
 		<property name="routedao" ref="routeDao"></property>
+	</bean>
+	
+	<bean id="routetagDao" class="dao.impl.RouteTagDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="routetagService" class="service.impl.RouteTagServiceImpl">
+		<property name="routeTagdao" ref="routetagDao"></property>
+		<property name="routeInfodao" ref="routeinfoDao"></property>
 	</bean>
 
 

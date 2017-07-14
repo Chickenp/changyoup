@@ -137,6 +137,18 @@
 
 		</action>
 		
+		<action name="SavePro" class="action.SaveAction">
+
+			<result name="success">/changyoup/jsp/save.jsp</result>
+
+		</action>
+		
+		<action name="TagSearchPro" class="action.TagSearchAction">
+
+			<result name="success">/changyoup/jsp/routesearch.jsp</result>
+
+		</action>
+		
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>
