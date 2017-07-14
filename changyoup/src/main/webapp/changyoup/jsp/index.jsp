@@ -36,7 +36,7 @@
 <script src="/changyoup/changyoup/js/superfish.js"></script>
 
 <!-- Main JS -->
-<script src="js/main.js"></script>
+<script src="/changyoup/changyoup/js/main.js"></script>
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content="" />
 <meta property="og:image" content="" />
@@ -66,12 +66,84 @@
 <link rel="stylesheet" href="/changyoup/changyoup/css/login.css">
 
 <!-- Modernizr JS -->
-<script src="js/modernizr-2.6.2.min.js"></script>
+<script src="/changyoup/changyoup/js/modernizr-2.6.2.min.js"></script>
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+<style>
+.tags {
+	padding: 0;
+	position: relative;
+	margin-left: auto;
+    margin-right: auto;
+	bottom: -12px;
+	list-style: none;
+	display: block;
+}
 
+.tags li, .tags a {
+margin-left: auto;
+    margin-right: auto;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	position: relative;
+	font-size: 11px;
+}
+
+.tags a {
+	margin-left: 20px;
+	padding: 0 10px 0 12px;
+	background: #0089e0;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.tags a:before {
+	content: "";
+	float: left;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	width: 0;
+	height: 0;
+	border-color: transparent #0089e0 transparent transparent;
+	border-style: solid;
+	border-width: 12px 12px 12px 0;
+}
+
+.tags a:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 0;
+	float: left;
+	width: 4px;
+	height: 4px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #fff;
+	-moz-box-shadow: -1px -1px 2px #004977;
+	-webkit-box-shadow: -1px -1px 2px #004977;
+	box-shadow: -1px -1px 2px #004977;
+}
+
+.tags a:hover {
+	background: #555;
+}
+
+.tags a:hover:before {
+	border-color: transparent #555 transparent transparent;
+}
+</style>
 </head>
 <body>
 	<div id="fh5co-wrapper">
@@ -205,28 +277,29 @@ S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
 							<p></p>
 							<p></p>
 							<p>
-								<img border="0" src="img/cisco.gif" width="70" height="81">
-								<font size="5" color="#0000FF"><b>search: </b></font><input
-									type="text" name="searchword" size="25"> <img border="0"
-									src="img/cisco.gif" width="70" height="81">
+
+								<font size="5" color="#0000FF"></font><input type="text"
+									name="searchword" size="25">
 							<p></p>
 							<p>
-								<input type="submit" name="Submits"
-								 value="Search">
+								<input type="submit" name="Submits" value="Search">
 							</p>
 						</form>
-                        <div class="btn-group-vertical" style="position: absolute">
-						<a href = "TagSearchPro?tagid=1">
-						<button id="but" type="button" onClick="TagSearchPro"
-							class="btn btn-primary">7-day-trip</button>
-					    </a>
-					    </div>
+						
+							<p>
+								<ul class="tags" >
+									<li><a href="TagSearchPro?tagid=1">7-day-trip</a></li>
+									<li><a href="TagSearchPro?tagid=1">Yourself</a></li>
+									<li><a href="TagSearchPro?tagid=1">DOG</a></li>
+								</ul>
+							
+						
 					</div>
-					
+
 				</div>
 
 			</div>
-			
+
 
 			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true"
