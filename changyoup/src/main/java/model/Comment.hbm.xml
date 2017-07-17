@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-7-17 10:36:57 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Comment" table="comment" catalog="changyou">
+        <id name="commentid" type="java.lang.Integer">
+            <column name="commentid" />
+            <generator class="identity" />
+        </id>
+        <property name="userid" type="int">
+            <column name="userid" not-null="true" />
+        </property>
+        <property name="planid" type="int">
+            <column name="planid" not-null="true" />
+        </property>
+        <property name="text" type="string">
+            <column name="text" not-null="true" />
+        </property>
+        <property name="likes" type="int">
+            <column name="likes" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
