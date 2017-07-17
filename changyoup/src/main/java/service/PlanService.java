@@ -9,15 +9,9 @@ public interface PlanService {
 	
 	public void updatePlan(int planid,String plan);
 	
-	public void updatePlaninfo(Planinfo planinfo);
-	
 	public void deletePlan(Planinfo planinfo);
 	
 	public String getPlanbyId(int id);
 	
-	public List<Planinfo> getPlanbyPublisher(int userid);
-	
-	public List<Planinfo> getUnpassedPlan();
-	
-	public List<Planinfo> getAllpassedPlan();
+
 }

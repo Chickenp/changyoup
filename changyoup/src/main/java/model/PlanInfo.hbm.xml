@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 	<class name="model.Planinfo" table="plan">
-		<id name="id" type="int">
+		<id name="planid" type="int">
 			<column name="planid" />
 			<generator class="identity" />
 		</id>

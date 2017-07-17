@@ -3,9 +3,17 @@ pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <%
-String cplan="no plan get";
+String cplan="";
+int uid=10;
+String title="";
+if (request.getAttribute("uid")!=null){
+	uid=(int) request.getAttribute("uid");
+}
 if (request.getAttribute("cplan") != null) {
 	cplan = (String) request.getAttribute("cplan");
+}
+if (request.getAttribute("title") != null) {
+	title = (String) request.getAttribute("title");
 }
 String path = request.getContextPath();
 
@@ -34,7 +42,7 @@ String path = request.getContextPath();
 		
 	<form name="planform">
 		<div style="float:left;">标题：</div>
-		<div><p><input name="title" id="title" type="text" maxlength="20">&nbsp;（注意：最多20个字！）</p></div>
+		<div><p><input name="title" id="title" type="text" maxlength="20" value="<%=title%>">&nbsp;（注意：最多20个字！）</p></div>
 		
 		<div style="float:left;">路线类型：</div>
 		<div>
@@ -75,14 +83,19 @@ String path = request.getContextPath();
 
             document.getElementById('btnpub').addEventListener('click', function () {
         		// 读取 text
+        		var title = $("input[name='title']").val();
         		var plan=editor.txt.html();
+        		var publisher=<%=uid%>;
+        		console.log(publisher);
         		jQuery.ajax({	
       				type:'POST',
 					url:'savePlan',
 					processData : true,
 					dataType : "text",
 					data : {
-					plan : plan
+					title:title,
+					plan : plan,
+					publisher:publisher
 					},
 				})
     		}, false)

@@ -11,19 +11,13 @@ import service.PlanService;
 public class PlanServiceImpl implements PlanService{
 
 	private PlanDao planDao;
-	private PlaninfoDao planinfoDao;
 	
 	public void setPlanDao(PlanDao planDao) {
 		this.planDao = planDao;
 	}
 	
-	public void setPlaninfoDao(PlaninfoDao planinfoDao) {
-		this.planinfoDao = planinfoDao;
-	}
-	
 	@Override
 	public Integer addPlan(Planinfo planinfo, String plan) {
-		planinfoDao.save(planinfo);
 		int planid=planinfo.getPlanid();
 		try {
 			planDao.save(planid, plan);
@@ -46,7 +40,6 @@ public class PlanServiceImpl implements PlanService{
 	@Override
 	public void deletePlan(Planinfo planinfo) {
 		int planid=planinfo.getPlanid();
-		planinfoDao.delete(planinfo);
 		try {
 			planDao.delete(planid);
 		} catch (Exception e) {
@@ -68,24 +61,7 @@ public class PlanServiceImpl implements PlanService{
 		}
 	}
 
-	@Override
-	public void updatePlaninfo(Planinfo planinfo) {
-		planinfoDao.update(planinfo);
-	}
 
-	@Override
-	public List<Planinfo> getPlanbyPublisher(int userid) {
-		return planinfoDao.getPlaninfoByPublisher(userid);
-	}
 
-	@Override
-	public List<Planinfo> getUnpassedPlan() {
-		return planinfoDao.getUnpassedPlan();
-	}
-
-	@Override
-	public List<Planinfo> getAllpassedPlan() {
-		return planinfoDao.getAllpassedPlan();
-	}
 
 }

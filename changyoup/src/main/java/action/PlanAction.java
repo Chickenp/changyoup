@@ -6,6 +6,7 @@ import org.springframework.aop.ThrowsAdvice;
 
 import model.Planinfo;
 import service.PlanService;
+import service.PlaninfoService;
 
 public class PlanAction extends BaseAction{
 	
@@ -14,9 +15,14 @@ public class PlanAction extends BaseAction{
 	private PlanService planService;
 	private int publisher;
 	private String title;
+	private PlaninfoService planinfoService;
 	
 	public void setPlanService(PlanService planService) {
 		this.planService = planService;
+	}
+	
+	public void setPlaninfoService(PlaninfoService planinfoService) {
+		this.planinfoService = planinfoService;
 	}
 	
 	public void setPlanid(int planid) {
@@ -57,17 +63,21 @@ public class PlanAction extends BaseAction{
 	}
 	
 	public String getPlanbyId() throws Exception{
+		Planinfo planinfo=planinfoService.getPlaninfobyId(planid);
+		request().setAttribute("title", planinfo.getTitle());
 		plan=planService.getPlanbyId(planid);
 		request().setAttribute("cplan", plan);
 		return SUCCESS;
 	}
 
 	public String add() throws Exception {
-		Planinfo planinfo=new Planinfo();
-		planinfo.setPublisher(publisher);
-		planinfo.setTitle(title);
+		System.out.println(title);
+		System.out.println(publisher);
+		
+		Planinfo planinfo=new Planinfo(publisher, title);
+		planinfoService.addPlaninfo(planinfo);
 		planService.addPlan(planinfo, plan);
-		return SUCCESS;
+		return null;
 	}
 	
 	public String update() throws Exception{
@@ -89,19 +99,19 @@ public class PlanAction extends BaseAction{
 	}
 	
 	public String getPlanbyPublisher() throws Exception{
-		List<Planinfo> passedplans=planService.getPlanbyPublisher(publisher);
+		List<Planinfo> passedplans=planinfoService.getPlanbyPublisher(publisher);
 		return SUCCESS;
 		
 	}
 	
 	public String getAllpassedPlan() throws Exception{
-		List<Planinfo> passedplans=planService.getAllpassedPlan();
+		List<Planinfo> passedplans=planinfoService.getAllpassedPlan();
 		request().setAttribute("allplans", passedplans);
 		return SUCCESS;
 	}
 	
 	public String getUnpassedPlan() throws Exception{
-		List<Planinfo> unpassedplans=planService.getUnpassedPlan();
+		List<Planinfo> unpassedplans=planinfoService.getUnpassedPlan();
 		request().setAttribute("unpass", unpassedplans);
 		return SUCCESS;
 	}

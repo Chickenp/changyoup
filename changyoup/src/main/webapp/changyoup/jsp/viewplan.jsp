@@ -9,7 +9,7 @@
 
 <body>
 	<%
-		String cplan = "no plan get";
+		String cplan = "";
 		if (request.getAttribute("cplan") != null) {
 			cplan = (String) request.getAttribute("cplan");
 		}
