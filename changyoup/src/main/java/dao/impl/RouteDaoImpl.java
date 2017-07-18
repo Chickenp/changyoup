@@ -8,7 +8,8 @@ import dao.RouteDao;
 public class RouteDaoImpl extends HibernateDaoSupport implements RouteDao {
 	
 	public Integer save(Route route) {
-		return (Integer) getHibernateTemplate().save(route);
+		getHibernateTemplate().save(route);
+		return 1;
 	}
 
 	public void delete(Route route) {
@@ -32,6 +33,15 @@ public class RouteDaoImpl extends HibernateDaoSupport implements RouteDao {
 		List<Route> routeinfo = (List<Route>) getHibernateTemplate()
 				.find("from Route");
 		return routeinfo;
+	}
+
+	@Override
+	public Route getSingleRoute(String routeMongoid) {
+		@SuppressWarnings("unchecked")
+		List<Route> routes = (List<Route>) getHibernateTemplate().find(
+				"from Route as r where r.routeMongoid=?", routeMongoid);
+		Route route = routes.size() > 0 ? routes.get(0) : null;
+		return route;
 	}
 	
 }

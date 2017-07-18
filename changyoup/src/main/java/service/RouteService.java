@@ -16,4 +16,6 @@ public interface RouteService {
 	
 	public void update(Route route);
 	
+	public Route getSingleRoute(String routeMongoid);
+	
 }

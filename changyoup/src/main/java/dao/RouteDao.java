@@ -11,6 +11,8 @@ public interface RouteDao {
 	public void delete(Route rf);
 
 	public void update(Route rf);
+	
+	public Route getSingleRoute(String routeMongoid);
 
 	public List<Route> getRoutesById(int id);
 
