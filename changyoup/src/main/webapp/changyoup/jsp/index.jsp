@@ -218,13 +218,16 @@ margin-left: auto;
 									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
 									<%
 									    } else {
+									    	if( (session.getAttribute("role") == null) || (Integer)session.getAttribute("role") == 1 || (session.getAttribute("role") == "")){
 									%>
 									<li><a href="Account">User Center</a></li>
 									<%
-									    }
+									    }else if((Integer)session.getAttribute("role") == 0){
 									%>
-
+                                    <li><a href="examinePlan">Examine Plan</a></li>
 									<%
+									    }
+									    }
 									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
 									%>
 									<li><a href="#" data-toggle="modal"

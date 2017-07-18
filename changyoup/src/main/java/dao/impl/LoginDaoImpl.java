@@ -24,6 +24,7 @@ public class LoginDaoImpl extends HibernateDaoSupport implements dao.LoginDao {
             }
             HttpSession session = ServletActionContext.getRequest().getSession();
             session.setAttribute("uid",user.getUserid());
+            session.setAttribute("role",user.getRole());
         }
         
         
