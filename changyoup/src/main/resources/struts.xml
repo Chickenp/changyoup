@@ -123,7 +123,7 @@
         	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
         </action>
         
-        <action name="passPlan" class="action.PlanAction" method="ExaminePlans">
+        <action name="passPlan" class="action.ExamineplanAction" method="ExaminePlans">
         	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
         </action>
         

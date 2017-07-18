@@ -103,13 +103,5 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	public String  ExaminePlans() throws Exception{
-		Planinfo p = planinfoService.getPlaninfobyId(planid);
-		int i = 1;
-		p.setPass(i);
-		planinfoService.updatePlaninfo(p);
-		return SUCCESS;
-		
-	}
 	
 }
