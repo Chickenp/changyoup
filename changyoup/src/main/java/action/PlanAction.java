@@ -98,22 +98,6 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	public String getPlanbyPublisher() throws Exception{
-		List<Planinfo> passedplans=planinfoService.getPlanbyPublisher(publisher);
-		return SUCCESS;
-		
-	}
-	
-	public String getAllpassedPlan() throws Exception{
-		List<Planinfo> passedplans=planinfoService.getAllpassedPlan();
-		request().setAttribute("allplans", passedplans);
-		return SUCCESS;
-	}
-	
-	public String getUnpassedPlan() throws Exception{
-		List<Planinfo> unpassedplans=planinfoService.getUnpassedPlan();
-		request().setAttribute("unpass", unpassedplans);
-		return SUCCESS;
-	}
+
 	
 }

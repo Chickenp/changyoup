@@ -118,6 +118,11 @@
         	<result name="success">/changyoup/jsp/releasePlan.jsp</result>
         </action>
         
+        <!-- examine plan -->
+        <action name="examinePlan" class="action.ExamineplanAction" method="getUnpassedPlan">
+        	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
+        </action>
+        
         
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">
