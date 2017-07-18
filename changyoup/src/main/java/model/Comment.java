@@ -6,23 +6,35 @@ package model;
  */
 public class Comment implements java.io.Serializable {
 
-	private Integer commentid;
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private Integer commentid;
 	private int userid;
 	private int planid;
 	private String text;
 	private int likes;
 
-	public Comment() {
-	}
+	
 
-	public Comment(int userid, int planid, String text, int likes) {
-		this.userid = userid;
-		this.planid = planid;
-		this.text = text;
-		this.likes = likes;
-	}
+	/**
+     * @param userid
+     * @param planid
+     * @param text
+     * @param likes
+     */
+	public  Comment(){
+        };
+    public Comment(int userid, int planid, String text, int likes) {
+        this.userid = userid;
+        this.planid = planid;
+        this.text = text;
+        this.likes = likes;
+        System.out.println("construction");
+    }
 
-	public Integer getCommentid() {
+    public Integer getCommentid() {
 		return this.commentid;
 	}
 

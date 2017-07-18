@@ -164,7 +164,10 @@
 			<result name="success">/changyoup/jsp/routesearch.jsp</result>
 
 		</action>
-		
+		<action name="CommentPro" class="action.CommentAction">
+			<result name="success">/changyoup/jsp/chpmap.jsp</result>
+			<result name="error">/changyoup/jsp/chpmap.jsp</result>
+		</action>
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>

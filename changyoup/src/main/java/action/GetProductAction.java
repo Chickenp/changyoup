@@ -3,6 +3,7 @@ package action;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Comment;
 import model.Route;
 import model.Routeinfo;
 import model.Tag;
@@ -38,14 +39,13 @@ public class GetProductAction extends BaseAction{
                 days.add(appService.getHtmlById(routes.get(i).getRouteMongoid()));
         }
         
-        System.out.println(routetagService.getTagsById(routeid));
         List<Tag> tags = routetagService.getTagsById(routeid);
         List<String> tag_name=new ArrayList<String>();
         for (int i=0; i<routes.size(); i++){
         	tag_name.add(tags.get(i).getTagname());
         }
-        
-        
+        List<Comment> comments=appService.getCommentByRoute(routeid);
+        request().setAttribute("comments",comments);
         request().setAttribute("document", days);
         request().setAttribute("location_1",location_1);
         request().setAttribute("location_2",location_2);

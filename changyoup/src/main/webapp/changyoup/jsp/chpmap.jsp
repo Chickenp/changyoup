@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.Route"%>
+<%@ page import="model.Comment"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -33,6 +34,8 @@
 <script src="/changyoup/changyoup/js/jquery.waypoints.min.js"></script>
 <!-- Stellar -->
 <script src="/changyoup/changyoup/js/jquery.stellar.min.js"></script>
+<!-- bootbox -->
+<script src="/changyoup/changyoup/js/bootbox.min.js"></script>
 <!-- Superfish -->
 <script src="/changyoup/changyoup/js/hoverIntent.js"></script>
 <script src="/changyoup/changyoup/js/superfish.js"></script>
@@ -92,16 +95,16 @@ div.col-sm-10 div {
 #section1 {
 	color: #00000;
 	background-color: #ffffff;
-	overflow:auto;
+	overflow: auto;
 }
 </style>
 <%
-   
-			int date = (Integer)request.getAttribute("date");
+    int date = (Integer)request.getAttribute("date");
 			    ArrayList<String> location_1 =new ArrayList<String>();
 			    ArrayList<String> location_2 =new ArrayList<String>();
 			    ArrayList<String> document =new ArrayList<String>();
 			    ArrayList<String> tagnames =new ArrayList<String>();
+			    ArrayList<Comment> comments =new ArrayList<Comment>();
 			    if (request.getAttribute("location_1") != null) {
 			    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
 						}
@@ -114,6 +117,9 @@ div.col-sm-10 div {
 			    if (request.getAttribute("tagnames") != null) {
 					tagnames = (ArrayList<String>) request.getAttribute("tagnames");
 					    }
+			    if (request.getAttribute("comments") != null) {
+				comments = (ArrayList<Comment>) request.getAttribute("comments");
+				    }
 			    //System.out.println(document);
 %>
 
@@ -187,22 +193,21 @@ div.col-sm-10 div {
 										</ul></li>
 									<li><a href="contact.html">Contact</a></li>
 									<%
-									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
+									    if ((session.getAttribute("uid") == null)
+																																																																																													|| (session.getAttribute("uid") == "")) {
 									%>
 									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
 									<%
 									    } else {
-									    	if( (session.getAttribute("role") == null) || (Integer)session.getAttribute("role") == 1 || (session.getAttribute("role") == "")){
 									%>
-									<li><a href="Account">User Center</a></li>
-									<%
-									    }else if((Integer)session.getAttribute("role") == 0){
-									%>
-                                    <li><a href="examinePlan">Examine Plan</a></li>
+									<li><a href="Usercenter.jsp">User Center</a></li>
 									<%
 									    }
-									    }
-									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
+									%>
+
+									<%
+									    if ((session.getAttribute("uid") == null)
+																																																																																													|| (session.getAttribute("uid") == "")) {
 									%>
 									<li><a href="#" data-toggle="modal"
 										data-target="#login-modal">Login</a></li>
@@ -281,27 +286,38 @@ div.col-sm-10 div {
 			<div class="container">
 				<div class="row" style="position: relative;">
 					<div class="btn-group-vertical" style="position: absolute">
-						<% for(int i=1; i<=date; i++){ %>
+						<%
+						    for(int i=1; i<=date; i++){
+						%>
 						<button id="but<%=i%>" type="button" onClick="change_day(this.id)"
-							class="btn btn-primary">Day<%=i%></button>
-					<%} %>
+							class="btn btn-primary">
+							Day<%=i%></button>
+						<%
+						    }
+						%>
 					</div>
-                    
-                    <div class="btn-group-vertical" style="position: absolute; right: 0px">
-						<% for(int n=1; n<=tagnames.size(); n++){ %>
-						<a href = "TagSearchPro?tagid=1">
-						<button id="but<%=n%>" type="button" onClick=TagSearchPro"
+
+					<div class="btn-group-vertical"
+						style="position: absolute; right: 0px">
+						<%
+						    for(int n=1; n<=tagnames.size(); n++){
+						%>
+						<a href="TagSearchPro?tagid=1">
+							<button id="but<%=n%>" type="button" onClick=TagSearchPro
+								"
 							class="btn btn-primary"><%=tagnames.get(n-1)%></button>
 						</a>
-					<%} %>
-					
-					
+						<%
+						    }
+						%>
+
+
 					</div>
-                    
+
 					<div class="col-sm-10" style="position: relative; left: 100px">
 
 						<div id="section1"></div>
-						
+
 					</div>
 
 				</div>
@@ -350,6 +366,39 @@ div.col-sm-10 div {
 								class="img-responsive">
 						</div>
 					</div>
+					<p>
+					<div class="container">
+						<h2>Comments</h2>
+						<ul id="comments" class="list-group">
+							<%
+							    int i=0;
+																																			for(i=0;i<(comments.size());i++) {
+																																			Comment comment=comments.get(i);
+							%>
+							<li>
+								<div class="panel panel-primary">
+									<div class="panel-heading">User<%=comment.getUserid()%></div>
+									<div class="panel-body" style="background:#000000;"><%=comment.getText()%></div>
+								</div>
+							</li>
+							<%
+							    }
+							%>
+						</ul>
+						<span><button id="loadMore" class="btn btn-primary"
+								sytle="float:center;">Load More</button></span>
+					</div>
+					<p>
+					<form method="post" name="goform" id="goform"
+						enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="comment">Comment:</label>
+							<textarea class="form-control" rows="5" id="comment"></textarea>
+							<br> <input id="timeline_post_btn" type="submit"
+								name="Submits" class="btn btn-primary" value="Comment"
+								style="float: right;">
+						</div>
+					</form>
 				</div>
 			</div>
 
@@ -394,16 +443,20 @@ div.col-sm-10 div {
 	var var1 = (<%=location_1.get(j-1)%>);
 	var var2 = (<%=location_2.get(j-1)%>);
 	var var3=('<%=document.get(j-1)%>');
-	console.log(var3);
+
 	loc[0] = var1;
 	loc[1] = var2;
-	geo[<%=j%>] = (loc);
-	doc[<%=j%>]=var3;
+	geo[
+<%=j%>
+	] = (loc);
+	doc[
+<%=j%>
+	] = var3;
 	loc = [ , ];
 <%}%>
 	var map = new BMap.Map("container2222"); // 创建Map实例
 	var point = new BMap.Point(geo[num][0], geo[num][1]);
-	secc.innerHTML=doc[num];
+	secc.innerHTML = doc[num];
 	map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
 	map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
 	map.openInfoWindow(infoWindow, point); //开启信息窗口
@@ -411,28 +464,101 @@ div.col-sm-10 div {
 	map.openInfoWindow(infoWindow, point); //开启信息窗口
 	map.enableScrollWheelZoom(true);
 	function change_day(butid) {
-		
+
 		//alert(alertstr);
 		var secc = document.getElementById("section1");
-		num = butid.split('but')[1];		
-		secc.innerHTML=doc[num];
+		num = butid.split('but')[1];
+		secc.innerHTML = doc[num];
 		var point = new BMap.Point(geo[num][0], geo[num][1]);
 		map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
 		var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
 		map.openInfoWindow(infoWindow, point); //开启信息窗口
 	}
-	function htmlEncode(value){
-		  //create a in-memory div, set it's inner text(which jQuery automatically encodes)
-		  //then grab the encoded contents back out.  The div never exists on the page.
-		  return $('<div/>').text(value).html();
-		}
+	function htmlEncode(value) {
+		//create a in-memory div, set it's inner text(which jQuery automatically encodes)
+		//then grab the encoded contents back out.  The div never exists on the page.
+		return $('<div/>').text(value).html();
+	}
 
-		function htmlDecode(value){
-		  return $('<div/>').html(value).text();
-		}
-
+	function htmlDecode(value) {
+		return $('<div/>').html(value).text();
+	}
 
 	// 百度地图API功能
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		size_li = $("#results li").size();
+		x = 5;
+		$('#results li:lt(' + x + ')').show();
+		$('#loadMore').click(function() {
+			x = (x + 5 <= size_li) ? x + 5 : size_li;
+			$('#results li:lt(' + x + ')').show();
+		});
+
+	});
+</script>
+<script type="text/javascript">
+	var getUrlParameter = function getUrlParameter(sParam) {
+		var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL
+				.split('&'), sParameterName, i;
+
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true
+						: sParameterName[1];
+			}
+		}
+	};
+	$("form#goform").submit(function(event) {
+
+		event.preventDefault();
+
+		document.getElementById("timeline_post_btn").innerHTML = "Wait...";
+		document.getElementById("timeline_post_btn").disabled = true;
+
+		if (comment == "") {
+			comment.focus();
+			return (false);
+		} else {
+
+			var formData = $('textarea#comment').val();
+			;
+			var routeid = getUrlParameter('routeid')
+			console.log("PRINT");
+			console.log(formData, routeid);
+			$.ajax({
+				type : "POST",
+				url : "CommentPro",
+				data : {
+					comment : formData,
+					routeid : routeid
+				},
+
+				success : function() {
+					bootbox.alert({
+						message : 'Comment Successfully! ',
+						callback : function() {
+							location.reload();
+						}
+					});
+
+				},
+				error : function() {
+					bootbox.alert({
+						message : 'You havent LOGIN! ',
+						callback : function() {
+							location.reload();
+						}
+					});
+
+				},
+			});
+		};
+
+	});
 </script>
 </html>
 

@@ -32,6 +32,7 @@
 		p:dataSource-ref="dataSource">
 		<property name="mappingResources">
 			<list>
+				<value>model/Comment.hbm.xml</value>
 				<value>model/User.hbm.xml</value>
 				<value>model/UserInfo.hbm.xml</value>
 				<value>model/Route.hbm.xml</value>
@@ -166,11 +167,14 @@
 
 
 
-	<mongo:mongo-client id="mongoClient" host="localhost"
+	<mongo:mongo-client id="mongoClient" host="192.168.1.181"
 		port="27017" />
 
 	<!-- DAO Bean -->
-
+	<bean id="CommentDao" class="dao.impl.CommentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	<bean id="imgDao" class="dao.impl.IMGDaoImpl">
 
 		<property name="mongoClient" ref="mongoClient" />
@@ -195,7 +199,7 @@
 		<!-- DAO -->
 
 		<property name="imgDao" ref="imgDao"></property>
-
+		<property name="CommentDao" ref="CommentDao"></property>
 		<property name="userDao" ref="userDao"></property>
 		<property name="HtmlDao" ref="HtmlDao"></property>
 
