@@ -5,12 +5,22 @@ pageEncoding="utf-8"%>
 <%
 String cplan="";
 int uid=10;
+int pubid=0;
 String title="";
 if (session.getAttribute("uid")!=null){
 	uid=(Integer) session.getAttribute("uid");
 }
 if (request.getAttribute("cplan") != null) {
 	cplan = (String) request.getAttribute("cplan");
+	pubid=(Integer) request.getAttribute("pubid");
+	if (pubid!=uid){
+		%>
+	<script type="text/javascript" language="javascript">
+		alert("这个攻略属于别的用户，您不能修改");
+		top.location.href = "Account";
+	</script>
+		<%
+	}
 }
 if (request.getAttribute("title") != null) {
 	title = (String) request.getAttribute("title");

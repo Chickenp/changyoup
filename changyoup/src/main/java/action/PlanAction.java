@@ -72,6 +72,7 @@ public class PlanAction extends BaseAction{
 		plan=planService.getPlanbyId(planid);
 		session().setAttribute("planid", planid);
 		request().setAttribute("cplan", plan);
+		request().setAttribute("pubid", planinfo.getPublisher());
 		return SUCCESS;
 	}
 
@@ -103,5 +104,14 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	
+	public String getPlanbyPublisher() throws Exception{
+		int uid=0;
+		if (session().getAttribute("uid")!=null){
+			uid=(Integer) session().getAttribute("uid");
+		}
+		List<Planinfo> plans=planinfoService.getPlanbyPublisher(uid);
+		request().setAttribute("userplans",plans );
+		return SUCCESS;
+		
+	}
 }

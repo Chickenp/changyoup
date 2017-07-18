@@ -117,7 +117,9 @@
         <action name="editPlan" class="action.PlanAction" method="getPlanbyId">
         	<result name="success">/changyoup/jsp/releasePlan.jsp</result>
         </action>
-        
+        <action name="allPlansPro" class="action.PlanAction" method="getPlanbyPublisher">
+        	<result name="success">/changyoup/jsp/userPlans.jsp</result>
+        </action>
         <!-- examine plan -->
         <action name="examinePlan" class="action.ExamineplanAction" method="getUnpassedPlan">
         	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
