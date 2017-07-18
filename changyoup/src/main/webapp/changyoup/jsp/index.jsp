@@ -75,7 +75,7 @@
 .tags {
 	padding: 0;
 	position: relative;
-	margin-left: auto;
+	margin-left: 200px;
     margin-right: auto;
 	bottom: -12px;
 	list-style: none;
@@ -219,7 +219,7 @@ margin-left: auto;
 									<%
 									    } else {
 									%>
-									<li><a href="Usercenter.jsp">User Center</a></li>
+									<li><a href="Account">User Center</a></li>
 									<%
 									    }
 									%>

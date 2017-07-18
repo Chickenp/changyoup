@@ -6,8 +6,8 @@ pageEncoding="utf-8"%>
 String cplan="";
 int uid=10;
 String title="";
-if (request.getAttribute("uid")!=null){
-	uid=(int) request.getAttribute("uid");
+if (session.getAttribute("uid")!=null){
+	uid=(Integer) session.getAttribute("uid");
 }
 if (request.getAttribute("cplan") != null) {
 	cplan = (String) request.getAttribute("cplan");
