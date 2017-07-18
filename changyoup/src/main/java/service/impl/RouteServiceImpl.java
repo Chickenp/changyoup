@@ -58,4 +58,9 @@ public class RouteServiceImpl implements RouteService{
 		}
 		return content;
 	}
+
+	@Override
+	public Route getSingleRoute(String routeMongoid) {
+		return routeDao.getSingleRoute(routeMongoid);
+	}
 }

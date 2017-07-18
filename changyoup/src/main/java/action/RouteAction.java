@@ -80,15 +80,67 @@ public class RouteAction extends BaseAction{
 	
 	public String previous() throws Exception{
 		routedate = (int)session().getAttribute("day");
+		routeid = (int)session().getAttribute("rid");
+		String id = Integer.toString(routeid) + Integer.toString(routedate);
+		
+		routeMongoid = routeService.addRouteContent(id, content);
+		System.out.print(routeMongoid);
+		System.out.print(content);
+		
+		Route route = routeService.getSingleRoute(id);
+		
+		if(route == null){
+			location1 = "1";
+			location2 = "2";
+			route = new Route(routeMongoid, routeid, routedate, location1, location2);
+			routeService.save(route);
+		}
+		else{
+			route.setLocation1("1");
+			route.setLocation2("2");
+			routeService.update(route);
+		}
+			
 		routedate = routedate - 1;
 		session().setAttribute("day", routedate);
+		
+		id = Integer.toString(routeid) + Integer.toString(routedate);
+		String scontent = routeService.getRouteContentbyId(id);
+		request().setAttribute("scontent", scontent);
+		
 		return SUCCESS;
 	}
 	
 	public String next() throws Exception{
 		routedate = (int)session().getAttribute("day");
+		routeid = (int)session().getAttribute("rid");
+		String id = Integer.toString(routeid) + Integer.toString(routedate);
+		
+		routeMongoid = routeService.addRouteContent(id, content);
+		System.out.print(routeMongoid);
+		System.out.print(content);
+		
+		Route route = routeService.getSingleRoute(id);
+		
+		if(route == null){
+			location1 = "1";
+			location2 = "2";
+			route = new Route(routeMongoid, routeid, routedate, location1, location2);
+			routeService.save(route);
+		}
+		else{
+			route.setLocation1("1");
+			route.setLocation2("2");
+			routeService.update(route);
+		}
+			
 		routedate = routedate + 1;
 		session().setAttribute("day", routedate);
+		
+		id = Integer.toString(routeid) + Integer.toString(routedate);
+		String scontent = routeService.getRouteContentbyId(id);
+		request().setAttribute("scontent", scontent);
+		
 		return SUCCESS;
 	}
 	
@@ -97,13 +149,27 @@ public class RouteAction extends BaseAction{
 		session().removeAttribute("day");
 		
 		routeid = (int)session().getAttribute("rid");
-		Routeinfo routeinfo = routeinfoService.getRouteInfoById(routeid);
-		routeMongoid = routeService.addRoute(routeinfo, content);
+		//Routeinfo routeinfo = routeinfoService.getRouteInfoById(routeid);
 		
-		location1 = "";
-		location2 = "";
-		Route route = new Route(routeMongoid, routeid, routedate, location1, location2);
-		routeService.save(route);
+		String id = Integer.toString(routeid) + Integer.toString(routedate);
+		
+		routeMongoid = routeService.addRouteContent(id, content);
+		System.out.print(routeMongoid);
+		System.out.print(content);
+		
+		Route route = routeService.getSingleRoute(id);
+		
+		if(route == null){
+			location1 = "1";
+			location2 = "2";
+			route = new Route(routeMongoid, routeid, routedate, location1, location2);
+			routeService.save(route);
+		}
+		else{
+			route.setLocation1("1");
+			route.setLocation2("2");
+			routeService.update(route);
+		}
 		
 		return SUCCESS;
 	}

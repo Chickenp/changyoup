@@ -48,12 +48,9 @@ pageEncoding="utf-8"%>
 			session.setAttribute("day", day);
 		}
 		
-		String str = "<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>";
-		if(session.getAttribute("str")!=null){
-			str=(String)session.getAttribute("str");
-		}
-		else{
-			session.setAttribute("str",str);
+		String scontent = "<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>";
+		if(request.getAttribute("scontent")!=null){
+			scontent=(String)request.getAttribute("scontent");
 		}
 	%>
 	<div class="container">
@@ -72,7 +69,7 @@ pageEncoding="utf-8"%>
 		<div id="toolbar_div" class="toolbar"></div>
 		<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
 		<div id="text_div" class="text">
-        	<%=str %>
+        	<%=scontent %>
     	</div>
     	<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
     	<script type="text/javascript" src="../js/wangEditor/wangEditor.min.js"></script>
