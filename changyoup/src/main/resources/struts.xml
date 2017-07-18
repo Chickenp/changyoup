@@ -123,6 +123,10 @@
         	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
         </action>
         
+        <action name="passPlan" class="action.PlanAction" method="ExaminePlans">
+        	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
+        </action>
+        
         
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">

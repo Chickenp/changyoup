@@ -52,4 +52,6 @@ public class ExamineplanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
+	
+	
 }

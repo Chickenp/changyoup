@@ -10,11 +10,16 @@
 <body>
 	<%
 		String cplan = "";
+	    int planid = 0;
 		if (request.getAttribute("cplan") != null) {
 			cplan = (String) request.getAttribute("cplan");
+		}
+		if (session.getAttribute("planid") != null) {
+			planid = (Integer) session.getAttribute("planid");
 		}
 	%>
 
 	<%=cplan%>
+	<a href="passPlan?planid=<%= planid %>">pass</a>
 </body>
 </html>

@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.springframework.aop.ThrowsAdvice;
 
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import model.Planinfo;
 import service.PlanService;
 import service.PlaninfoService;
@@ -66,6 +70,7 @@ public class PlanAction extends BaseAction{
 		Planinfo planinfo=planinfoService.getPlaninfobyId(planid);
 		request().setAttribute("title", planinfo.getTitle());
 		plan=planService.getPlanbyId(planid);
+		session().setAttribute("planid", planid);
 		request().setAttribute("cplan", plan);
 		return SUCCESS;
 	}
@@ -98,6 +103,13 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-
+	public String  ExaminePlans() throws Exception{
+		Planinfo p = planinfoService.getPlaninfobyId(planid);
+		int i = 1;
+		p.setPass(i);
+		planinfoService.updatePlaninfo(p);
+		return SUCCESS;
+		
+	}
 	
 }

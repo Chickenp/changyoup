@@ -22,7 +22,7 @@ if (request.getAttribute("unpass") != null) {
 	for(int i=0;i<plans.size();i++){
 		Planinfo plan=plans.get(i);
 %>
-	<p>title=<%=plan.getTitle() %></p>
+	<a href =" viewPlan?planid=<%=plan.getPlanid()%>"><p>title=<%=plan.getTitle() %></p></a>
 	<p>publisher=<%=plan.getPublisher() %></p>
 <%
 	}
