@@ -79,10 +79,6 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-
-	<bean id="routeService" class="service.impl.RouteServiceImpl">
-		<property name="routedao" ref="routeDao"></property>
-	</bean>
 	
 	<bean id="routetagDao" class="dao.impl.RouteTagDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -186,6 +182,13 @@
 		<property name="mongoClient" ref="mongoClient" />
 
 	</bean>
+	
+	
+	<bean id="routeMongoDao" class="dao.impl.RouteMongoDaoImpl">
+
+		<property name="mongoClient" ref="mongoClient" />
+
+	</bean>
 
 	<bean id="appService" class="service.impl.AppServiceImpl">
 
@@ -205,6 +208,11 @@
 
 	</bean>
 
+
+	<bean id="routeService" class="service.impl.RouteServiceImpl">
+		<property name="routeDao" ref="routeDao"></property>
+		<property name="routeMongoDao" ref="routeMongoDao"></property>
+	</bean>	
 
 	<context:annotation-config />
 </beans>

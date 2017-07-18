@@ -1,7 +1,10 @@
 package dao.impl;
 
+import dao.RouteMongoDao;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.net.ConnectException;
 
 import org.apache.commons.io.IOUtils;
 
@@ -12,8 +15,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSInputFile;
-
-import dao.RouteMongoDao;
 
 public class RouteMongoDaoImpl implements RouteMongoDao{
 	
@@ -29,12 +30,14 @@ public class RouteMongoDaoImpl implements RouteMongoDao{
 	}
 
 	private DB connetdb() {
-		DB mongoDatabase = mongoClient.getDB("plans");
-		System.out.println("Connect to plans successfully");
+		DB mongoDatabase = mongoClient.getDB("routes");
+		System.out.println("Connect to routes successfully");
 		return mongoDatabase;
 	}
 	
-	public String saveContent(int id, String content) throws Exception {
+	@Override
+	public String save(int id, String content) throws Exception {
+		System.out.println("QAQ");
 		DB database = connetdb();
 		gridFS = new GridFS(database);
 		InputStream is = new ByteArrayInputStream(content.getBytes("UTF-8"));
@@ -52,10 +55,10 @@ public class RouteMongoDaoImpl implements RouteMongoDao{
 		gridFSInputFile.save();
 		
 		gridFSDBFile = gridFS.findOne(query);
-		return (String) gridFSDBFile.getId();
+		return (String)gridFSDBFile.getId();
 	}
 	
-	
+	@Override
 	public String getRoutebyId(int id) throws Exception {
 		DB database = connetdb();
 		gridFS = new GridFS(database);

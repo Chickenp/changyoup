@@ -63,6 +63,7 @@ pageEncoding="utf-8"%>
 	</div>
 		
 	<div><h3>Day <%=day%></h3></div>
+	<div><h4>Route id <%=session.getAttribute("rid") %></h4></div>
 		
 	<form action="" method="post" name="routeform" id="routeform">
 		
