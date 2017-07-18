@@ -112,7 +112,7 @@
         <action name="savePlan" class="action.PlanAction" method="add">
 		</action>
         <action name="viewPlan" class="action.PlanAction" method="getPlanbyId">
-        	<result name="success">/changyoup/jsp/viewplan.jsp</result>
+        	<result name="success">/changyoup/jsp/newviewplan.jsp</result>
         </action>
         <action name="editPlan" class="action.PlanAction" method="getPlanbyId">
         	<result name="success">/changyoup/jsp/releasePlan.jsp</result>

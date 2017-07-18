@@ -17,6 +17,7 @@
 		if (session.getAttribute("planid") != null) {
 			planid = (Integer) session.getAttribute("planid");
 		}
+		System.out.println(cplan);
 	%>
 
 	<%=cplan%>
