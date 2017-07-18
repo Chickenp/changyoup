@@ -100,6 +100,7 @@ div.col-sm-10 div {
 <body>
     <%
 		String cplan = "";
+        String title = "";
 	    int planid = 0;
 		if (request.getAttribute("cplan") != null) {
 			cplan = (String) request.getAttribute("cplan");
@@ -107,7 +108,9 @@ div.col-sm-10 div {
 		if (session.getAttribute("planid") != null) {
 			planid = (Integer) session.getAttribute("planid");
 		}
-		System.out.println(cplan);
+		if (request.getAttribute("title") != null) {
+			title = (String) request.getAttribute("title");
+		}
 	%>
     
 	<div id="fh5co-wrapper">
@@ -237,10 +240,10 @@ div.col-sm-10 div {
 					data-stellar-background-ratio="0.5"
 					style="background-image: url(/changyoup/changyoup/images/cover_bg_1.jpg);">
 					<div class="desc animate-box">
-						<h2>Travel Around The World.</h2>
+						<h2><%=title %></h2>
 						<!-- <span>Lovely Crafted by <a href="#" target="_blank" class="fh5co-site-name">FREEHTML5.co</a></span> -->
 						<span><a class="btn btn-primary btn-lg" href="#">Get
-								Started</a></span>
+								Start</a></span>
 					</div>
 				</div>
 
@@ -268,17 +271,7 @@ div.col-sm-10 div {
 				</div>
 			</div>
 
-			<div class="container">
-				<div class="row" style="position: relative;">
-					
-					<div class="col-sm-10" style="position: relative; left: 85px">
-
-						<div id="section1"><%=cplan %></div>
-
-					</div>
-				</div>
-
-			</div>
+			<%=cplan %>
 
 
 
