@@ -67,7 +67,8 @@ public class PlanAction extends BaseAction{
 	}
 	
 	public String getPlanbyId() throws Exception{
-		Planinfo planinfo=planinfoService.getPlaninfobyId(planid);
+		Planinfo planinfo=new Planinfo();
+		planinfo=planinfoService.getPlaninfobyId(planid);
 		request().setAttribute("title", planinfo.getTitle());
 		plan=planService.getPlanbyId(planid);
 		session().setAttribute("planid", planid);
@@ -87,6 +88,13 @@ public class PlanAction extends BaseAction{
 	}
 	
 	public String update() throws Exception{
+		if (session().getAttribute("planid")!=null){
+			planid=(int)session().getAttribute("planid");
+		}
+		Planinfo planinfo=new Planinfo();
+		planinfo=planinfoService.getPlaninfobyId(planid);
+		planinfo.setTitle(title);
+		planinfoService.updatePlaninfo(planinfo);
 		planService.updatePlan(planid, plan);
 		return SUCCESS;
 	}

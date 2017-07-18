@@ -6,13 +6,18 @@ pageEncoding="utf-8"%>
 String cplan="";
 int uid=10;
 int pubid=0;
+int planid=0;
 String title="";
+if (session.getAttribute("planid")!=null){
+	planid=(Integer) session.getAttribute("planid");
+}
 if (session.getAttribute("uid")!=null){
 	uid=(Integer) session.getAttribute("uid");
 }
 if (request.getAttribute("cplan") != null) {
 	cplan = (String) request.getAttribute("cplan");
 	pubid=(Integer) request.getAttribute("pubid");
+}
 	if (pubid!=uid){
 		%>
 	<script type="text/javascript" language="javascript">
@@ -21,7 +26,6 @@ if (request.getAttribute("cplan") != null) {
 	</script>
 		<%
 	}
-}
 if (request.getAttribute("title") != null) {
 	title = (String) request.getAttribute("title");
 }
@@ -71,8 +75,8 @@ String path = request.getContextPath();
         	<%=cplan%>
     	</div>
     	<br></br>
-    	<button style="float:left;" id="btnpub">发布路线</button>
     	</form>
+    	<button style="float:left;" id="btnpub">发布路线</button>
     	&nbsp;<button onclick="confirmclear()">清空内容</button>
     	
     	
@@ -97,6 +101,26 @@ String path = request.getContextPath();
         		var plan=editor.txt.html();
         		var publisher=<%=uid%>;
         		console.log(publisher);
+        		<%
+        		String url="editPlan?planid="+planid;
+        		if (request.getAttribute("cplan") != null){%>
+        		jQuery.ajax({	
+      				type:'POST',
+					url:'editConfirm',
+					processData : true,
+					dataType : "text",
+					data : {
+					title:title,
+					plan : plan,
+					publisher:publisher
+					},
+					success : function(data){
+						window.location.href="<%=url%>";
+					}
+				})
+        		<%       		
+        		}else{
+        		%>
         		jQuery.ajax({	
       				type:'POST',
 					url:'savePlan',
@@ -107,7 +131,13 @@ String path = request.getContextPath();
 					plan : plan,
 					publisher:publisher
 					},
+					success : function(data){
+						window.location.href="<%=url%>";
+					}
 				})
+				<%}
+				
+				%>
     		}, false)
 
     		document.getElementById('btn2').addEventListener('click', function () {

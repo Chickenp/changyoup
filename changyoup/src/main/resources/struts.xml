@@ -117,6 +117,8 @@
         <action name="editPlan" class="action.PlanAction" method="getPlanbyId">
         	<result name="success">/changyoup/jsp/releasePlan.jsp</result>
         </action>
+        <action name="editConfirm" class="action.PlanAction" method="update">
+        </action>
         <action name="allPlansPro" class="action.PlanAction" method="getPlanbyPublisher">
         	<result name="success">/changyoup/jsp/userPlans.jsp</result>
         </action>
