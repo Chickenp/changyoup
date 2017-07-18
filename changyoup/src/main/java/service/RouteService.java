@@ -8,7 +8,9 @@ import model.Routeinfo;
 public interface RouteService {
 	public List<Route> getRoutesById(int routeid);
 	
-	public String addRoute(int routeid, String content) throws Exception;
+	public String addRouteContent(String id, String content) throws Exception;
+	
+	public String getRouteContentbyId(String id) throws Exception;
 	
 	public Integer save(Route route);
 	

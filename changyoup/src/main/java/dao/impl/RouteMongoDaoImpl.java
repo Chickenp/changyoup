@@ -36,8 +36,7 @@ public class RouteMongoDaoImpl implements RouteMongoDao{
 	}
 	
 	@Override
-	public String save(int id, String content) throws Exception {
-		System.out.println("QAQ");
+	public String save(String id, String content) throws Exception {
 		DB database = connetdb();
 		gridFS = new GridFS(database);
 		InputStream is = new ByteArrayInputStream(content.getBytes("UTF-8"));
@@ -55,11 +54,12 @@ public class RouteMongoDaoImpl implements RouteMongoDao{
 		gridFSInputFile.save();
 		
 		gridFSDBFile = gridFS.findOne(query);
+		System.out.println(gridFSDBFile.getId());
 		return (String)gridFSDBFile.getId();
 	}
 	
 	@Override
-	public String getRoutebyId(int id) throws Exception {
+	public String getRoutebyId(String id) throws Exception {
 		DB database = connetdb();
 		gridFS = new GridFS(database);
 		DBObject query = new BasicDBObject("_id", id);

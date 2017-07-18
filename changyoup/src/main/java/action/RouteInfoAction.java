@@ -85,11 +85,9 @@ public class RouteInfoAction extends BaseAction{
 	
 	
 	public String addRouteInfo() throws Exception{
-		routedays = 0;
-		routepublisher = (int)session().getAttribute("uid");
-		routetitle = "";
+		//routepublisher = (int)session().getAttribute("uid");
+		routepublisher = 1;
 		routepublishdate = new Date();
-		routeintro= "";
 		Routeinfo routeinfo = new Routeinfo(routedays, routepublisher, routetitle, routepublishdate, routeintro);
 		routeinfoService.addRouteInfo(routeinfo);
 		

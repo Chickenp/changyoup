@@ -29,10 +29,10 @@ public class RouteServiceImpl implements RouteService{
     }
 
 
-	public String addRoute(int routeid, String content) throws Exception {
-		String routeMongoid="123";
+	public String addRouteContent(String id, String content) throws Exception {
+		String routeMongoid="";
 		try{
-			routeMongoid = routeMongoDao.save(routeid, content);
+			routeMongoid = routeMongoDao.save(id, content);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,5 +46,16 @@ public class RouteServiceImpl implements RouteService{
 	
 	public void update(Route route){
 		routeDao.update(route);
+	}
+
+	@Override
+	public String getRouteContentbyId(String id) throws Exception {
+		String content="";
+		try{
+			content = routeMongoDao.getRoutebyId(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return content;
 	}
 }

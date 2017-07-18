@@ -2,8 +2,8 @@ package dao;
 
 public interface RouteMongoDao{
 	
-	public String save(int id, String content) throws Exception;
+	public String save(String id, String content) throws Exception;
 	
-	public String getRoutebyId(int id) throws Exception;
+	public String getRoutebyId(String id) throws Exception;
 	
 }
