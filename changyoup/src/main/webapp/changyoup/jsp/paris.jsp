@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -16,7 +16,7 @@
 
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<style type="text/css">
-	       #allmap {width: 100%;height:300px;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	       #allmap {width: 100%;height:300px;overflow: hidden;margin:0;font-family:"敺株蔓��暺�";}
 	</style>
 	
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UKr8XUoQlaYbozgGhyzG0c88inkDGUfV"></script>
@@ -126,29 +126,33 @@
 									</ul>
 								</li>
 								<li><a href="contact.html">Contact</a></li>
-								<%
-		                        if ((session.getAttribute("uid") == null)|| (session.getAttribute("uid") == "")) {
-	                            %>
-	                            <li><a data-toggle="modal" href="#myModal">User Center</a></li>
-	                            <%
-	                            } else {
- 		                        %>
- 		                        <li><a href="Usercenter.jsp">User Center</a></li>
- 		                        <% 
- 	                            }
-		                        %>		
-								
-								<%
-		                        if ((session.getAttribute("uid") == null)|| (session.getAttribute("uid") == "")) {
-	                            %>
-	                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-	                            <%
-	                            } else {
- 		                        %>
- 		                        <li><a href="logout.jsp">Logout</a></li>
- 		                        <% 
- 	                            }
-		                        %>						
+									<%
+									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
+									%>
+									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
+									<%
+									    } else {
+									    	if( (session.getAttribute("role") == null) || (Integer)session.getAttribute("role") == 1 || (session.getAttribute("role") == "")){
+									%>
+									<li><a href="Account">User Center</a></li>
+									<%
+									    }else if((Integer)session.getAttribute("role") == 0){
+									%>
+                                    <li><a href="examinePlan">Examine Plan</a></li>
+									<%
+									    }
+									    }
+									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
+									%>
+									<li><a href="#" data-toggle="modal"
+										data-target="#login-modal">Login</a></li>
+									<%
+									    } else {
+									%>
+									<li><a href="logout.jsp">Logout</a></li>
+									<%
+									    }
+									%>					
 
 			
 								
@@ -247,7 +251,7 @@
 </html>
 
     <script type="text/javascript">
-	    // 百度地图API功能
-	    var map = new BMap.Map("allmap");  // 创建Map实例
-	    map.centerAndZoom(new BMap.Point(2.332836, 48.864015), 12);      // 初始化地图,用城市名设置地图中心点
+	    // �曉漲�啣�適PI����
+	    var map = new BMap.Map("allmap");  // ��撱撤ap摰�靘�
+	    map.centerAndZoom(new BMap.Point(2.332836, 48.864015), 12);      // ��憪����啣��,�典��撣���霈曄蔭�啣�曆葉敹���
     </script>
