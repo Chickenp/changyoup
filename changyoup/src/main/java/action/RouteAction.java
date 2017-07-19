@@ -153,8 +153,8 @@ public class RouteAction extends BaseAction{
 		routedate = (Integer)session().getAttribute("day");
 		routeid = (Integer)session().getAttribute("rid");
 		
-		session().removeAttribute("day");
-		session().removeAttribute("maxday");
+		//session().removeAttribute("day");
+		//session().removeAttribute("maxday");
 		//session().removeAttribute("rid");
 		
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
@@ -174,6 +174,15 @@ public class RouteAction extends BaseAction{
 			route.setLocation2(location1);
 			routeService.update(route);
 		}
+		
+		routedate = 1;
+		session().setAttribute("day", routedate);
+		
+		id = Integer.toString(routeid) + Integer.toString(routedate);
+		String scontent = routeService.getRouteContentbyId(id);
+		Route sroute = routeService.getSingleRoute(id);
+		request().setAttribute("scontent", scontent);
+		request().setAttribute("sroute", sroute);
 		
 		return SUCCESS;
 	}
