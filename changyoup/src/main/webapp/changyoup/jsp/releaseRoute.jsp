@@ -42,7 +42,7 @@ pageEncoding="utf-8"%>
 	<%
 		int day = 1;
 		if(session.getAttribute("day")!=null){
-			day = (int)session.getAttribute("day");
+			day = (Integer)session.getAttribute("day");
 		}
 		else{
 			session.setAttribute("day", day);
@@ -50,7 +50,7 @@ pageEncoding="utf-8"%>
 		
 		int maxday = 3;
 		if(session.getAttribute("maxday")!=null){
-			maxday = (int)session.getAttribute("maxday");
+			maxday = (Integer)session.getAttribute("maxday");
 		}
 		else{
 			session.setAttribute("maxday", maxday);

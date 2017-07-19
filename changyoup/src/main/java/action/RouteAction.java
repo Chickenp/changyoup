@@ -73,8 +73,8 @@ public class RouteAction extends BaseAction{
 	}
 	
 	public String previous() throws Exception{
-		routedate = (int)session().getAttribute("day");
-		routeid = (int)session().getAttribute("rid");
+		routedate = (Integer)session().getAttribute("day");
+		routeid = (Integer)session().getAttribute("rid");
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		
 		routeMongoid = routeService.addRouteContent(id, content);
@@ -111,8 +111,8 @@ public class RouteAction extends BaseAction{
 	}
 	
 	public String next() throws Exception{
-		routedate = (int)session().getAttribute("day");
-		routeid = (int)session().getAttribute("rid");
+		routedate = (Integer)session().getAttribute("day");
+		routeid = (Integer)session().getAttribute("rid");
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		
 		routeMongoid = routeService.addRouteContent(id, content);
@@ -150,8 +150,8 @@ public class RouteAction extends BaseAction{
 	}
 	
 	public String release() throws Exception{
-		routedate = (int)session().getAttribute("day");
-		routeid = (int)session().getAttribute("rid");
+		routedate = (Integer)session().getAttribute("day");
+		routeid = (Integer)session().getAttribute("rid");
 		
 		session().removeAttribute("day");
 		session().removeAttribute("maxday");
