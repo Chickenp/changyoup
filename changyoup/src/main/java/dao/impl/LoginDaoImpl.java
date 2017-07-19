@@ -15,9 +15,10 @@ public class LoginDaoImpl extends HibernateDaoSupport implements dao.LoginDao {
     public int login(String username, String password) {
         List<User> u=this.getHibernateTemplate().find("from User where username=? and password=?",username,password);
         int flag = 0;
-        User user=(User)u.get(0);
-        int role = user.getRole();
         if(u.size()>0){
+
+            User user=(User)u.get(0);
+            int role = user.getRole();
             flag += 1;
             if(role == 0){
         	    flag += 1;
