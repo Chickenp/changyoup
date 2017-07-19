@@ -19,7 +19,6 @@ public class RouteAction extends BaseAction{
 	private String content;
 	
 	private RouteService routeService;
-	private RouteInfoService routeinfoService;
 	
 	public String getRouteMongoid() {
 		return this.routeMongoid;
@@ -73,11 +72,6 @@ public class RouteAction extends BaseAction{
 		this.routeService = routeService;
 	}
 	
-	public void setRouteInfoService(RouteInfoService routeinfoService){
-		this.routeinfoService = routeinfoService;
-	}
-	
-	
 	public String previous() throws Exception{
 		routedate = (int)session().getAttribute("day");
 		routeid = (int)session().getAttribute("rid");
@@ -99,6 +93,11 @@ public class RouteAction extends BaseAction{
 			route.setLocation1("1");
 			route.setLocation2("2");
 			routeService.update(route);
+		}
+		
+		if(routedate <= 1){
+			request().setAttribute("scontent", content);
+			return SUCCESS;
 		}
 			
 		routedate = routedate - 1;
@@ -133,6 +132,12 @@ public class RouteAction extends BaseAction{
 			route.setLocation2("2");
 			routeService.update(route);
 		}
+		
+		int maxday = (int) session().getAttribute("maxday");
+		if(routedate >= maxday){
+			request().setAttribute("scontent", content);
+			return SUCCESS;
+		}
 			
 		routedate = routedate + 1;
 		session().setAttribute("day", routedate);
@@ -146,10 +151,11 @@ public class RouteAction extends BaseAction{
 	
 	public String release() throws Exception{
 		routedate = (int)session().getAttribute("day");
-		session().removeAttribute("day");
-		
 		routeid = (int)session().getAttribute("rid");
-		//Routeinfo routeinfo = routeinfoService.getRouteInfoById(routeid);
+		
+		session().removeAttribute("day");
+		session().removeAttribute("maxday");
+		//session().removeAttribute("rid");
 		
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		

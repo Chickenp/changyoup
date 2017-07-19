@@ -48,6 +48,14 @@ pageEncoding="utf-8"%>
 			session.setAttribute("day", day);
 		}
 		
+		int maxday = 3;
+		if(session.getAttribute("maxday")!=null){
+			maxday = (int)session.getAttribute("maxday");
+		}
+		else{
+			session.setAttribute("maxday", maxday);
+		}
+		
 		String scontent = "<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>";
 		if(request.getAttribute("scontent")!=null){
 			scontent=(String)request.getAttribute("scontent");
@@ -64,7 +72,13 @@ pageEncoding="utf-8"%>
 		
 	<form action="" method="post" name="routeform" id="routeform">
 		
-		<input type="hidden" name="day" id="day" value=<%=day%> />
+		<div style="float:left">
+			<p>输入经度：<input type="text" name="location1" id="locoation1"/>&nbsp;</p>
+		</div>
+		<div>
+			<p>输入纬度：<input type="text" name="location2" id="locoation2"/></p>
+		</div>
+		<br>
 		
 		<div id="toolbar_div" class="toolbar"></div>
 		<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
@@ -94,9 +108,9 @@ pageEncoding="utf-8"%>
     	
 		<input type="hidden" name="content" id="content" />
 		
-		<button onclick="preday()">上一天</button>&nbsp;
+		<button onclick="preday()" <% if(day <= 1){ %> disabled="ture" <% } %>>上一天</button>&nbsp;
 		<button onclick="release()">发布路线</button>&nbsp;
-		<button onclick="nextday()">下一天</button>
+		<button onclick="nextday()" <%if(day >= maxday){ %>disabled="true" <% } %>>下一天</button>
 
     	</form>
     	<br>
