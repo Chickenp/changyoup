@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
 <div id="fh5co-header">
 	<header id="fh5co-header-section">
 		<div class="container">
