@@ -13,6 +13,15 @@
 	}
 	int id = userinfo.getId();
 	int sex = userinfo.getSex();
+	String gender = "";
+	if (sex == 0) {
+		gender = "未知";
+	} else if (sex == 1) {
+		gender = "男";
+	} else if (sex == 2) {
+		gender = "女";
+	}
+
 	String email = userinfo.getEmail();
 	String nickname = userinfo.getNickname();
 	Date birthday = userinfo.getBirthday();
@@ -25,99 +34,150 @@
 
 <title><%=nickname%>'s UserCenter</title>
 <!-- load stylesheets -->
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400">
-<!-- Google web font "Open Sans", https://fonts.google.com/ -->
-<link rel="stylesheet"
-	href="../Usercenter/font-awesome-4.6.3/css/font-awesome.min.css">
-<!-- Font Awesome, http://fontawesome.io/ -->
-<link rel="stylesheet" href="../Usercenter/css/bootstrap.min.css">
-<!-- Bootstrap style, http://v4-alpha.getbootstrap.com/ -->
-<link rel="stylesheet" href="../Usercenter/css/magnific-popup.css">
-<!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
-<link rel="stylesheet" href="../Usercenter/css/templatemo-style.css">
-<!-- Templatemo style -->
+<!-- jQuery -->
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+<script src="/changyoup/changyoup/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="/changyoup/changyoup/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="/changyoup/changyoup/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="/changyoup/changyoup/js/jquery.waypoints.min.js"></script>
+<!-- Stellar -->
+<script src="/changyoup/changyoup/js/jquery.stellar.min.js"></script>
+<!-- Superfish -->
+<script src="/changyoup/changyoup/js/hoverIntent.js"></script>
+<script src="/changyoup/changyoup/js/superfish.js"></script>
+
+<!-- Main JS -->
+<script src="/cahngyoup/changyoup/js/main.js"></script>
+<!-- Facebook and Twitter integration -->
+<meta property="og:title" content="" />
+<meta property="og:image" content="" />
+<meta property="og:url" content="" />
+<meta property="og:site_name" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:card" content="" />
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link rel="shortcut icon" href="favicon.ico">
+
+<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="/changyoup/changyoup/css/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="/changyoup/changyoup/css/icomoon.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="/changyoup/changyoup/css/bootstrap.css">
+<!-- Superfish -->
+<link rel="stylesheet" href="/changyoup/changyoup/css/superfish.css">
+
+<link rel="stylesheet" href="/changyoup/changyoup/css/style.css">
+<link rel="stylesheet" href="/changyoup/changyoup/css/login.css">
+
+<link rel="stylesheet" href="/changyoup/changyoup/css/Usercenter.css" rel="stylesheet"
+	type="text/css">
+<!-- Modernizr JS -->
+<script src="/changyoup/changyoup/js/modernizr-2.6.2.min.js"></script>
+<!-- FOR IE9 below -->
 <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-          <![endif]-->
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
 </head>
 <%
 	int uid = 0;
-	if (session.getAttribute("uid")!=null){
-	uid = (Integer) session.getAttribute("uid");
+	if (session.getAttribute("uid") != null) {
+		uid = (Integer) session.getAttribute("uid");
 	}
 %>
 <body>
-	<div class="navbar-default sidebar" role="navigation">
-		<div class="sidebar-nav navbar-collapse">
-			<ul class="nav" id="side-menu">
-				<li><a href="Account" class="active"><i
-						class="fa fa-user fa-fw"></i> Userinfo</a></li>
-				<li><a href="allPlansPro"><i class="fa fa-book fa-fw"></i>
-						我的日志</a></li>
-			</ul>
-		</div>
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<%@include file="Navbar.jsp"%>
 
-		<!-- /.sidebar-collapse -->
-	</div>
-	<div id="page-wrapper">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">UserInfo</h1>
-			</div>
-		</div>
-		<!-- /.row -->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<!-- /.panel-heading -->
-					<div class="panel-body">
-						<div class="dataTable_wrapper">
-							<table class="table table-striped table-bordered table-hover"
-								id="dataTables">
-								<thead>
-									<tr>
-										<th>Nickname</th>
-										<th>Email</th>
-										<th>Sex</th>
-										<th>Area</th>
-									</tr>
-								</thead>
-								<tbody>
-									<%
-										
-									%>
-									<tr>
-										<td><%=nickname%></td>
-										<td><%=email%></td>
-										<td><%=sex%></td>
-										<td><%=area%></td>
-									</tr>
-								</tbody>
-							</table>
+			<div class="fh5co-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h1 class="page-header">UserInfo</h1>
+						</div>
+					</div>
+					<!-- /.row -->
+					<div class="row">
+						<div class="col-md-4">
+						<img src="<%=path%>/changyoup/images/defaultuser.jpg"
+						class="img-responsive mb20">
+						</div>
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-4">
+									<h3>Nickname:</h3>
+								</div>
+								<div class="col-md-4">
+									<h3><%=nickname%></h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<h3>Email:</h3>
+								</div>
+								<div class="col-md-4">
+									<h3><%=email%></h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<h3>Gender:</h3>
+								</div>
+								<div class="col-md-4">
+									<h3><%=gender%></h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<h3>Area:</h3>
+								</div>
+								<div class="col-md-4">
+									<h3><%=area%></h3>
+								</div>
+							</div>
 							<button class="btn btn-default"
 								onclick="window.open('UpdateAccount?id=<%=uid%>')" type="button"
 								id="editinfo">Edit Info</button>
+							<div class="row">
+								<a href="Account" class="active"><i class="fa fa-user fa-fw"></i>
+									Userinfo</a> <a href="allPlansPro"><i class="fa fa-book fa-fw"></i>
+									我的日志</a>
+
+							</div>
+
 						</div>
+						<!-- /.col-lg-12 -->
 					</div>
-					<!-- /.panel-body -->
+					<!-- /.row -->
 				</div>
-				<!-- /.panel -->
+				<!-- section -->
 			</div>
-			<!-- /.col-lg-12 -->
 		</div>
-		<!-- /.row -->
 	</div>
 	<!-- /#page-wrapper -->
-	</div>
 
 	<script src="<%=path%>/changyoup/js/jquery.min.js"></script>
 	<script src="<%=path%>/changyoup/js/bootstrap.min.js"></script>
 	<script src="<%=path%>/changyoup/js/userinfo.js"></script>
+	<script>
+		var div1 = document.getElementById('accountli');
+		if (div1!=null) div1.setAttribute("class", "active");
+		var div2 = document.getElementById('adminaccountli');
+		if (div2!=null) div2.setAttribute("class","active");
+	</script>
+	
+	
 </body>
 </html>
