@@ -84,14 +84,12 @@ public class RouteAction extends BaseAction{
 		Route route = routeService.getSingleRoute(id);
 		
 		if(route == null){
-			location1 = "1";
-			location2 = "2";
 			route = new Route(routeMongoid, routeid, routedate, location1, location2);
 			routeService.save(route);
 		}
 		else{
-			route.setLocation1("1");
-			route.setLocation2("2");
+			route.setLocation1(location2);
+			route.setLocation2(location1);
 			routeService.update(route);
 		}
 		
@@ -105,7 +103,9 @@ public class RouteAction extends BaseAction{
 		
 		id = Integer.toString(routeid) + Integer.toString(routedate);
 		String scontent = routeService.getRouteContentbyId(id);
+		Route sroute = routeService.getSingleRoute(id);
 		request().setAttribute("scontent", scontent);
+		request().setAttribute("sroute", sroute);
 		
 		return SUCCESS;
 	}
@@ -122,18 +122,16 @@ public class RouteAction extends BaseAction{
 		Route route = routeService.getSingleRoute(id);
 		
 		if(route == null){
-			location1 = "1";
-			location2 = "2";
 			route = new Route(routeMongoid, routeid, routedate, location1, location2);
 			routeService.save(route);
 		}
 		else{
-			route.setLocation1("1");
-			route.setLocation2("2");
+			route.setLocation1(location1);
+			route.setLocation2(location2);
 			routeService.update(route);
 		}
 		
-		int maxday = (int) session().getAttribute("maxday");
+		int maxday = (Integer) session().getAttribute("maxday");
 		if(routedate >= maxday){
 			request().setAttribute("scontent", content);
 			return SUCCESS;
@@ -144,7 +142,9 @@ public class RouteAction extends BaseAction{
 		
 		id = Integer.toString(routeid) + Integer.toString(routedate);
 		String scontent = routeService.getRouteContentbyId(id);
+		Route sroute = routeService.getSingleRoute(id);
 		request().setAttribute("scontent", scontent);
+		request().setAttribute("sroute", sroute);
 		
 		return SUCCESS;
 	}
@@ -166,14 +166,12 @@ public class RouteAction extends BaseAction{
 		Route route = routeService.getSingleRoute(id);
 		
 		if(route == null){
-			//location1 = "1";
-			//location2 = "2";
 			route = new Route(routeMongoid, routeid, routedate, location1, location2);
 			routeService.save(route);
 		}
 		else{
-			route.setLocation1("1");
-			route.setLocation2("2");
+			route.setLocation1(location2);
+			route.setLocation2(location1);
 			routeService.update(route);
 		}
 		

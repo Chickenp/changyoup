@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
+<%@ page import="model.Route"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +61,15 @@ pageEncoding="utf-8"%>
 		if(request.getAttribute("scontent")!=null){
 			scontent=(String)request.getAttribute("scontent");
 		}
+		
+		String location1 = "";
+		String location2 = "";
+		if(request.getAttribute("sroute")!=null){
+			Route sroute = (Route) request.getAttribute("sroute");
+			location1 = sroute.getLocation1();
+			location2 = sroute.getLocation2();
+		}
+		
 	%>
 	<div class="container">
 	<div>
@@ -73,10 +83,10 @@ pageEncoding="utf-8"%>
 	<form action="" method="post" name="routeform" id="routeform">
 		
 		<div style="float:left">
-			输入经度：<input type="text" name="location1" id="locoation1"/>&nbsp;
+			输入经度：<input type="text" name="location1" id="locoation1" value=location1/>&nbsp;
 		</div>
 		<div>
-			输入纬度：<input type="text" name="location2" id="locoation2"/>
+			输入纬度：<input type="text" name="location2" id="locoation2" value=location2/>
 		</div>
 		<br>
 		
