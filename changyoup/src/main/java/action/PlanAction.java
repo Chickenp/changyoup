@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.aop.ThrowsAdvice;
 
 import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import model.Comment;
 import model.Planinfo;
+import service.AppService;
 import service.PlanService;
 import service.PlaninfoService;
 
@@ -20,7 +23,7 @@ public class PlanAction extends BaseAction{
 	private int publisher;
 	private String title;
 	private PlaninfoService planinfoService;
-	
+	private AppService appService;
 	public void setPlanService(PlanService planService) {
 		this.planService = planService;
 	}
@@ -71,9 +74,11 @@ public class PlanAction extends BaseAction{
 		planinfo=planinfoService.getPlaninfobyId(planid);
 		request().setAttribute("title", planinfo.getTitle());
 		plan=planService.getPlanbyId(planid);
+		List<Comment> comments=appService.getCommentByPlan(planid);
 		session().setAttribute("planid", planid);
 		request().setAttribute("cplan", plan);
 		request().setAttribute("pubid", planinfo.getPublisher());
+		request().setAttribute("comments",comments);
 		return SUCCESS;
 	}
 
@@ -122,4 +127,20 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 		
 	}
+
+    /**
+     * @return the appService
+     */
+    public AppService getAppService() {
+        return appService;
+    }
+
+    /**
+     * @param appService the appService to set
+     */
+    public void setAppService(AppService appService) {
+        this.appService = appService;
+    }
+
+   
 }
