@@ -166,8 +166,8 @@ public class RouteAction extends BaseAction{
 		Route route = routeService.getSingleRoute(id);
 		
 		if(route == null){
-			location1 = "1";
-			location2 = "2";
+			//location1 = "1";
+			//location2 = "2";
 			route = new Route(routeMongoid, routeid, routedate, location1, location2);
 			routeService.save(route);
 		}
