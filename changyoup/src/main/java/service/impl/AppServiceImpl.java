@@ -67,8 +67,8 @@ public class AppServiceImpl implements AppService {
         return HtmlDao.getHtmlById(id);
     }
 
-    public List<Comment> getCommentByRoute(int routeid) {
-        return CommentDao.getCommentByRoute(routeid);
+    public List<Comment> getCommentByPlan(int planid) {
+        return CommentDao.getCommentByRoute(planid);
     }
 
     public Integer saveComment(Comment comment) {

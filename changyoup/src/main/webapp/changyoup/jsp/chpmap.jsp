@@ -357,14 +357,8 @@ div.col-sm-10 div {
 								</a></li>
 							</ul>
 						</div>
-						<div class="col-md-6 fh5co-testimonial">
-							<img src="/changyoup/changyoup/images/cover_bg_1.jpg"
-								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
-								class="img-responsive mb20"> <img
-								src="/changyoup/changyoup/images/cover_bg_1.jpg"
-								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
-								class="img-responsive">
 						</div>
+						
 					</div>
 					<p>
 					<div class="container">
@@ -399,7 +393,7 @@ div.col-sm-10 div {
 								style="float: right;">
 						</div>
 					</form>
-				</div>
+				
 			</div>
 
 			<footer>
@@ -488,15 +482,20 @@ div.col-sm-10 div {
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		size_li = $("#results li").size();
+		size_li = $("#comments li").size();
 		x = 5;
-		$('#results li:lt(' + x + ')').show();
+		$('#comments li:lt(' + x + ')').show();
 		$('#loadMore').click(function() {
 			x = (x + 5 <= size_li) ? x + 5 : size_li;
-			$('#results li:lt(' + x + ')').show();
+			$('#comments li:lt(' + x + ')').show();
 		});
 
 	});
+</script>
+<script type="text/javascript">
+if(<%=session.getAttribute("uid")==null %>){
+var but=document.getElementById("timeline_post_btn").classList.add('disabled');
+}
 </script>
 <script type="text/javascript">
 	var getUrlParameter = function getUrlParameter(sParam) {
@@ -525,8 +524,7 @@ div.col-sm-10 div {
 		} else {
 
 			var formData = $('textarea#comment').val();
-			;
-			var routeid = getUrlParameter('routeid')
+			var routeid = getUrlParameter('routeid');
 			console.log("PRINT");
 			console.log(formData, routeid);
 			$.ajax({
@@ -538,22 +536,16 @@ div.col-sm-10 div {
 				},
 
 				success : function() {
-					bootbox.alert({
-						message : 'Comment Successfully! ',
-						callback : function() {
+					
 							location.reload();
-						}
-					});
+
+					
 
 				},
 				error : function() {
-					bootbox.alert({
-						message : 'You havent LOGIN! ',
-						callback : function() {
+					
 							location.reload();
-						}
-					});
-
+					
 				},
 			});
 		};

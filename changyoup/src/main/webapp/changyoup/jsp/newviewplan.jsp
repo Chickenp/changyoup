@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.Route"%>
+<%@ page import="model.Comment" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -33,6 +34,8 @@
 <script src="/changyoup/changyoup/js/jquery.waypoints.min.js"></script>
 <!-- Stellar -->
 <script src="/changyoup/changyoup/js/jquery.stellar.min.js"></script>
+<!-- bootbox -->
+<script src="/changyoup/changyoup/js/bootbox.min.js"></script>
 <!-- Superfish -->
 <script src="/changyoup/changyoup/js/hoverIntent.js"></script>
 <script src="/changyoup/changyoup/js/superfish.js"></script>
@@ -102,6 +105,7 @@ div.col-sm-10 div {
 		String cplan = "";
         String title = "";
 	    int planid = 0;
+	    ArrayList<Comment> comments =new ArrayList<Comment>();
 		if (request.getAttribute("cplan") != null) {
 			cplan = (String) request.getAttribute("cplan");
 		}
@@ -111,6 +115,9 @@ div.col-sm-10 div {
 		if (request.getAttribute("title") != null) {
 			title = (String) request.getAttribute("title");
 		}
+		if (request.getAttribute("comments") != null) {
+			comments = (ArrayList<Comment>) request.getAttribute("comments");
+			    }
 	%>
     
 	<div id="fh5co-wrapper">
@@ -306,16 +313,42 @@ div.col-sm-10 div {
 								</a></li>
 							</ul>
 						</div>
-						<div class="col-md-6 fh5co-testimonial">
-							<img src="/changyoup/changyoup/images/cover_bg_1.jpg"
-								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
-								class="img-responsive mb20"> <img
-								src="/changyoup/changyoup/images/cover_bg_1.jpg"
-								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
-								class="img-responsive">
-						</div>
+						
 					</div>
 				</div>
+				<p>
+					<div class="container">
+						<h2>Comments</h2>
+						<ul id="comments" class="list-group">
+							<%
+							    int i=0;
+																																			for(i=0;i<(comments.size());i++) {
+																																			Comment comment=comments.get(i);
+							%>
+							<li>
+								<div class="panel panel-primary">
+									<div class="panel-heading">User<%=comment.getUserid()%></div>
+									<div class="panel-body" style="background:#000000;"><%=comment.getText()%></div>
+								</div>
+							</li>
+							<%
+							    }
+							%>
+						</ul>
+						<span><button id="loadMore" class="btn btn-primary"
+								sytle="float:center;">Load More</button></span>
+					</div>
+					<p>
+					<form method="post" name="goform" id="goform"
+						enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="comment">Comment:</label>
+							<textarea class="form-control" rows="5" id="comment"></textarea>
+							<br> <input id="timeline_post_btn" type="submit"
+								name="Submits" class="btn btn-primary" value="Comment"
+								style="float: right;">
+						</div>
+					</form>
 			</div>
 
 			<footer>
@@ -348,7 +381,64 @@ div.col-sm-10 div {
 
 </body>
 <script type="text/javascript">
-	
+if(<%=session.getAttribute("uid")==null %>){
+var but=document.getElementById("timeline_post_btn").classList.add('disabled');
+}
+</script>
+<script type="text/javascript">
+	var getUrlParameter = function getUrlParameter(sParam) {
+		var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL
+				.split('&'), sParameterName, i;
+
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true
+						: sParameterName[1];
+			}
+		}
+	};
+	$("form#goform").submit(function(event) {
+
+		event.preventDefault();
+
+		document.getElementById("timeline_post_btn").innerHTML = "Wait...";
+		document.getElementById("timeline_post_btn").disabled = true;
+
+		if (comment == "") {
+			comment.focus();
+			return (false);
+		} else {
+
+			var formData = $('textarea#comment').val();
+			var routeid = getUrlParameter('planid');
+			console.log("PRINT");
+			console.log(formData, routeid);
+			$.ajax({
+				type : "POST",
+				url : "CommentPro",
+				data : {
+					comment : formData,
+					routeid : routeid
+				},
+
+				success : function() {
+					
+							location.reload();
+
+					
+
+				},
+				error : function() {
+					
+							location.reload();
+					
+				},
+			});
+		};
+
+	});
 </script>
 </html>
 
