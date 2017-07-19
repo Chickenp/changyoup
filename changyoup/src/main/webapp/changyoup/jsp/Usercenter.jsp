@@ -164,6 +164,7 @@
 				</div>
 				<!-- section -->
 			</div>
+			<%@include file="Foot.jsp"%>
 		</div>
 	</div>
 	<!-- /#page-wrapper -->

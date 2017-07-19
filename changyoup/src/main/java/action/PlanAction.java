@@ -64,8 +64,7 @@ public class PlanAction extends BaseAction{
 	
 	
 	public String execute() throws Exception{
-		
-		
+		request().setAttribute("new",true);
 		return SUCCESS;
 	}
 	

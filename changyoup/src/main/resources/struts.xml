@@ -105,8 +105,8 @@
 		</action>
         
         <!-- Plan -->
-        <action name="newPlan">
-        	<result>/changyoup/jsp/releasePlan.jsp</result>
+        <action name="newPlan" class="action.PlanAction">
+        	<result name="success">/changyoup/jsp/releasePlan.jsp</result>
         </action>
         
         <action name="savePlan" class="action.PlanAction" method="add">
