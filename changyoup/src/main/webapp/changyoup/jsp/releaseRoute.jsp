@@ -73,10 +73,10 @@ pageEncoding="utf-8"%>
 	<form action="" method="post" name="routeform" id="routeform">
 		
 		<div style="float:left">
-			<p>输入经度：<input type="text" name="location1" id="locoation1"/>&nbsp;</p>
+			输入经度：<input type="text" name="location1" id="locoation1"/>&nbsp;
 		</div>
 		<div>
-			<p>输入纬度：<input type="text" name="location2" id="locoation2"/></p>
+			输入纬度：<input type="text" name="location2" id="locoation2"/>
 		</div>
 		<br>
 		

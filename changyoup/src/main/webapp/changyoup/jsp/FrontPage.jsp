@@ -12,10 +12,10 @@ pageEncoding="utf-8"%>
 	
 	<form action="AddRouteInfo" method="post">
 		<div style="float:left;">天数：</div>
-		<div><p><input type=int name="routedays" id="routedays"></p></div>
+		<div><p><input type=int name="routedays" id="routedays" required=""></p></div>
 		
 		<div style="float:left;">标题：</div>
-		<div><p><input name="routetitle" id="routetitle" type="text" maxlength="20">&nbsp;（注意：最多20个字！）</p></div>
+		<div><p><input name="routetitle" id="routetitle" type="text" maxlength="20" required="">&nbsp;（注意：最多20个字！）</p></div>
 		
 		<div style="float:left;">路线类型：</div>
 		<div>
@@ -27,7 +27,10 @@ pageEncoding="utf-8"%>
 		</div>
 		
 		<div style="float:left;">简介：</div>
-		<div><p><textarea name="routeintro" id="routeintro" type="text" maxlength="200" style="width:400px;height:200px;"></textarea>&nbsp;（注意：最多200个字！）</p></div>
+		<div>
+			<p><textarea name="routeintro" id="routeintro" type="text" maxlength="200"
+				style="width:400px;height:200px;" required=""></textarea>&nbsp;（注意：最多200个字！）</p>
+		</div>
 		
 		<div><input type=submit value="确认"></div>
 	</form>
