@@ -3,20 +3,21 @@ package service.impl;
 import java.util.List;
 
 import model.Comment;
+import model.Routecomment;
 import model.User;
 import service.AppService;
 import dao.HtmlDao;
 import dao.UserDao;
 import dao.IMGDao;
 import dao.CommentDao;
-
+import dao.RoutecommentDao;
 public class AppServiceImpl implements AppService {
 
     private UserDao userDao;
     private IMGDao imgDao;
     private HtmlDao HtmlDao;
     private CommentDao CommentDao;
-
+    private RoutecommentDao RoutecommentDao;
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
@@ -68,7 +69,7 @@ public class AppServiceImpl implements AppService {
     }
 
     public List<Comment> getCommentByPlan(int planid) {
-        return CommentDao.getCommentByRoute(planid);
+        return CommentDao.getCommentByPlan(planid);
     }
 
     public Integer saveComment(Comment comment) {
@@ -90,6 +91,32 @@ public class AppServiceImpl implements AppService {
 
     public List<Comment> getAllComments() {
         return CommentDao.getAllComments();
+    };
+    
+    
+    public List<Routecomment> getCommentByRoute(int routeid) {
+        return RoutecommentDao.getCommentByRoute(routeid);
+    }
+
+    public Integer saveRoutecomment(Routecomment comment) {
+        System.out.println("SEVICE");
+        return RoutecommentDao.save(comment);
+    };
+
+    public void deleteRoutecomment(Routecomment comment) {
+        RoutecommentDao.delete(comment);
+    };
+
+    public void updateRoutecomment(Routecomment comment) {
+        RoutecommentDao.update(comment);
+    };
+
+    public Routecomment getRoutecommentById(int id) {
+        return RoutecommentDao.getRoutecommentById(id);
+    };
+
+    public List<Routecomment> getAllRoutecomments() {
+        return RoutecommentDao.getAllRoutecomments();
     };
 
     /**
@@ -126,5 +153,23 @@ public class AppServiceImpl implements AppService {
     public void setCommentDao(CommentDao commentDao) {
         CommentDao = commentDao;
     }
+
+    /**
+     * @return the routecommentDao
+     */
+    public RoutecommentDao getRoutecommentDao() {
+        return RoutecommentDao;
+    }
+
+    /**
+     * @param routecommentDao the routecommentDao to set
+     */
+    public void setRoutecommentDao(RoutecommentDao routecommentDao) {
+        RoutecommentDao = routecommentDao;
+    }
+
+    
+   
+  
 
 }

@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import model.Routecomment;
 import model.User;
 import model.Comment;
 
@@ -41,5 +42,17 @@ public interface AppService {
     public List<Comment> getAllComments();
 
     public List<Comment> getCommentByPlan(int planid);
+    
+    public Integer saveRoutecomment(Routecomment comment);
+
+    public void deleteRoutecomment(Routecomment comment);
+
+    public void updateRoutecomment(Routecomment comment);
+
+    public Routecomment getRoutecommentById(int id);
+
+    public List<Routecomment> getAllRoutecomments();
+
+    public List<Routecomment> getCommentByRoute(int routeid);
 
 }

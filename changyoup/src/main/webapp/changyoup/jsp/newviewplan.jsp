@@ -412,15 +412,15 @@ var but=document.getElementById("timeline_post_btn").classList.add('disabled');
 		} else {
 
 			var formData = $('textarea#comment').val();
-			var routeid = getUrlParameter('planid');
+			var planid = getUrlParameter('planid');
 			console.log("PRINT");
-			console.log(formData, routeid);
+			
 			$.ajax({
 				type : "POST",
 				url : "CommentPro",
 				data : {
 					comment : formData,
-					routeid : routeid
+					planid : planid
 				},
 
 				success : function() {

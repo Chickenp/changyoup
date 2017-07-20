@@ -10,8 +10,7 @@ import dao.CommentDao;
 
 public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
 
-    public Integer save(Comment comment) {
-            System.out.println(comment);
+    public Integer save(Comment comment) {           
             return (Integer) getHibernateTemplate().save(comment);
     }
 
@@ -38,9 +37,10 @@ public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
             return comments;
     }
     
-    public List<Comment> getCommentByRoute(int routeid){
+    public List<Comment> getCommentByPlan(int planid){
+        
         @SuppressWarnings("unchecked")        
-        List<Comment> comments=(List<Comment>)getHibernateTemplate().find("from Comment as c where c.planid=?",routeid);
+        List<Comment> comments=(List<Comment>)getHibernateTemplate().find("from Comment as c where c.planid=?",planid);
         
         return comments;
     }
