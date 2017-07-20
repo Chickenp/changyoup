@@ -270,10 +270,10 @@ div.col-sm-10 div {
 			<div class="fh5co-section"style="background:#272727">
 
 				<div class="container">
-
+				<button class="btn btn-primary" onclick="window.location.href='newPlan'" style="font-size:200%;">新增攻略</button>
 					<div class="row">
 						<div class="col-md-6 fh5co-news"  >
-							<h3>News</h3>
+							
 							<ul>
 							<%
 			for (int i = 0; i < plans.size(); i++) {
