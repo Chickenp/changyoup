@@ -11,7 +11,6 @@ import dao.CommentDao;
 public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
 
     public Integer save(Comment comment) {
-            System.out.println("DAO");
             System.out.println(comment);
             return (Integer) getHibernateTemplate().save(comment);
     }
@@ -40,7 +39,6 @@ public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
     }
     
     public List<Comment> getCommentByRoute(int routeid){
-        System.out.println("DMN");
         @SuppressWarnings("unchecked")        
         List<Comment> comments=(List<Comment>)getHibernateTemplate().find("from Comment as c where c.planid=?",routeid);
         

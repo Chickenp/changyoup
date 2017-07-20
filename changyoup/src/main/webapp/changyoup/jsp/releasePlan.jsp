@@ -412,17 +412,11 @@
 	<script type="text/javascript"
 		src="<%=path%>/changyoup/js/jquery.min.js"></script>
 	<script type="text/javascript">
-        	var E = window.wangEditor
-        	var editor = new E('#toolbar_div','#text_div')	// 或者 var editor = new E( document.getElementById('#editor') )
-        	editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        	var E = window.wangEditor;
+        	var editor = new E('#toolbar_div','#text_div');	// 或者 var editor = new E( document.getElementById('#editor') )
+        	editor.customConfig.uploadImgShowBase64 = true ;  // 使用 base64 保存图片
         	editor.create();
         	
-        	
-        	document.getElementById('btn1').addEventListener('click', function () {
-        		// 读取 html
-        		alert(editor.txt.html())
-   			}, false)
-
             document.getElementById('btnpub').addEventListener('click', function () {
         		// 读取 text
         		var title = $("input[name='title']").val();
@@ -430,7 +424,7 @@
         		var publisher=<%=uid%>;
         		console.log(publisher);
         		<%String url = "editPlan?planid=" + planid;
-			if (request.getAttribute("cplan") != null) {%>
+        		if (session.getAttribute("planid") != null) {%>
         		jQuery.ajax({	
       				type:'POST',
 					url:'editConfirm',
@@ -463,10 +457,6 @@
 	<%}%>
 		}, false)
 
-		document.getElementById('btn2').addEventListener('click', function() {
-			// 读取 text
-			alert(editor.txt.text())
-		}, false)
 	</script>
 
 </body>
