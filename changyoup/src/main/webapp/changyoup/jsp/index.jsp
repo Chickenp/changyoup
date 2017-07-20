@@ -19,236 +19,12 @@
 
 
 
-<!-- jQuery -->
-
-
-<script src="/changyoup/changyoup/js/jquery.min.js"></script>
-<!-- jQuery Easing -->
-<script src="/changyoup/changyoup/js/jquery.easing.1.3.js"></script>
-<!-- Bootstrap -->
-<script src="/changyoup/changyoup/js/bootstrap.min.js"></script>
-<!-- Waypoints -->
-<script src="/changyoup/changyoup/js/jquery.waypoints.min.js"></script>
-<!-- Stellar -->
-<script src="/changyoup/changyoup/js/jquery.stellar.min.js"></script>
-<!-- Superfish -->
-<script src="/changyoup/changyoup/js/hoverIntent.js"></script>
-<script src="/changyoup/changyoup/js/superfish.js"></script>
-
-<!-- Main JS -->
-<script src="/changyoup/changyoup/js/main.js"></script>
-<!-- Facebook and Twitter integration -->
-<meta property="og:title" content="" />
-<meta property="og:image" content="" />
-<meta property="og:url" content="" />
-<meta property="og:site_name" content="" />
-<meta property="og:description" content="" />
-<meta name="twitter:title" content="" />
-<meta name="twitter:image" content="" />
-<meta name="twitter:url" content="" />
-<meta name="twitter:card" content="" />
-
-<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<link rel="shortcut icon" href="favicon.ico">
-
-<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
-
-<!-- Animate.css -->
-<link rel="stylesheet" href="/changyoup/changyoup/css/animate.css">
-<!-- Icomoon Icon Fonts-->
-<link rel="stylesheet" href="/changyoup/changyoup/css/icomoon.css">
-<!-- Bootstrap  -->
-<link rel="stylesheet" href="/changyoup/changyoup/css/bootstrap.css">
-<!-- Superfish -->
-<link rel="stylesheet" href="/changyoup/changyoup/css/superfish.css">
-
-<link rel="stylesheet" href="/changyoup/changyoup/css/style.css">
-<link rel="stylesheet" href="/changyoup/changyoup/css/login.css">
-
-<!-- Modernizr JS -->
-<script src="/changyoup/changyoup/js/modernizr-2.6.2.min.js"></script>
-<!-- FOR IE9 below -->
-<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-<style>
-.tags {
-	padding: 0;
-	position: relative;
-	margin-left: 200px;
-    margin-right: auto;
-	bottom: -12px;
-	list-style: none;
-	display: block;
-}
-
-.tags li, .tags a {
-margin-left: auto;
-    margin-right: auto;
-	float: left;
-	height: 24px;
-	line-height: 24px;
-	position: relative;
-	font-size: 11px;
-}
-
-.tags a {
-	margin-left: 20px;
-	padding: 0 10px 0 12px;
-	background: #0089e0;
-	color: #fff;
-	text-decoration: none;
-	-moz-border-radius-bottomright: 4px;
-	-webkit-border-bottom-right-radius: 4px;
-	border-bottom-right-radius: 4px;
-	-moz-border-radius-topright: 4px;
-	-webkit-border-top-right-radius: 4px;
-	border-top-right-radius: 4px;
-}
-
-.tags a:before {
-	content: "";
-	float: left;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	width: 0;
-	height: 0;
-	border-color: transparent #0089e0 transparent transparent;
-	border-style: solid;
-	border-width: 12px 12px 12px 0;
-}
-
-.tags a:after {
-	content: "";
-	position: absolute;
-	top: 10px;
-	left: 0;
-	float: left;
-	width: 4px;
-	height: 4px;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	background: #fff;
-	-moz-box-shadow: -1px -1px 2px #004977;
-	-webkit-box-shadow: -1px -1px 2px #004977;
-	box-shadow: -1px -1px 2px #004977;
-}
-
-.tags a:hover {
-	background: #555;
-}
-
-.tags a:hover:before {
-	border-color: transparent #555 transparent transparent;
-}
-</style>
+<%@include file="CommonHead.jsp"%>
 </head>
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-			<div id="fh5co-header">
-				<header id="fh5co-header-section">
-					<div class="container">
-						<div class="nav-header">
-							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-							<h1 id="fh5co-logo">
-								<a href="index.jsp">Listing</a>
-							</h1>
-							<!-- START #fh5co-menu-wrap -->
-							<nav id="fh5co-menu-wrap" role="navigation">
-								<ul class="sf-menu" id="fh5co-primary-menu">
-									<li class="active"><a href="index.jsp">Home</a></li>
-									<li><a href="listing.html" class="fh5co-sub-ddown">Listing</a>
-										<ul class="fh5co-sub-menu">
-											<li><a
-												href="#/preview/?item=build-free-html5-bootstrap-template"
-												target="_blank">Build</a></li>
-											<li><a
-												href="#/preview/?item=work-free-html5-template-bootstrap"
-												target="_blank">Work</a></li>
-											<li><a
-												href="#/preview/?item=light-free-html5-template-bootstrap"
-												target="_blank">Light</a></li>
-											<li><a
-												href="#/preview/?item=relic-free-html5-template-using-bootstrap"
-												target="_blank">Relic</a></li>
-											<li><a
-												href="#/preview/?item=display-free-html5-template-using-bootstrap"
-												target="_blank">Display</a></li>
-											<li><a
-												href="#/preview/?item=sprint-free-html5-template-bootstrap"
-												target="_blank">Sprint</a></li>
-										</ul></li>
-									<li><a href="#" class="fh5co-sub-ddown">Dropdown</a>
-										<ul class="fh5co-sub-menu">
-											<li><a href="left-sidebar.html">Web Development</a></li>
-											<li><a href="right-sidebar.html">Branding &amp;
-													Identity</a></li>
-											<li><a href="#" class="fh5co-sub-ddown">Free HTML5</a>
-												<ul class="fh5co-sub-menu">
-													<li><a
-														href="#/preview/?item=build-free-html5-bootstrap-template"
-														target="_blank">Build</a></li>
-													<li><a
-														href="#/preview/?item=work-free-html5-template-bootstrap"
-														target="_blank">Work</a></li>
-													<li><a
-														href="#/preview/?item=light-free-html5-template-bootstrap"
-														target="_blank">Light</a></li>
-													<li><a
-														href="#/preview/?item=relic-free-html5-template-using-bootstrap"
-														target="_blank">Relic</a></li>
-													<li><a
-														href="#/preview/?item=display-free-html5-template-using-bootstrap"
-														target="_blank">Display</a></li>
-													<li><a
-														href="#/preview/?item=sprint-free-html5-template-bootstrap"
-														target="_blank">Sprint</a></li>
-												</ul></li>
-											<li><a href="#">UI Animation</a></li>
-											<li><a href="#">Copywriting</a></li>
-											<li><a href="#">Photography</a></li>
-										</ul></li>
-									<li><a href="contact.html">Contact</a></li>
-									<%
-									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
-									%>
-									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
-									<%
-									    } else {
-									    	if( (session.getAttribute("role") == null) || (Integer)session.getAttribute("role") == 1 || (session.getAttribute("role") == "")){
-									%>
-									<li><a href="Account">User Center</a></li>
-									<%
-									    }else if((Integer)session.getAttribute("role") == 0){
-									%>
-                                    <li><a href="examinePlan">Examine Plan</a></li>
-									<%
-									    }
-									    }
-									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
-									%>
-									<li><a href="#" data-toggle="modal"
-										data-target="#login-modal">Login</a></li>
-									<%
-									    } else {
-									%>
-									<li><a href="logout.jsp">Logout</a></li>
-									<%
-									    }
-									%>
-
-
-
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</header>
-
-			</div>
+			<%@include file="Navbar.jsp"%>
 
 			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog">
@@ -450,24 +226,7 @@ S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
 				</div>
 			</div>
 
-			<footer>
-				<div id="footer">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 text-center">
-								<p class="fh5co-social-icons">
-									<a href="#"><i class="icon-twitter2"></i></a> <a href="#"><i
-										class="icon-facebook2"></i></a> <a href="#"><i
-										class="icon-instagram"></i></a> <a href="#"><i
-										class="icon-dribbble2"></i></a> <a href="#"><i
-										class="icon-youtube"></i></a>
-								</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<%@include file="Foot.jsp"%>
 
 
 		</div>
@@ -476,7 +235,10 @@ S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
 	</div>
 	<!-- END fh5co-wrapper -->
 
-
+	<script>
+		var div1 = document.getElementById('homeli');
+		if (div1!=null) div1.setAttribute("class", "active");
+	</script>
 
 </body>
 </html>
