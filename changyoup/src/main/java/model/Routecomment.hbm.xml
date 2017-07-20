@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-7-20 14:48:46 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Routecomment" table="routecomment" catalog="changyou">
+        <id name="commentid" type="java.lang.Integer">
+            <column name="commentid" />
+            <generator class="identity" />
+        </id>
+        <property name="userid" type="int">
+            <column name="userid" not-null="true" />
+        </property>
+        <property name="routeid" type="int">
+            <column name="routeid" not-null="true" />
+        </property>
+        <property name="text" type="string">
+            <column name="text" length="1000" not-null="true" />
+        </property>
+        <property name="likes" type="int">
+            <column name="likes" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
