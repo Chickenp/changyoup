@@ -55,4 +55,17 @@ public class RouteTagServiceImpl implements RouteTagService {
     	}
     	return tags;
     }
+    
+    public Tag getTagByName(String name){
+    	Tag tag = tagDao.getTagByName(name);
+    	return tag;
+    }
+    
+    public Integer addRoutetag(Routetag routetag) {
+        return routetagDao.save(routetag);
+    }
+    
+    public Integer addTag(Tag tag){
+    	return tagDao.save(tag);
+    }
 }

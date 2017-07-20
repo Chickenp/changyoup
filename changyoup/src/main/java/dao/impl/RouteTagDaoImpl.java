@@ -5,11 +5,16 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.RouteTagDao;
+import model.Comment;
 import model.Route;
 import model.Routeinfo;
 import model.Routetag;
 
 public class RouteTagDaoImpl extends HibernateDaoSupport implements RouteTagDao {
+	
+	public Integer save(Routetag routetag) {
+        return (Integer) getHibernateTemplate().save(routetag);
+    }
 
 	public List<Routetag> getRoutetagsById(int id){
 		@SuppressWarnings("unchecked")
