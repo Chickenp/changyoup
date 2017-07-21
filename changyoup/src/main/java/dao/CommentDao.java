@@ -15,5 +15,5 @@ public interface CommentDao {
 
     public List<Comment> getAllComments();
     
-    public List<Comment> getCommentByRoute(int routeid);
+    public List<Comment> getCommentByPlan(int palnid);
 }

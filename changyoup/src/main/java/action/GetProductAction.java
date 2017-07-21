@@ -3,7 +3,7 @@ package action;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Comment;
+import model.Routecomment;
 import model.Route;
 import model.Routeinfo;
 import model.Tag;
@@ -44,7 +44,7 @@ public class GetProductAction extends BaseAction{
         for (int i=0; i<routes.size(); i++){
         	tag_name.add(tags.get(i).getTagname());
         }
-        List<Comment> comments=appService.getCommentByPlan(routeid);
+        List<Routecomment> comments=appService.getCommentByRoute(routeid);
         request().setAttribute("comments",comments);
         request().setAttribute("document", days);
         request().setAttribute("location_1",location_1);

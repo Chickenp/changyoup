@@ -1,13 +1,13 @@
 package action;
 
 import service.AppService;
-import model.Comment;
+import model.Routecomment;
 
-public class CommentAction extends BaseAction{
+public class RoutecommentAction extends BaseAction{
     private AppService appService;
     private static final long serialVersionUID = 1L; 
     private String comment;
-    private int planid;
+    private int routeid;
 
     /**
      * @return the comment
@@ -27,15 +27,15 @@ public class CommentAction extends BaseAction{
     @Override
     public String execute(){
         System.out.println("CommentAction");
-        System.out.println(planid);
+        System.out.println(routeid);
         System.out.println(comment);
         int uid=(Integer)session().getAttribute("uid");
         if(session().getAttribute("uid")==null){return ERROR;}
         System.out.println(uid);
-        Comment com=new Comment(uid,planid,comment,0);
+        Routecomment com=new Routecomment(uid,routeid,comment,0);
         System.out.println("CON");
         System.out.println(com);
-        appService.saveComment(com);
+        appService.saveRoutecomment(com);
         return SUCCESS;
     }
 
@@ -43,7 +43,20 @@ public class CommentAction extends BaseAction{
      * @return the appService
      */
    
-   
+    /**
+     * @return the routeid
+     */
+    public int getRouteid() {
+        return routeid;
+    }
+
+    /**
+     * @param routeid the routeid to set
+     */
+    public void setRouteid(int routeid) {
+        this.routeid = routeid;
+    }
+
     /**
      * @return the appService
      */
@@ -63,19 +76,5 @@ public class CommentAction extends BaseAction{
      */
     public static long getSerialversionuid() {
         return serialVersionUID;
-    }
-
-    /**
-     * @return the planid
-     */
-    public int getPlanid() {
-        return planid;
-    }
-
-    /**
-     * @param planid the planid to set
-     */
-    public void setPlanid(int planid) {
-        this.planid = planid;
     }
 }

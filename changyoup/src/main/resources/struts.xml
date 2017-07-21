@@ -167,6 +167,10 @@
 
 		</action>
 		<action name="CommentPro" class="action.CommentAction">
+			<result name="success">/changyoup/jsp/newviewplan.jsp</result>
+			<result name="error">/changyoup/jsp/newviewplan.jsp</result>
+		</action>
+		<action name="RoutecommentPro" class="action.RoutecommentAction">
 			<result name="success">/changyoup/jsp/chpmap.jsp</result>
 			<result name="error">/changyoup/jsp/chpmap.jsp</result>
 		</action>

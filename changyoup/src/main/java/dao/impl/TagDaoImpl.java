@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.TagDao;
+import model.Routetag;
 import model.Tag;
 
 public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
@@ -16,5 +17,17 @@ public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
 		Tag tag = tags.size() > 0 ? tags.get(0) : null;
 		return tag;
 	};
-
+    
+	
+	public Tag getTagByName(String name){
+		@SuppressWarnings("unchecked")
+		List<Tag> tags = (List<Tag>) getHibernateTemplate().find(
+				"from Tag as t where t.tagname=?", name);
+		Tag tag = tags.size() > 0 ? tags.get(0) : null;
+		return tag;
+	};
+	
+	public Integer save(Tag tag) {
+        return (Integer) getHibernateTemplate().save(tag);
+    }
 }

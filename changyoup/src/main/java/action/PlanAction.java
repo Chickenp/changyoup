@@ -99,6 +99,7 @@ public class PlanAction extends BaseAction{
 		planinfo=planinfoService.getPlaninfobyId(planid);
 		planinfo.setTitle(title);
 		planinfoService.updatePlaninfo(planinfo);
+		System.out.println("plan="+plan);
 		planService.updatePlan(planid, plan);
 		return SUCCESS;
 	}

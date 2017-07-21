@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.Route"%>
-<%@ page import="model.Comment"%>
+<%@ page import="model.Routecomment"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -104,7 +104,7 @@ div.col-sm-10 div {
 			    ArrayList<String> location_2 =new ArrayList<String>();
 			    ArrayList<String> document =new ArrayList<String>();
 			    ArrayList<String> tagnames =new ArrayList<String>();
-			    ArrayList<Comment> comments =new ArrayList<Comment>();
+			    ArrayList<Routecomment> comments =new ArrayList<Routecomment>();
 			    if (request.getAttribute("location_1") != null) {
 			    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
 						}
@@ -118,7 +118,7 @@ div.col-sm-10 div {
 					tagnames = (ArrayList<String>) request.getAttribute("tagnames");
 					    }
 			    if (request.getAttribute("comments") != null) {
-				comments = (ArrayList<Comment>) request.getAttribute("comments");
+				comments = (ArrayList<Routecomment>) request.getAttribute("comments");
 				    }
 			    //System.out.println(document);
 %>
@@ -367,7 +367,7 @@ div.col-sm-10 div {
 							<%
 							    int i=0;
 																																			for(i=0;i<(comments.size());i++) {
-																																			Comment comment=comments.get(i);
+																																			Routecomment comment=comments.get(i);
 							%>
 							<li>
 								<div class="panel panel-primary">
@@ -529,7 +529,7 @@ var but=document.getElementById("timeline_post_btn").classList.add('disabled');
 			console.log(formData, routeid);
 			$.ajax({
 				type : "POST",
-				url : "CommentPro",
+				url : "RoutecommentPro",
 				data : {
 					comment : formData,
 					routeid : routeid
