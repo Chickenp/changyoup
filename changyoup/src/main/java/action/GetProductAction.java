@@ -39,7 +39,7 @@ public class GetProductAction extends BaseAction{
                 days.add(appService.getHtmlById(routes.get(i).getRouteMongoid()));
         }
         
-        List<Tag> tags = routetagService.getTagsById(routeid);
+        List<Tag> tags = routetagService.getTagsByRouteId(routeid);
         List<String> tag_name=new ArrayList<String>();
         for (int i=0; i<routes.size(); i++){
         	tag_name.add(tags.get(i).getTagname());

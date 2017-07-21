@@ -30,4 +30,10 @@ public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
 	public Integer save(Tag tag) {
         return (Integer) getHibernateTemplate().save(tag);
     }
+	
+	public List<Tag> getAllTags(){
+		@SuppressWarnings("unchecked")
+		List<Tag> tags = (List<Tag>)getHibernateTemplate().find("from Tag");
+		return tags;
+	}
 }

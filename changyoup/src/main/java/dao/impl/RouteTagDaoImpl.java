@@ -16,7 +16,7 @@ public class RouteTagDaoImpl extends HibernateDaoSupport implements RouteTagDao 
         return (Integer) getHibernateTemplate().save(routetag);
     }
 
-	public List<Routetag> getRoutetagsById(int id){
+	public List<Routetag> getRoutetagsByTagId(int id){
 		@SuppressWarnings("unchecked")
 		List<Routetag> routetags = getHibernateTemplate().find(
 				"from Routetag where tagid=?", id);

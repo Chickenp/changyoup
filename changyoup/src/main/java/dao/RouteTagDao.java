@@ -9,7 +9,7 @@ import model.Tag;
 public interface RouteTagDao {
 	public Integer save(Routetag routetag) ;
 
-	public List<Routetag> getRoutetagsById(int id);
+	public List<Routetag> getRoutetagsByTagId(int id);
 	
 	public List<Routetag> getRoutetagsByRouteId(int id);
 	

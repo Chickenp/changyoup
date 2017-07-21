@@ -34,8 +34,8 @@ public class RouteTagServiceImpl implements RouteTagService {
 	}
 	
 	@Override
-    public List<Routeinfo> getRoutesById(int id){
-    	List<Routetag> routetags = routetagDao.getRoutetagsById(id);
+    public List<Routeinfo> getRoutesByTagId(int id){
+    	List<Routetag> routetags = routetagDao.getRoutetagsByTagId(id);
     	List<Routeinfo> routeinfos = new ArrayList<Routeinfo>(routetags.size());
     	for(int i = 0; i<routetags.size(); i++){
     		int j = routetags.get(i).getRouteid();
@@ -45,7 +45,7 @@ public class RouteTagServiceImpl implements RouteTagService {
         return routeinfos;
     }
 
-    public List<Tag> getTagsById(int id){
+    public List<Tag> getTagsByRouteId(int id){
     	List<Routetag> routetags = routetagDao.getRoutetagsByRouteId(id);
     	List<Tag> tags = new ArrayList<Tag>(routetags.size());
     	for(int i = 0; i<routetags.size(); i++){
@@ -68,4 +68,8 @@ public class RouteTagServiceImpl implements RouteTagService {
     public Integer addTag(Tag tag){
     	return tagDao.save(tag);
     }
+
+	public List<Tag> getAllTags() {
+		return tagDao.getAllTags();
+	}
 }

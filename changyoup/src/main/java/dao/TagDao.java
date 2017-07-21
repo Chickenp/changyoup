@@ -11,4 +11,6 @@ public interface TagDao {
 	public Tag getTagByName(String name);
 	
 	public Integer save(Tag tag) ;
+	
+	public List<Tag> getAllTags();
 }

@@ -8,13 +8,15 @@ import model.Routetag;
 import model.Tag;
 
 public interface RouteTagService {
-    public List<Routeinfo> getRoutesById(int id);
+    public List<Routeinfo> getRoutesByTagId(int id);
     
-    public List<Tag> getTagsById(int id);
+    public List<Tag> getTagsByRouteId(int id);
     
     public Tag getTagByName(String name);
     
     public Integer addRoutetag(Routetag routetag);
     
     public Integer addTag(Tag tag);
+    
+    public List<Tag> getAllTags();
 }

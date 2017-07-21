@@ -23,7 +23,7 @@ public class TagSearchAction extends BaseAction{
     
     @Override
     public String execute() throws Exception {
-    	List<Routeinfo> routeinfos = routetagService.getRoutesById(tagid);
+    	List<Routeinfo> routeinfos = routetagService.getRoutesByTagId(tagid);
     	
     	request().setAttribute("routeinfos",routeinfos);
     	return SUCCESS;
