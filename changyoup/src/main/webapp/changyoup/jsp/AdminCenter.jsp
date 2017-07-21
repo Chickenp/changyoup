@@ -5,7 +5,7 @@
 <head>
 <title>Admin Page</title>
 
-
+<%@include file="logincheckadmin.jsp"%>
 <%@include file="CommonHead.jsp"%>
 </head>
 
@@ -13,6 +13,58 @@
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 			<%@include file="Navbar.jsp"%>
+
+			<div class="fh5co-hero">
+				<div class="fh5co-overlay"></div>
+				<div class="fh5co-cover text-center"
+					data-stellar-background-ratio="0.5"
+					style="background-image: url(/changyoup/changyoup/images/beachchair.jpg);">
+					<div class="desc animate-box">
+						<h2>Administrator Center</h2>
+					</div>
+				</div>
+			</div>
+			<div class="fh5co-listing">
+				<div class="container">
+					<div class="row">
+					<div class="col-md-3 col-sm-3 fh5co-item-wrap">
+					</div>
+						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
+							<a class="fh5co-listing-item" href="newRoute"> <img
+								src="/changyoup/changyoup/images/toolicons/Librariesalt.png"
+								alt="发布旅游线路" class="img-responsive">
+								<div class="fh5co-listing-copy">
+									<h2>发布旅游线路</h2>
+									<span class="icon"> <i class="icon-chevron-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
+							<a class="fh5co-listing-item" href="examinePlan"> <img
+								src="/changyoup/changyoup/images/toolicons/Tasks.png"
+								alt="审核用户发布的旅游攻略" class="img-responsive">
+								<div class="fh5co-listing-copy">
+									<h2>审核旅游攻略</h2>
+									<span class="icon"> <i class="icon-chevron-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
+							<a class="fh5co-listing-item" href="AddRouteInfo"> <img
+								src="/changyoup/changyoup/images/toolicons/Pin.png"
+								alt="设置旅游攻略是否在首页显示" class="img-responsive">
+								<div class="fh5co-listing-copy">
+									<h2>置顶旅游攻略</h2>
+									<span class="icon"> <i class="icon-chevron-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="fh5co-section">
 				<div class="container">
 					<div class="row">

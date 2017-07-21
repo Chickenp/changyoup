@@ -7,6 +7,11 @@
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.devMode" value="true" />
 	<package name="process" extends="struts-default">
+	
+		<action name="Home">
+			<result>/changyoup/jsp/index.jsp</result>
+		</action>
+	
 		<!-- Book -->
 		<action name="allBooksPro" class="action.AllBooksAction">
 			<result name="success">/changyoup/jsp/book.jsp</result>
@@ -86,8 +91,16 @@
         <action name="updateUserInfo" class="action.UserInfoAction" method="update">
         	<result name="success">/changyoup/jsp/EditInfo.jsp</result>
         </action>
+        <action name="Admincenter">
+        	<result>/changyoup/jsp/AdminCenter.jsp</result>
+        </action>
+        
         
 		<!-- Route -->
+		<action name="newRoute">
+			<result>/changyoup/jsp/FrontPage.jsp</result>
+		</action>
+		
 		<action name="ViewRoute" class="action.RouteAction" method="view">
 			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
 		</action>

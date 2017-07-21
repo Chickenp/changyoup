@@ -75,7 +75,7 @@
 						<%
 							} else if ((Integer) session.getAttribute("role") == 0) {
 						%>
-						<li id="adminaccountli"><a href="examinePlan">Examine Plan</a></li>
+						<li id="adminaccountli"><a href="Admincenter">Admin Center</a></li>
 						<%
 							}
 							}
