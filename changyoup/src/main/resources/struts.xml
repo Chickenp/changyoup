@@ -88,14 +88,16 @@
         </action>
         
 		<!-- Route -->
-		<action name="PreviousDay" class="action.RouteAction" method="previous">
+		<action name="ViewRoute" class="action.RouteAction" method="view">
 			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
+		</action>
+		<action name="PreviousDay" class="action.RouteAction" method="previous">
 		</action>
 		<action name="ReleaseRoute" class="action.RouteAction" method="release">
-			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
 		</action>
 		<action name="NextDay" class="action.RouteAction" method="next">
-			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
+		</action>
+		<action name="JumptoChosenDay" class="action.RouteAction" method="jump">
 		</action>
         
         

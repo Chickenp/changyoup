@@ -10,7 +10,7 @@ public interface RouteService {
 	
 	public String addRouteContent(String id, String content) throws Exception;
 	
-	public String getRouteContentbyId(String id) throws Exception;
+	public String getRouteContentbyId(String id);
 	
 	public Integer save(Route route);
 	

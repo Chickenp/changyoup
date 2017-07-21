@@ -39,7 +39,6 @@ public class RouteServiceImpl implements RouteService{
 		return routeMongoid;
 	}
 	
-	@Override
 	public Integer save(Route route) {
 		return routeDao.save(route);
 	}
@@ -49,12 +48,12 @@ public class RouteServiceImpl implements RouteService{
 	}
 
 	@Override
-	public String getRouteContentbyId(String id) throws Exception {
+	public String getRouteContentbyId(String id){
 		String content="";
 		try{
 			content = routeMongoDao.getRoutebyId(id);
 		}catch (Exception e) {
-			e.printStackTrace();
+			return content;
 		}
 		return content;
 	}

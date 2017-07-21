@@ -17,6 +17,7 @@ public class RouteAction extends BaseAction{
 	private String location1;
 	private String location2;
 	private String content;
+	private int targetday;
 	
 	private RouteService routeService;
 	
@@ -68,40 +69,57 @@ public class RouteAction extends BaseAction{
 		this.content = content;
 	}
 
+	public int getTargetday() {
+		return targetday;
+	}
+
+	public void setTargetday(int targetday) {
+		this.targetday = targetday;
+	}
+
 	public void setRouteService(RouteService routeService){
 		this.routeService = routeService;
 	}
 	
-	public String previous() throws Exception{
+	private void save(){
 		routedate = (Integer)session().getAttribute("day");
 		routeid = (Integer)session().getAttribute("rid");
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		
-		routeMongoid = routeService.addRouteContent(id, content);
-		System.out.print(routeMongoid);
-		System.out.print(content);
+		try {
+			routeMongoid = routeService.addRouteContent(id, content);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//System.out.print(routeMongoid);
+		//System.out.print(content);
 		
 		Route route = routeService.getSingleRoute(id);
 		
 		if(route == null){
 			route = new Route(routeMongoid, routeid, routedate, location1, location2);
+			/*route.setRouteMongoid(routeMongoid);
+			route.setRouteid(routeid);
+			route.setRoutedate(routedate);
+			route.setLocation1("");
+			route.setLocation2("");*/
 			routeService.save(route);
+			//System.out.println("QAQ");
 		}
 		else{
+			//System.out.println("TUT");
 			route.setLocation1(location2);
 			route.setLocation2(location1);
 			routeService.update(route);
+			//System.out.println("TUT");
 		}
+	}
+	
+	public String view() throws Exception{
+		routedate = (Integer)session().getAttribute("day");
+		routeid = (Integer)session().getAttribute("rid");
 		
-		if(routedate <= 1){
-			request().setAttribute("scontent", content);
-			return SUCCESS;
-		}
-			
-		routedate = routedate - 1;
-		session().setAttribute("day", routedate);
-		
-		id = Integer.toString(routeid) + Integer.toString(routedate);
+		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		String scontent = routeService.getRouteContentbyId(id);
 		Route sroute = routeService.getSingleRoute(id);
 		request().setAttribute("scontent", scontent);
@@ -110,80 +128,52 @@ public class RouteAction extends BaseAction{
 		return SUCCESS;
 	}
 	
+	public String previous() throws Exception{
+		this.save();
+		
+		if(routedate <= 1){
+			request().setAttribute("scontent", content);
+			return null;
+		}
+			
+		//routedate = routedate - 1;
+		session().setAttribute("day", routedate - 1);
+		
+		return null;
+	}
+	
 	public String next() throws Exception{
-		routedate = (Integer)session().getAttribute("day");
-		routeid = (Integer)session().getAttribute("rid");
-		String id = Integer.toString(routeid) + Integer.toString(routedate);
-		
-		routeMongoid = routeService.addRouteContent(id, content);
-		System.out.print(routeMongoid);
-		System.out.print(content);
-		
-		Route route = routeService.getSingleRoute(id);
-		
-		if(route == null){
-			route = new Route(routeMongoid, routeid, routedate, location1, location2);
-			routeService.save(route);
-		}
-		else{
-			route.setLocation1(location1);
-			route.setLocation2(location2);
-			routeService.update(route);
-		}
+		this.save();
 		
 		int maxday = (Integer) session().getAttribute("maxday");
 		if(routedate >= maxday){
 			request().setAttribute("scontent", content);
-			return SUCCESS;
+			return null;
 		}
 			
-		routedate = routedate + 1;
-		session().setAttribute("day", routedate);
+		//routedate = routedate + 1;
+		session().setAttribute("day", routedate + 1);
 		
-		id = Integer.toString(routeid) + Integer.toString(routedate);
-		String scontent = routeService.getRouteContentbyId(id);
-		Route sroute = routeService.getSingleRoute(id);
-		request().setAttribute("scontent", scontent);
-		request().setAttribute("sroute", sroute);
-		
-		return SUCCESS;
+		return null;
 	}
 	
 	public String release() throws Exception{
-		routedate = (Integer)session().getAttribute("day");
-		routeid = (Integer)session().getAttribute("rid");
+		this.save();
 		
 		//session().removeAttribute("day");
 		//session().removeAttribute("maxday");
 		//session().removeAttribute("rid");
 		
-		String id = Integer.toString(routeid) + Integer.toString(routedate);
+		//routedate = 1;
+		session().setAttribute("day", 1);
 		
-		routeMongoid = routeService.addRouteContent(id, content);
-		System.out.print(routeMongoid);
-		System.out.print(content);
-		
-		Route route = routeService.getSingleRoute(id);
-		
-		if(route == null){
-			route = new Route(routeMongoid, routeid, routedate, location1, location2);
-			routeService.save(route);
-		}
-		else{
-			route.setLocation1(location2);
-			route.setLocation2(location1);
-			routeService.update(route);
-		}
-		
-		routedate = 1;
-		session().setAttribute("day", routedate);
-		
-		id = Integer.toString(routeid) + Integer.toString(routedate);
-		String scontent = routeService.getRouteContentbyId(id);
-		Route sroute = routeService.getSingleRoute(id);
-		request().setAttribute("scontent", scontent);
-		request().setAttribute("sroute", sroute);
-		
-		return SUCCESS;
+		return null;
+	}
+	
+	public String jump() throws Exception{
+		save();
+		//System.out.println(targetday);
+		session().setAttribute("day", targetday);		
+		return null;
 	}
 }

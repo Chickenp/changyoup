@@ -31,7 +31,7 @@ public class RouteMongoDaoImpl implements RouteMongoDao{
 
 	private DB connetdb() {
 		DB mongoDatabase = mongoClient.getDB("routes");
-		System.out.println("Connect to routes successfully");
+		//System.out.println("Connect to routes successfully");
 		return mongoDatabase;
 	}
 	
