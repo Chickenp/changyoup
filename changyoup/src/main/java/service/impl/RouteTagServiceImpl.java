@@ -72,4 +72,8 @@ public class RouteTagServiceImpl implements RouteTagService {
 	public List<Tag> getAllTags() {
 		return tagDao.getAllTags();
 	}
+
+	public Tag getTagById(int tagid) {
+		return tagDao.getTagById(tagid);
+	}
 }

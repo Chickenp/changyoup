@@ -4,13 +4,15 @@ pageEncoding="utf-8"%>
 <html lang="en">
 <head>
 
+	<script src="/changyoup/changyoup/js/jquery.min.js"></script>
+
 </head>
 
 
 <body>
 	<div class="container">
 	
-	<form action="AddRouteInfo" method="post">
+	<form>
 		<div style="float:left;">天数：</div>
 		<div><p><input type=int name="routedays" id="routedays" required=""></p></div>
 		
@@ -32,10 +34,32 @@ pageEncoding="utf-8"%>
 				style="width:400px;height:200px;" required=""></textarea>&nbsp;（注意：最多200个字！）</p>
 		</div>
 		
-		<div><input type=submit value="确认"></div>
-	</form>
-	</div>
 
+	</form>
+	<button onclick="submit()">确认</button>
+	</div>
+	<script>
+		function submit(){
+			var routedays = document.getElementById("routedays").value;
+			var routetitle = document.getElementById("routetitle").value;
+			var routeintro = document.getElementById("routeintro").value;
+			console.log(routedays, routetitle, routeintro);
+			jQuery.ajax({
+				type:'POST',
+				url:'AddRouteInfo',
+				processData : true,
+				dataType : "text",
+				data : {
+					routedays : routedays,
+					routetitle : routetitle,
+					routeintro : routeintro
+				},
+				success : function(data){
+					window.location.href="allTagsPro";
+				}
+			})
+		}
+	</script>
 
 </body>
 

@@ -116,8 +116,12 @@
         
         <!-- RouteInfo -->
         <action name="AddRouteInfo" class="action.RouteInfoAction" method="addRouteInfo">
-			<result name="success">/changyoup/jsp/releaseRoute.jsp</result>
 		</action>
+        
+        <!-- Tag -->
+        <action name="allTagsPro" class="action.AddTagAction" method="getAllTags">
+        	<result name="success">/changyoup/jsp/addTag.jsp</result>
+        </action>
         
         <!-- Plan -->
         <action name="newPlan" class="action.PlanAction">

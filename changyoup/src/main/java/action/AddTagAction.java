@@ -5,6 +5,7 @@ import service.RouteTagService;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import model.Tag;
@@ -55,6 +56,12 @@ public class AddTagAction extends BaseAction{
 		
 		
 		
+		return SUCCESS;
+	}
+	
+	public String getAllTags(){
+		List<Tag> tags = routetagService.getAllTags();
+		request().setAttribute("tags", tags);
 		return SUCCESS;
 	}
 	

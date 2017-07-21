@@ -19,4 +19,6 @@ public interface RouteTagService {
     public Integer addTag(Tag tag);
     
     public List<Tag> getAllTags();
+    
+    public Tag getTagById(int tagid);
 }
