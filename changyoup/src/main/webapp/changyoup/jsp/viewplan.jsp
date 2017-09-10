@@ -19,15 +19,19 @@
 		}
 		System.out.println(cplan);
 	%>
-
+	<div class="fh5co-listing">
+				<div class="container">
+					<div class="row">
 	<%=cplan%>
-	
+	</div>
+	</div>
+	</div>
 	<%
 	int role = 1;
 	if (session.getAttribute("role") != null){
 		role = (Integer) session.getAttribute("role");
 	}
-	if (role==0){
+	if (role == 0){
 	%>
 	<a href="passPlan?planid=<%= planid %>">pass</a>
 	<%} %>
