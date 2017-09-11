@@ -13,14 +13,23 @@ import model.Routeinfo;
 import model.Routetag;
 
 public class AddTagAction extends BaseAction{
+	private int tagid;
 	private String tagname;
     private RouteTagService routetagService;
 	
+	public int getTagid() {
+		return tagid;
+	}
+
+	public void setTagid(int tagid) {
+		this.tagid = tagid;
+	}
+
 	public String getTagname() {
 		return this.tagname;
 	}
 
-	public void setTagnem(String tagname) {
+	public void setTagname(String tagname) {
 		this.tagname = tagname;
 	}
 	
@@ -60,9 +69,18 @@ public class AddTagAction extends BaseAction{
 	}
 	
 	public String getAllTags(){
-		List<Tag> tags = routetagService.getAllTags();
+		int routeid = (Integer)session().getAttribute("rid"); 
+		List<Tag> tags = routetagService.getTagsByRouteId(routeid);
 		request().setAttribute("tags", tags);
 		return SUCCESS;
 	}
 	
+	public String delete(){
+		int routeid = (Integer)session().getAttribute("rid");
+		Routetag routetag = new Routetag();
+	    routetag.setRouteid(routeid);
+	    routetag.setTagid(tagid);
+	    routetagService.deleteRoutetag(routetag);
+		return SUCCESS;
+	}
 }

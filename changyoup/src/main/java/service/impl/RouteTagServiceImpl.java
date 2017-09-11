@@ -76,4 +76,8 @@ public class RouteTagServiceImpl implements RouteTagService {
 	public Tag getTagById(int tagid) {
 		return tagDao.getTagById(tagid);
 	}
+
+	public void deleteRoutetag(Routetag routetag) {
+		routetagDao.delete(routetag);		
+	}
 }
