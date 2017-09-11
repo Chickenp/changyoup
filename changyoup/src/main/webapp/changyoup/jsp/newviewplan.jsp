@@ -284,6 +284,15 @@ div.col-sm-10 div {
 			</div>
 			</div>
 			</div>
+			<%
+	int role = 1;
+	if (session.getAttribute("role") != null){
+		role = (Integer) session.getAttribute("role");
+	}
+	if (role == 0){
+	%>
+	<a href="passPlan?planid=<%= planid %>">pass</a>
+	<%} %>
        
 
 
