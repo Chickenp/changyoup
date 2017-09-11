@@ -21,4 +21,6 @@ public interface RouteTagService {
     public List<Tag> getAllTags();
     
     public Tag getTagById(int tagid);
+    
+    public void deleteRoutetag(Routetag routetag);
 }

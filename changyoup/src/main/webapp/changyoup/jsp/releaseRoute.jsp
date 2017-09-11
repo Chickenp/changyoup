@@ -113,7 +113,7 @@
 		<div id="searchResultPanel"
 			style="border: 1px solid #C0C0C0; width: 150px; height: auto; display: none;"></div>
 			</div>
-		<button onclick="preday()" <%if (day <= 1) {%> disabled="ture" <%}%>>上一天</button>
+		<button onclick="preday()" <%if (day <= 1) {%> disabled="true" <%}%>>上一天</button>
 		&nbsp;
 		<button onclick="release()">发布路线</button>
 		&nbsp;
@@ -302,8 +302,7 @@
 			var target = document.getElementById("targetday").value;
 			var reg = /^\d+$/;
 			if(reg.test(target)==true){
-				var maxpage = "<%=maxday%>
-		";
+				var maxpage = "<%=maxday%>";
 				if (document.getElementById("jump").disabled) {
 					if (1 <= parseInt(target)
 							&& parseInt(target) <= parseInt(maxpage)) {

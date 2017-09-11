@@ -126,6 +126,10 @@
         <action name="allTagsPro" class="action.AddTagAction" method="getAllTags">
         	<result name="success">/changyoup/jsp/addTag.jsp</result>
         </action>
+        <action name="AddTag" class="action.AddTagAction" method="addTag">
+        </action>
+        <action name="DeleteTag" class="action.AddTagAction" method="delete">
+        </action>
         
         <!-- Plan -->
         <action name="newPlan" class="action.PlanAction">

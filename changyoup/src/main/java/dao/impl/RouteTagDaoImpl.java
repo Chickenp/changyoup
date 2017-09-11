@@ -15,6 +15,10 @@ public class RouteTagDaoImpl extends HibernateDaoSupport implements RouteTagDao 
 	public Integer save(Routetag routetag) {
         return (Integer) getHibernateTemplate().save(routetag);
     }
+	
+	public void delete(Routetag routetag) {
+		getHibernateTemplate().delete(routetag);
+	};
 
 	public List<Routetag> getRoutetagsByTagId(int id){
 		@SuppressWarnings("unchecked")
