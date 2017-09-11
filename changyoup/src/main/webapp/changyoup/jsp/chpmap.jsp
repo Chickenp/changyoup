@@ -97,6 +97,80 @@ div.col-sm-10 div {
 	background-color: #ffffff;
 	overflow: auto;
 }
+
+
+.tags {
+	padding: 0;
+	position: relative;
+	margin-left: 200px;
+    margin-right: auto;
+	bottom: -12px;
+	list-style: none;
+	display: block;
+}
+
+.tags li, .tags a {
+margin-left: auto;
+    margin-right: auto;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	position: relative;
+	font-size: 11px;
+}
+
+.tags a {
+	margin-left: 20px;
+	padding: 0 10px 0 12px;
+	background: #0089e0;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.tags a:before {
+	content: "";
+	float: left;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	width: 0;
+	height: 0;
+	border-color: transparent #0089e0 transparent transparent;
+	border-style: solid;
+	border-width: 12px 12px 12px 0;
+}
+
+.tags a:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 0;
+	float: left;
+	width: 4px;
+	height: 4px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #fff;
+	-moz-box-shadow: -1px -1px 2px #004977;
+	-webkit-box-shadow: -1px -1px 2px #004977;
+	box-shadow: -1px -1px 2px #004977;
+}
+
+.tags a:hover {
+	background: #555;
+}
+
+.tags a:hover:before {
+	border-color: transparent #555 transparent transparent;
+}
+
 </style>
 <%
     int date = (Integer)request.getAttribute("date");
@@ -104,6 +178,7 @@ div.col-sm-10 div {
 			    ArrayList<String> location_2 =new ArrayList<String>();
 			    ArrayList<String> document =new ArrayList<String>();
 			    ArrayList<String> tagnames =new ArrayList<String>();
+			    ArrayList<Integer> tagids =new ArrayList<Integer>();
 			    ArrayList<Routecomment> comments =new ArrayList<Routecomment>();
 			    if (request.getAttribute("location_1") != null) {
 			    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
@@ -116,6 +191,9 @@ div.col-sm-10 div {
 						}
 			    if (request.getAttribute("tagnames") != null) {
 					tagnames = (ArrayList<String>) request.getAttribute("tagnames");
+					    }
+			    if (request.getAttribute("tagids") != null) {
+					tagids = (ArrayList<Integer>) request.getAttribute("tagids");
 					    }
 			    if (request.getAttribute("comments") != null) {
 				comments = (ArrayList<Routecomment>) request.getAttribute("comments");
@@ -256,12 +334,21 @@ div.col-sm-10 div {
 						<!-- <span>Lovely Crafted by <a href="#" target="_blank" class="fh5co-site-name">FREEHTML5.co</a></span> -->
 						<span><a class="btn btn-primary btn-lg" href="#">Get
 								Started</a></span>
+								
+								
+								
+						<p>
+							<ul class="tags" >
+							<%
+						    for(int t=0; t<tagnames.size(); t++){
+						    %>
+							<li><a href="TagSearchPro?tagid=<%=tagids.get(t)%>"><%=tagnames.get(t) %></a></li>
+							<%
+							}
+							%>
 					</div>
 				</div>
-
-			</div>
-
-			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true"
 				style="display: none;">
 				<div class="modal-dialog">
@@ -282,6 +369,9 @@ div.col-sm-10 div {
 					</div>
 				</div>
 			</div>
+			</div>
+
+			
 
 			<div class="container">
 				<div class="row" style="position: relative;">
@@ -295,23 +385,6 @@ div.col-sm-10 div {
 						<%
 						    }
 						%>
-					</div>
-
-					<div class="btn-group-vertical"
-						style="position: absolute; right: 0px">
-						<%
-						    for(int n=1; n<=tagnames.size(); n++){
-						%>
-						<a href="TagSearchPro?tagid=1">
-							<button id="but<%=n%>" type="button" onClick=TagSearchPro
-								"
-							class="btn btn-primary"><%=tagnames.get(n-1)%></button>
-						</a>
-						<%
-						    }
-						%>
-
-
 					</div>
 
 					<div class="col-sm-10" style="position: relative; left: 100px">

@@ -41,8 +41,10 @@ public class GetProductAction extends BaseAction{
         
         List<Tag> tags = routetagService.getTagsByRouteId(routeid);
         List<String> tag_name=new ArrayList<String>();
+        List<Integer> tag_id=new ArrayList<Integer>();
         for (int i=0; i<routes.size(); i++){
         	tag_name.add(tags.get(i).getTagname());
+        	tag_id.add(tags.get(i).getTagid());
         }
         List<Routecomment> comments=appService.getCommentByRoute(routeid);
         request().setAttribute("comments",comments);
@@ -50,6 +52,7 @@ public class GetProductAction extends BaseAction{
         request().setAttribute("location_1",location_1);
         request().setAttribute("location_2",location_2);
         request().setAttribute("tagnames",tag_name );
+        request().setAttribute("tagids",tag_id );
         return SUCCESS;
     }
     /**
