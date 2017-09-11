@@ -92,20 +92,20 @@ div.col-sm-10 div {
 #section1 {
 	color: #00000;
 	background-color: #ffffff;
-	overflow:auto;
+	overflow: auto;
 }
 </style>
 <%
-	String path = request.getContextPath();
+    String path = request.getContextPath();
 %>
 <link href="<%=path%>/changyoup/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<%
-		ArrayList<Planinfo> plans = new ArrayList<Planinfo>();
-		if (request.getAttribute("userplans") != null) {
-			plans = (ArrayList<Planinfo>) request.getAttribute("userplans");
-		}
+	    ArrayList<Planinfo> plans = new ArrayList<Planinfo>();
+				if (request.getAttribute("userplans") != null) {
+					plans = (ArrayList<Planinfo>) request.getAttribute("userplans");
+				}
 	%>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
@@ -179,17 +179,17 @@ div.col-sm-10 div {
 									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
 									<%
 									    } else {
-									    	if( (session.getAttribute("role") == null) || (Integer)session.getAttribute("role") == 1 || (session.getAttribute("role") == "")){
+																											    	if( (session.getAttribute("role") == null) || (Integer)session.getAttribute("role") == 1 || (session.getAttribute("role") == "")){
 									%>
 									<li><a href="Account">User Center</a></li>
 									<%
 									    }else if((Integer)session.getAttribute("role") == 0){
 									%>
-                                    <li><a href="examinePlan">Examine Plan</a></li>
+									<li><a href="examinePlan">Examine Plan</a></li>
 									<%
 									    }
-									    }
-									    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
+																											    }
+																											    if ((session.getAttribute("uid") == null) || (session.getAttribute("uid") == "")) {
 									%>
 									<li><a href="#" data-toggle="modal"
 										data-target="#login-modal">Login</a></li>
@@ -233,9 +233,7 @@ div.col-sm-10 div {
 				<div class="fh5co-cover text-center"
 					data-stellar-background-ratio="0.5"
 					style="background-image: url(/changyoup/changyoup/images/cover_bg_1.jpg);">
-					<div class="desc animate-box">
-						
-					</div>
+					<div class="desc animate-box"></div>
 				</div>
 
 			</div>
@@ -262,39 +260,41 @@ div.col-sm-10 div {
 				</div>
 			</div>
 
-			
 
 
 
 
-			<div class="fh5co-section"style="background:#272727">
+
+			<div class="fh5co-section" style="background: #272727">
 
 				<div class="container">
-				<button class="btn btn-primary" onclick="window.location.href='newPlan'" style="font-size:200%;">新增攻略</button>
+					<button class="btn btn-primary"
+						onclick="window.location.href='newPlan'" style="font-size: 200%;">新增攻略</button>
+					<p>
 					<div class="row">
-						<div class="col-md-6 fh5co-news"  >
-							
+						<div class="col-md-6 fh5co-news">
+
 							<ul>
-							<%
-			for (int i = 0; i < plans.size(); i++) {
-				Planinfo plan = plans.get(i);
-		%>
-								<li><a href="#"> <span class="fh5co-date">Sep.
+								<%
+								    for (int i = 0; i < plans.size(); i++) {
+																				Planinfo plan = plans.get(i);
+								%>
+								<li><a href="viewPlan?planid=<%=plan.getPlanid()%>"> <span class="fh5co-date">Sep.
 											10, 2016</span>
 										<h3><%=plan.getTitle()%></h3>
-										<p><%=plan.getPublisher()%></p>
-								</a></li>
-								<div class="col-md-6">
-				<input type="button" class="btn btn-primary"
-						onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
-						value="查看攻略"></input>
-				<input type="button" class="btn btn-primary"
-						onclick="window.location.href='editPlan?planid=<%=plan.getPlanid()%>'"
-						value="修改攻略"></input>
-			</div>
-			
-			<% }%>
-			
+										<p><%=plan.getPublisher()%></p></li>
+								<div>
+								<input type="button" class="btn btn-primary"
+									onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
+									value="查看攻略"></input>
+								<input type="button" class="btn btn-primary"
+									onclick="window.location.href='editPlan?planid=<%=plan.getPlanid()%>'"
+									value="修改攻略"></input></div>
+								</a>
+								<%
+								    }
+								%>
+
 							</ul>
 						</div>
 						<div class="col-md-6 fh5co-testimonial">

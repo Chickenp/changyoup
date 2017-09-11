@@ -115,25 +115,37 @@ div.col-sm-10 div {
 			<div class="fh5co-section"style="background:#272727">
 
 				<div class="container">
-				<div class="row">
-						<div class="col-md-6 fh5co-news"  >
-							
-							<ul>
-					<%
-						for (int i = 0; i < plans.size(); i++) {
-							Planinfo plan = plans.get(i);
-					%>
+				<div class="fh5co-section" style="background: #272727">
+
+				<div class="container">
+					<button class="btn btn-primary"
+						onclick="window.location.href='newPlan'" style="font-size: 200%;">新增攻略</button>
 					<div class="row">
-						<a href=" viewPlan?planid=<%=plan.getPlanid()%>"><p>
-								title=<%=plan.getTitle()%></p></a>
+						<div class="col-md-6 fh5co-news">
+
+							<ul>
+								<%
+								    for (int i = 0; i < plans.size(); i++) {
+																				Planinfo plan = plans.get(i);
+								%>
+								<li><a href=" viewPlan?planid=<%=plan.getPlanid()%>"><p>
+								title=<%=plan.getTitle()%></p>
 						<p>
-							publisher=<%=plan.getPublisher()%></p>
-					</div>
-					<%
-						}
-					%>
-					</ul>
-				</div>
+							publisher=<%=plan.getPublisher()%></p></a></li>
+								<div>
+								<input type="button" class="btn btn-primary"
+										onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
+										value="查看并审核"></input> <input type="button"
+										class="btn btn-primary"
+										onclick="window.location.href='editPlan?planid=<%=plan.getPlanid()%>'"
+										value="修改攻略"></input></div>
+								</a>
+								<%
+								    }
+								%>
+
+							</ul>
+						</div>
 						<div class="col-md-6 fh5co-testimonial">
 							<img src="/changyoup/changyoup/images/cover_bg_1.jpg"
 								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
@@ -144,6 +156,7 @@ div.col-sm-10 div {
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 			
 			<%@include file="Foot.jsp"%>
