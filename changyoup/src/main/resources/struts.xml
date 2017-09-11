@@ -97,6 +97,10 @@
         
         
 		<!-- Route -->
+		<action name="allRoutes" class="action.RouteInfoAction" method="getAllRouteInfo">
+			<result name="success">/changyoup/jsp/allRoutes.jsp</result>
+		</action>
+		
 		<action name="newRoute">
 			<result>/changyoup/jsp/FrontPage.jsp</result>
 		</action>
