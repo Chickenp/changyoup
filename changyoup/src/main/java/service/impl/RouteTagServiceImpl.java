@@ -80,4 +80,9 @@ public class RouteTagServiceImpl implements RouteTagService {
 	public void deleteRoutetag(Routetag routetag) {
 		routetagDao.delete(routetag);		
 	}
+
+	@Override
+	public Routetag getRoutetagByBothId(int routeid, int tagid) {
+		return routetagDao.getRoutetagByBothId(routeid, tagid);	
+	}
 }
