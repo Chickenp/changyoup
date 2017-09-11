@@ -101,6 +101,16 @@
 			<result name="success">/changyoup/jsp/allRoutes.jsp</result>
 		</action>
 		
+		<action name="TravelRoute" class="action.RouteAction4User" method="view">
+			<result>/changyoup/jsp/viewrouteforuser.jsp</result>
+		</action>
+		<action name="PreviousDay4User" class="action.RouteAction4User" method="previous">
+		</action>
+		<action name="NextDay4User" class="action.RouteAction4User" method="next">
+		</action>
+		<action name="JumptoChosenDay4User" class="action.RouteAction4User" method="jump">
+		</action>	
+		
 		<action name="newRoute">
 			<result>/changyoup/jsp/FrontPage.jsp</result>
 		</action>

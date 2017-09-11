@@ -4,6 +4,7 @@ import service.RouteInfoService;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import model.Routeinfo;
@@ -81,6 +82,12 @@ public class RouteInfoAction extends BaseAction{
 	
 	public void setRouteinfoService(RouteInfoService routeinfoService){
 		this.routeinfoService = routeinfoService;
+	}
+	
+	public String getAllRouteInfo() throws Exception{
+		List<Routeinfo> routeinfos=routeinfoService.getAllRouteInfo();
+		request().setAttribute("routes", routeinfos);
+		return SUCCESS;
 	}
 	
 	
