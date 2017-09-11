@@ -98,6 +98,20 @@
 	<bean id="planinfoService" class="service.impl.PlaninfoServiceImpl">
 		<property name="planinfoDao" ref="planinfoDao" />
 	</bean>
+	
+	<bean id="planlikeDao" class="dao.impl.PlanLikeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="planlikeService" class="service.impl.PlanLikeServiceImpl">
+		<property name="planlikeDao" ref="planlikeDao" />
+	</bean>
+	
+	<bean id="routelikeDao" class="dao.impl.RouteLikeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="routelikeService" class="service.impl.RouteLikeServiceImpl">
+		<property name="routelikeDao" ref="routelikeDao" />
+	</bean>
 
 
 	<bean id="routetagService" class="service.impl.RouteTagServiceImpl">

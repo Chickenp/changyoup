@@ -4,7 +4,7 @@
 <!-- Generated 2017-9-11 20:13:16 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
     <class name="model.Routelike" table="routelike" catalog="changyou">
-        <composite-id name="id" class="RoutelikeId">
+        <composite-id name="id" class="model.RoutelikeId">
             <key-property name="routeid" type="int">
                 <column name="routeid" />
             </key-property>

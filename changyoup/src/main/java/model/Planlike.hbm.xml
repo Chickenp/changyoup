@@ -4,7 +4,7 @@
 <!-- Generated 2017-9-11 20:13:16 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
     <class name="model.Planlike" table="planlike" catalog="changyou">
-        <composite-id name="id" class="PlanlikeId">
+        <composite-id name="id" class="model.PlanlikeId">
             <key-property name="planid" type="int">
                 <column name="planid" />
             </key-property>
