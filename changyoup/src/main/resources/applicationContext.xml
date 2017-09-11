@@ -41,6 +41,8 @@
 				<value>model/Routetag.hbm.xml</value>
 				<value>model/Tag.hbm.xml</value>
 				<value>model/PlanInfo.hbm.xml</value>
+				<value>model/Routelike.hbm.xml</value>
+				<value>model/Planlike.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-11 20:13:16 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Planlike" table="planlike" catalog="changyou">
+        <composite-id name="id" class="PlanlikeId">
+            <key-property name="planid" type="int">
+                <column name="planid" />
+            </key-property>
+            <key-property name="userid" type="int">
+                <column name="userid" />
+            </key-property>
+        </composite-id>
+        <property name="point" type="int">
+            <column name="point" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
