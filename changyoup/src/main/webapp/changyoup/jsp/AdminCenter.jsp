@@ -41,6 +41,17 @@
 							</a>
 						</div>
 						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
+							<a class="fh5co-listing-item" href="allRoutes"> <img
+								src="/changyoup/changyoup/images/toolicons/Pin.png"
+								alt="旅游路线一览" class="img-responsive">
+								<div class="fh5co-listing-copy">
+									<h2>旅游路线一览</h2>
+									<span class="icon"> <i class="icon-chevron-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
 							<a class="fh5co-listing-item" href="examinePlan"> <img
 								src="/changyoup/changyoup/images/toolicons/Tasks.png"
 								alt="审核用户发布的旅游攻略" class="img-responsive">
