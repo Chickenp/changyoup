@@ -171,7 +171,7 @@
     	<%String url = "TravelRoute?routeid="+Integer.toString(routeid);%>
 		
 		function preday(){
-			console.log(targetday);
+			console.log("preday");
 			jQuery.ajax({
 				type:'POST',
 				url:'PreviousDay4User',
@@ -202,7 +202,7 @@
 			})
 		}
 		function nextday(){
-			console.log(targetday);
+			console.log("nextday");
 			jQuery.ajax({
 				type:'POST',
 				url:'NextDay4User',
