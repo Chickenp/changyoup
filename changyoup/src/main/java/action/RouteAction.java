@@ -108,8 +108,8 @@ public class RouteAction extends BaseAction{
 		}
 		else{
 			//System.out.println("TUT");
-			route.setLocation1(location2);
-			route.setLocation2(location1);
+			route.setLocation1(location1);
+			route.setLocation2(location2);
 			routeService.update(route);
 			//System.out.println("TUT");
 		}

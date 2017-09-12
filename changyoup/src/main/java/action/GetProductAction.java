@@ -36,8 +36,8 @@ public class GetProductAction extends BaseAction{
         for (int i=0; i<routes.size(); i++){
         		Route route=routes.get(i);
         		//设定的时候经纬度有点问题，反一下
-                location_2.add(((route.getLocation1()!=null)&&!(route.getLocation1().equals("")))?(route.getLocation1()):"0");
-                location_1.add(((route.getLocation2()!=null)&&!(route.getLocation2().equals("")))?(route.getLocation2()):"0");
+                location_1.add(((route.getLocation1()!=null)&&!(route.getLocation1().equals("")))?(route.getLocation1()):"0");
+                location_2.add(((route.getLocation2()!=null)&&!(route.getLocation2().equals("")))?(route.getLocation2()):"0");
                 days.add(routeService.getRouteContentbyId(route.getRouteMongoid()));
         }
         
