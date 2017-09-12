@@ -141,7 +141,8 @@ public class RouteAction4User extends BaseAction{
 	    }
 
 		routedate = (Integer)session().getAttribute("day");
-		
+		System.out.println("routedate=");
+		System.out.println(routedate);
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		String scontent = routeService.getRouteContentbyId(id);
 		Route sroute = routeService.getSingleRoute(id);
@@ -152,6 +153,10 @@ public class RouteAction4User extends BaseAction{
 	}
 	
 	public String previous() throws Exception{
+		int maxday = (Integer) session().getAttribute("maxday");
+		if (session().getAttribute("day")!=null){
+			routedate=(Integer)session().getAttribute("day");
+		}
 		if(routedate <= 1){
 			request().setAttribute("scontent", content);
 			return null;
@@ -165,11 +170,15 @@ public class RouteAction4User extends BaseAction{
 	
 	public String next() throws Exception{
 		int maxday = (Integer) session().getAttribute("maxday");
+		if (session().getAttribute("day")!=null){
+			routedate=(Integer)session().getAttribute("day");
+		}
 		if(routedate >= maxday){
 			request().setAttribute("scontent", content);
 			return null;
 		}
-			
+		System.out.println("nextday");
+		System.out.println(routedate);
 		//routedate = routedate + 1;
 		session().setAttribute("day", routedate + 1);
 		
@@ -178,7 +187,8 @@ public class RouteAction4User extends BaseAction{
 	
 	
 	public String jump() throws Exception{
-		//System.out.println(targetday);
+		System.out.println("jumpto");
+		System.out.println(targetday);
 		session().setAttribute("day", targetday);		
 		return null;
 	}
