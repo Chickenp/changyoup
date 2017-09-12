@@ -29,7 +29,6 @@ pageEncoding="utf-8"%>
 		</div>
 		<br>
 		<button onclick="addtag()">添加Tag</button>
-		<br>
 		<button onclick="finish()">完成Tag添加</button>
 	</div>
 	<br>
@@ -48,7 +47,7 @@ pageEncoding="utf-8"%>
 				}
 			%>
 		</select>
-		<button onclick="deletetag()" <%if (request.getAttribute("tags") == null) {%> disabled="true" 
+		<button onclick="deletetag()" <%if (tagList.size() == 0) {%> disabled="true" 
 			<%}%>>删除Tag</button>
 	</div>
 	
@@ -78,9 +77,9 @@ pageEncoding="utf-8"%>
 		
 		function deletetag(){
 			var index = document.getElementById("tag").selectedIndex;
-			var tagid = document.getElementById("tag").option[index].value;
-			var tagname = document.getElementById("tag").option[index].text;
-			console.log(index, tagname);
+			var tagid = document.getElementById("tag").options[index].value;
+			var tagname = document.getElementById("tag").options[index].text;
+			console.log(tagid, tagname);
 			jQuery.ajax({
 				type:'POST',
 				url:'DeleteTag',

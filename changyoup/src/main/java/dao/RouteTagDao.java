@@ -15,4 +15,6 @@ public interface RouteTagDao {
 	
 	public List<Routetag> getRoutetagsByRouteId(int id);
 	
+	public Routetag getRoutetagByBothId(int routeid, int tagid);
+	
 }

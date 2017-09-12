@@ -77,9 +77,7 @@ public class AddTagAction extends BaseAction{
 	
 	public String delete(){
 		int routeid = (Integer)session().getAttribute("rid");
-		Routetag routetag = new Routetag();
-	    routetag.setRouteid(routeid);
-	    routetag.setTagid(tagid);
+		Routetag routetag = routetagService.getRoutetagByBothId(routeid, tagid);
 	    routetagService.deleteRoutetag(routetag);
 		return SUCCESS;
 	}

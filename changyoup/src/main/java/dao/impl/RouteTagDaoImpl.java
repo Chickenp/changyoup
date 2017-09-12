@@ -32,6 +32,15 @@ public class RouteTagDaoImpl extends HibernateDaoSupport implements RouteTagDao 
 		List<Routetag> routetags = getHibernateTemplate().find(
 				"from Routetag where routeid=?", id);
 		return routetags;
+	}
+
+	@Override
+	public Routetag getRoutetagByBothId(int routeid, int tagid) {
+		@SuppressWarnings("unchecked")
+		List<Routetag> routetags = getHibernateTemplate().find(
+				"from Routetag where routeid=? and tagid=?", routeid, tagid);
+		Routetag routetag = routetags.size() > 0 ? routetags.get(0) : null;
+		return routetag;
 	};
 
 }
