@@ -46,10 +46,18 @@ public class AddTagAction extends BaseAction{
 		if(tag != null){
 			int tagid = tag.getTagid();
 			int routeid = (Integer)session().getAttribute("rid");
-		    Routetag routetag = new Routetag();
+			Routetag routetag = routetagService.getRoutetagByBothId(routeid, tagid);
+			if(routetag != null){
+				return SUCCESS;
+			}
+			routetag = new Routetag();
+			routetag.setRouteid(routeid);
+			routetag.setTagid(tagid);
+			routetagService.addRoutetag(routetag);
+		    /*Routetag routetag = new Routetag();
 		    routetag.setRouteid(routeid);
 		    routetag.setTagid(tagid);
-		    routetagService.addRoutetag(routetag);
+		    routetagService.addRoutetag(routetag);*/
 		}
 		else{
 			Tag newtag = new Tag();

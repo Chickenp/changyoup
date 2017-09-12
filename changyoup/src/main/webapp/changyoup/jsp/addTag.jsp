@@ -25,17 +25,17 @@ pageEncoding="utf-8"%>
 	<div id="addnewtag">
 		<div style="float:left">Input New Tag Name：</div>
 		<div>
-			<input type="text" name="tagname" id="tagname" maxlength="200">
+			<input type="text" name="tagname" id="tagname" maxlength="200" onblur="check()">
 		</div>
 		<br>
-		<button onclick="addtag()">添加Tag</button>
+		<button id="addtag" onclick="addtag()" disabled="true">添加Tag</button>
 		<button onclick="finish()">完成Tag添加</button>
 	</div>
 	<br>
 	
 	<div style="float:left">已有的Tag：</div>
 	<div>
-		<select id="tag">
+		<select id="tag" style="width:200px;">
 			<% 
 				for (int i = 0; i < tagList.size(); i++) {
 					Tag tag = tagList.get(i);
@@ -54,6 +54,16 @@ pageEncoding="utf-8"%>
 	</div>
 	
 	<script>
+		function check(){
+			var tagname = document.getElementById("tagname").value;
+			if(tagname == ""){
+				document.getElementById("addtag").disabled = true;
+			}
+			else{
+				document.getElementById("addtag").disabled = false;
+			}
+		}
+	
 		function addtag(){
 			var tagname = document.getElementById("tagname").value;
 			console.log(tagname);
