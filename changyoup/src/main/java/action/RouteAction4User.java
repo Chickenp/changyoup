@@ -130,10 +130,14 @@ public class RouteAction4User extends BaseAction{
 	    	orouteid=(int)session().getAttribute("rid");
 	    }
 	    if (routeid!=orouteid){
+	    	if (routeinfoService.getRouteInfoById(rid)==null){
+	    		return "fail";
+	    	}
 	    	session().setAttribute("rid", routeid);
 	    	session().setAttribute("day", 1);
 	    	Routeinfo routeinfo=new Routeinfo();
 	    	int routedays=0;
+
 			routeinfo=routeinfoService.getRouteInfoById(rid);
 			routedays=routeinfo.getRoutedays();
 			session().setAttribute("maxday", routedays);
@@ -144,6 +148,9 @@ public class RouteAction4User extends BaseAction{
 		System.out.println("routedate=");
 		System.out.println(routedate);
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
+    	if (routeinfoService.getRouteInfoById(rid)==null){
+    		return "fail";
+    	}
 		String scontent = routeService.getRouteContentbyId(id);
 		Route sroute = routeService.getSingleRoute(id);
 		request().setAttribute("scontent", scontent);

@@ -102,7 +102,8 @@
 		</action>
 		
 		<action name="TravelRoute" class="action.RouteAction4User" method="view">
-			<result>/changyoup/jsp/viewrouteforuser.jsp</result>
+			<result name="success">/changyoup/jsp/viewrouteforuser.jsp</result>
+			<result name="fail">/changyoup/jsp/noroutewarning.jsp</result>
 		</action>
 		<action name="PreviousDay4User" class="action.RouteAction4User" method="previous">
 		</action>

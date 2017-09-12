@@ -76,8 +76,8 @@
 
 		<div id="toolbar_div" class="toolbar"></div>
 		<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
-		<div id="text_div" class="text">
-			<%=scontent%>
+		<div id="row">
+			<p><%=scontent%></p>
 		</div>
 
 		<br>

@@ -34,15 +34,17 @@ public class GetProductAction extends BaseAction{
         List<String> location_1=new ArrayList<String>();
         List<String> location_2=new ArrayList<String>();
         for (int i=0; i<routes.size(); i++){
-                location_1.add(routes.get(i).getLocation1());
-                location_2.add(routes.get(i).getLocation2());
-                days.add(appService.getHtmlById(routes.get(i).getRouteMongoid()));
+        		Route route=routes.get(i);
+        		//设定的时候经纬度有点问题，反一下
+                location_2.add(((route.getLocation1()!=null)&&!(route.getLocation1().equals("")))?(route.getLocation1()):"0");
+                location_1.add(((route.getLocation2()!=null)&&!(route.getLocation2().equals("")))?(route.getLocation2()):"0");
+                days.add(routeService.getRouteContentbyId(route.getRouteMongoid()));
         }
         
         List<Tag> tags = routetagService.getTagsByRouteId(routeid);
         List<String> tag_name=new ArrayList<String>();
         List<Integer> tag_id=new ArrayList<Integer>();
-        for (int i=0; i<routes.size(); i++){
+        for (int i=0; i<tags.size(); i++){
         	tag_name.add(tags.get(i).getTagname());
         	tag_id.add(tags.get(i).getTagid());
         }
