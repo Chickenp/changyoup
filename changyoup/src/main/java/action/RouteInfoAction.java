@@ -100,6 +100,7 @@ public class RouteInfoAction extends BaseAction{
 		
 		routeid = routeinfo.getRouteid();
 		session().setAttribute("rid", routeid);
+		session().setAttribute("routetitle", routetitle);
 		session().setAttribute("maxday", routedays);
 		return null;
 	}

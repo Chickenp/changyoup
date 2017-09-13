@@ -6,9 +6,11 @@ pageEncoding="utf-8"%>
 <html lang="en">
 
 <head>
-
+	<title>Add Tag to Route</title>
 	<script src="/changyoup/changyoup/js/jquery.min.js"></script>
 	<script src="/changyoup/changyoup/js/bootbox.min.js"></script>
+	<%@include file="logincheckadmin.jsp"%>
+	<%@include file="CommonHead.jsp"%>
 </head>
 
 
@@ -19,40 +21,57 @@ pageEncoding="utf-8"%>
 			tagList = (ArrayList<Tag>) request.getAttribute("tags");
 		}
 	%>
-	<h3>Add Tag to Route <%=session.getAttribute("rid") %></h3>
-	<div class="container">
 	
-	<div id="addnewtag">
-		<div style="float:left">Input New Tag Name：</div>
-		<div>
-			<input type="text" name="tagname" id="tagname" maxlength="200" onblur="check()">
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<%@include file="Navbar.jsp"%>
+
+			<div class="fh5co-hero">
+				<div class="fh5co-overlay"></div>
+				<div class="fh5co-cover text-center"
+					data-stellar-background-ratio="0.5"
+					style="background-image: url(/changyoup/changyoup/images/beachchair.jpg);">
+					<div class="desc animate-box">
+						<div class="container" style="width:500px;">
+							<h2 style="color:#fff;"><%=session.getAttribute("routetitle") %></h2>
+							<div id="addnewtag">
+								<div style="float:left;">输入标签：
+									<input type="text" name="tagname" id="tagname" maxlength="200"
+										onblur="check()" style="color:#000;">
+								</div>
+								<button id="addtag" onclick="addtag()" disabled="true" 
+									style="color:#000;">添加标签</button>
+							</div>
+							<br>
+							<div style="float:left;">已有标签：
+								<select id="tag" style="width:200px;height:32px;color:#000;">
+									<% 
+										for (int i = 0; i < tagList.size(); i++) {
+											Tag tag = tagList.get(i);
+									%>
+									<option value=<%=tag.getTagid() %>>
+										<%=tag.getTagname() %>
+									</option>
+									<%
+										}
+									%>
+								</select>
+							</div>
+							<button onclick="deletetag()" <%if (tagList.size() == 0) {%> disabled="true" <%}%>
+								style="color:#000;">删除标签</button>
+							<br><br>
+							<button onclick="finish()" style="color:#000;">完成添加</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<%@include file="Foot.jsp"%>
 		</div>
-		<br>
-		<button id="addtag" onclick="addtag()" disabled="true">添加Tag</button>
-		<button onclick="finish()">完成Tag添加</button>
+		<!-- END fh5co-page -->
 	</div>
-	<br>
-	
-	<div style="float:left">已有的Tag：</div>
-	<div>
-		<select id="tag" style="width:200px;">
-			<% 
-				for (int i = 0; i < tagList.size(); i++) {
-					Tag tag = tagList.get(i);
-			%>
-			<option value=<%=tag.getTagid() %>>
-				<%=tag.getTagname() %>
-			</option>
-			<%
-				}
-			%>
-		</select>
-		<button onclick="deletetag()" <%if (tagList.size() == 0) {%> disabled="true" 
-			<%}%>>删除Tag</button>
-	</div>
-	
-	</div>
-	
+	<!-- END fh5co-wrapper -->
+		
 	<script>
 		function check(){
 			var tagname = document.getElementById("tagname").value;
