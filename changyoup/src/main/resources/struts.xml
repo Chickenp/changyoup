@@ -210,6 +210,14 @@
 			<result name="success">/changyoup/jsp/chpmap.jsp</result>
 			<result name="error">/changyoup/jsp/chpmap.jsp</result>
 		</action>
+		<action name="RouteRatingPro" class="action.RatingAction" method="RouteRating">
+			<result name="success">/changyoup/jsp/chpmap.jsp</result>
+			<result name="error">/changyoup/jsp/index.jsp</result>
+		</action>
+		<action name="PlanRatingPro" class="action.RatingAction" method="PlanRating">
+			<result name="success">/changyoup/jsp/newviewplan.jsp</result>
+			<result name="error">/changyoup/jsp/index.jsp</result>
+		</action>
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>

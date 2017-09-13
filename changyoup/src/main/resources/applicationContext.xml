@@ -65,7 +65,8 @@
 	<bean id="userinfoDao" class="dao.impl.UserInfoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	
+	
 	<bean id="userinfoService" class="service.impl.UserInfoServiceImpl">
 		<property name="userinfoDao" ref="userinfoDao"></property>
 	</bean>

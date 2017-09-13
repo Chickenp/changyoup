@@ -6,9 +6,11 @@ import java.util.List;
 import model.Routecomment;
 import model.Route;
 import model.Routeinfo;
+import model.RoutelikeId;
 import model.Tag;
 import service.AppService;
 import service.RouteInfoService;
+import service.RouteLikeService;
 import service.RouteService;
 import service.RouteTagService;
 
@@ -19,6 +21,7 @@ public class GetProductAction extends BaseAction{
     private RouteInfoService routeinfoService;
     private RouteService routeService;
     private RouteTagService routetagService;
+    private RouteLikeService routelikeService;
     private int routeid;
     @Override
     public String execute() throws Exception {
@@ -28,11 +31,12 @@ public class GetProductAction extends BaseAction{
         Routeinfo rf = routeinfoService.getRouteInfoById(routeid);
         int date = rf.getRoutedays();
         request().setAttribute("date",date);
-        List<String> days=new ArrayList<String>();
-        
+        List<String> days=new ArrayList<String>();        
         List<Route> routes = routeService.getRoutesById(routeid);
         List<String> location_1=new ArrayList<String>();
         List<String> location_2=new ArrayList<String>();
+        double avg=routelikeService.getAvg(routeid);
+        int yourpoint=routelikeService.getLikeByUser(new RoutelikeId(routeid,(Integer)session().getAttribute("uid"))).getPoint();
         for (int i=0; i<routes.size(); i++){
         		Route route=routes.get(i);
         		//设定的时候经纬度有点问题，反一下
@@ -55,6 +59,8 @@ public class GetProductAction extends BaseAction{
         request().setAttribute("location_2",location_2);
         request().setAttribute("tagnames",tag_name );
         request().setAttribute("tagids",tag_id );
+        request().setAttribute("point", avg);
+        request().setAttribute("Yourpoint", yourpoint);
         return SUCCESS;
     }
     /**
@@ -122,6 +128,18 @@ public class GetProductAction extends BaseAction{
      */
     public void setRouteid(int routeid) {
         this.routeid = routeid;
+    }
+    /**
+     * @return the routelikeService
+     */
+    public RouteLikeService getRoutelikeService() {
+        return routelikeService;
+    }
+    /**
+     * @param routelikeService the routelikeService to set
+     */
+    public void setRoutelikeService(RouteLikeService routelikeService) {
+        this.routelikeService = routelikeService;
     }
     
 }
