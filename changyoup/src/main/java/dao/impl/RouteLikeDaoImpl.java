@@ -20,7 +20,7 @@ public class RouteLikeDaoImpl extends HibernateDaoSupport implements RouteLikeDa
         @SuppressWarnings("unchecked")
         List<Routelike> routelikes = (List<Routelike>) getHibernateTemplate().find(
                 "from Routelike as r where r.id.routeid=? and r.id.userid=? ", routelikeid.getRouteid(),routelikeid.getUserid());
-        Routelike liked = routelikes.size() > 0 ? routelikes.get(0) : null;
+        Routelike liked = routelikes.size() > 0 ? routelikes.get(0) : new Routelike(new RoutelikeId(0,0),0);
         return liked;
     }
     public double getAvg(int routeid){

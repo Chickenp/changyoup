@@ -36,7 +36,7 @@ public class GetProductAction extends BaseAction{
         List<String> location_1=new ArrayList<String>();
         List<String> location_2=new ArrayList<String>();
         double avg=routelikeService.getAvg(routeid);
-        int yourpoint=routelikeService.getLikeByUser(new RoutelikeId(routeid,(Integer)session().getAttribute("uid"))).getPoint();
+        int yourpoint=session().getAttribute("uid")==null?0:routelikeService.getLikeByUser(new RoutelikeId(routeid,(Integer)session().getAttribute("uid"))).getPoint();
         for (int i=0; i<routes.size(); i++){
         		Route route=routes.get(i);
         		//设定的时候经纬度有点问题，反一下
