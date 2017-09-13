@@ -28,7 +28,7 @@
 		String cplan = "";
         String title = "";
 	    int planid = 0;
-	    double point=0.0;
+	    String point="0.0";
 	    int yourpoint=0;
 	    ArrayList<Comment> comments =new ArrayList<Comment>();
 		if (request.getAttribute("cplan") != null) {
@@ -44,11 +44,11 @@
 			comments = (ArrayList<Comment>) request.getAttribute("comments");
 			    }
 		if (request.getAttribute("point") != null) {
-		        point=(double)request.getAttribute("point");
+		    point=(String)request.getAttribute("point");
 		    }
-		    if (request.getAttribute("Yourpoint") != null) {
-		        yourpoint=(Integer)request.getAttribute("Yourpoint");
-		    }
+		if (request.getAttribute("Yourpoint") != null) {
+			yourpoint=(Integer)request.getAttribute("Yourpoint");
+		}
 	%>
     
 	<div id="fh5co-wrapper">
