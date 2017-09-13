@@ -151,9 +151,11 @@
 		</action>
         <action name="viewPlan" class="action.PlanAction" method="getPlanbyId">
         	<result name="success">/changyoup/jsp/newviewplan.jsp</result>
+        	<result name="fail">/changyoup/jsp/index.jsp</result>
         </action>
         <action name="editPlan" class="action.PlanAction" method="getPlanbyId">
         	<result name="success">/changyoup/jsp/releasePlan.jsp</result>
+        	<result name="fail">/changyoup/jsp/index.jsp</result>
         </action>
         <action name="editConfirm" class="action.PlanAction" method="update">
         </action>

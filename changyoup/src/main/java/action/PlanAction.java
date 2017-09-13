@@ -72,19 +72,25 @@ public class PlanAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	public String getPlanbyId() throws Exception{
+	public String getPlanbyId(){
 		Planinfo planinfo=new Planinfo();
 		planinfo=planinfoService.getPlaninfobyId(planid);
+		try {
+			planinfo.getTitle();
+		} catch (Exception e) {
+			return "fail";
+		}
 		request().setAttribute("title", planinfo.getTitle());
 		plan=planService.getPlanbyId(planid);
 		List<Comment> comments=appService.getCommentByPlan(planid);
 		double avg=planlikeService.getAvg(planid);
+		String stravg=Double.toString(avg);
 		int yourpoint=session().getAttribute("uid")==null?0:planlikeService.getLikeByUser(new PlanlikeId(planid,(Integer)session().getAttribute("uid"))).getPoint();
 		session().setAttribute("planid", planid);
 		request().setAttribute("cplan", plan);
 		request().setAttribute("pubid", planinfo.getPublisher());
 		request().setAttribute("comments",comments);
-		request().setAttribute("point", avg);
+		request().setAttribute("point", stravg);
 	        request().setAttribute("Yourpoint", yourpoint);
 		return SUCCESS;
 	}
