@@ -1,5 +1,7 @@
 package action;
 
+import model.Planlike;
+import model.PlanlikeId;
 import model.Routelike;
 import model.RoutelikeId;
 import service.PlanLikeService;
@@ -69,7 +71,6 @@ public class RatingAction extends BaseAction{
      */
    
     public String RouteRating() throws Exception{
-        System.out.println("DMN1");
         int uid=(Integer)session().getAttribute("uid");
         if(session().getAttribute("uid")==null){return ERROR;}
         RoutelikeId routelikeid=new RoutelikeId(routeid,uid);
@@ -78,6 +79,11 @@ public class RatingAction extends BaseAction{
         return SUCCESS;
     }
     public String PlanRating() throws Exception{
+        int uid=(Integer)session().getAttribute("uid");
+        if(session().getAttribute("uid")==null){return ERROR;}
+        PlanlikeId planlikeid=new PlanlikeId(planid,uid);
+        Planlike planlike=new Planlike(planlikeid,point);
+        planlikeService.save(planlike);
         return SUCCESS;
     }
     /**

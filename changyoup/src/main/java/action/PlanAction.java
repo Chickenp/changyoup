@@ -11,7 +11,10 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import model.Comment;
 import model.Planinfo;
+import model.PlanlikeId;
+import model.RoutelikeId;
 import service.AppService;
+import service.PlanLikeService;
 import service.PlanService;
 import service.PlaninfoService;
 
@@ -24,6 +27,7 @@ public class PlanAction extends BaseAction{
 	private String title;
 	private PlaninfoService planinfoService;
 	private AppService appService;
+	private PlanLikeService planlikeService;
 	public void setPlanService(PlanService planService) {
 		this.planService = planService;
 	}
@@ -74,10 +78,14 @@ public class PlanAction extends BaseAction{
 		request().setAttribute("title", planinfo.getTitle());
 		plan=planService.getPlanbyId(planid);
 		List<Comment> comments=appService.getCommentByPlan(planid);
+		double avg=planlikeService.getAvg(planid);
+		int yourpoint=session().getAttribute("uid")==null?0:planlikeService.getLikeByUser(new PlanlikeId(planid,(Integer)session().getAttribute("uid"))).getPoint();
 		session().setAttribute("planid", planid);
 		request().setAttribute("cplan", plan);
 		request().setAttribute("pubid", planinfo.getPublisher());
 		request().setAttribute("comments",comments);
+		request().setAttribute("point", avg);
+	        request().setAttribute("Yourpoint", yourpoint);
 		return SUCCESS;
 	}
 
@@ -140,6 +148,34 @@ public class PlanAction extends BaseAction{
      */
     public void setAppService(AppService appService) {
         this.appService = appService;
+    }
+
+    /**
+     * @return the planlikeService
+     */
+    public PlanLikeService getPlanlikeService() {
+        return planlikeService;
+    }
+
+    /**
+     * @param planlikeService the planlikeService to set
+     */
+    public void setPlanlikeService(PlanLikeService planlikeService) {
+        this.planlikeService = planlikeService;
+    }
+
+    /**
+     * @return the planService
+     */
+    public PlanService getPlanService() {
+        return planService;
+    }
+
+    /**
+     * @return the planinfoService
+     */
+    public PlaninfoService getPlaninfoService() {
+        return planinfoService;
     }
 
    

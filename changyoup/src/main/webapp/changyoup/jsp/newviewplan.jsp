@@ -28,6 +28,8 @@
 		String cplan = "";
         String title = "";
 	    int planid = 0;
+	    double point=0.0;
+	    int yourpoint=0;
 	    ArrayList<Comment> comments =new ArrayList<Comment>();
 		if (request.getAttribute("cplan") != null) {
 			cplan = (String) request.getAttribute("cplan");
@@ -41,6 +43,12 @@
 		if (request.getAttribute("comments") != null) {
 			comments = (ArrayList<Comment>) request.getAttribute("comments");
 			    }
+		if (request.getAttribute("point") != null) {
+		        point=(double)request.getAttribute("point");
+		    }
+		    if (request.getAttribute("Yourpoint") != null) {
+		        yourpoint=(Integer)request.getAttribute("Yourpoint");
+		    }
 	%>
     
 	<div id="fh5co-wrapper">
@@ -153,6 +161,16 @@
 					</div>
 				</div>
 				<p>
+				<div class="container">
+					Average Rating:<%=point %>
+<table>
+	<tr>
+		<td>Rating!</td>
+		<td><div id="stars-default"><input type=hidden name"rating"/></div></td>
+	</tr>
+	
+</table>
+</div>
 					<div class="container">
 						<h2>Comments</h2>
 						<ul id="comments" class="list-group">
@@ -275,6 +293,117 @@ var but=document.getElementById("timeline_post_btn").classList.add('disabled');
 		};
 
 	});
+</script>
+<script>(function ( $ ) {
+ 
+    $.fn.rating = function( method, options ) {
+		method = method || 'create';
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            // These are the defaults.
+			limit: 5,
+			value: <%=yourpoint%>,
+			glyph: "glyphicon-star",
+            coloroff: "gray",
+			coloron: "gold",
+			size: "2.0em",
+			cursor: "default",
+			onClick: function () { 
+				if(<%=session.getAttribute("uid")==null %>){
+				alert('Rate after you login');}
+				else{
+				var point=this.attr('data-rating');
+				var planid = getUrlParameter('planid');
+				$.ajax({
+					type : "POST",
+					url : "PlanRatingPro",
+					data : {
+						point:point,
+						planid:planid
+					},
+
+					success : function() {
+						
+								location.reload();
+
+						
+
+					},
+					error : function() {
+						
+								location.reload();
+						
+					},
+				});}
+			},
+            endofarray: "idontmatter"
+        }, options );
+		var style = "";
+		style = style + "font-size:" + settings.size + "; ";
+		style = style + "color:" + settings.coloroff + "; ";
+		style = style + "cursor:" + settings.cursor + "; ";
+	
+
+		
+		if (method == 'create')
+		{
+			//this.html('');	//junk whatever was there
+			
+			//initialize the data-rating property
+			this.each(function(){
+				attr = $(this).attr('data-rating');
+				if (attr === undefined || attr === false) { $(this).attr('data-rating',settings.value); }
+			})
+			
+			//bolt in the glyphs
+			for (var i = 0; i < settings.limit; i++)
+			{
+				this.append('<span data-value="' + (i+1) + '" class="ratingicon glyphicon ' + settings.glyph + '" style="' + style + '" aria-hidden="true"></span>');
+			}
+			
+			//paint
+			this.each(function() { paint($(this)); });
+
+		}
+		if (method == 'set')
+		{
+			this.attr('data-rating',options);
+			this.each(function() { paint($(this)); });
+		}
+		if (method == 'get')
+		{
+			return this.attr('data-rating');
+		}
+		//register the click events
+		this.find("span.ratingicon").click(function() {
+			rating = $(this).attr('data-value')
+			$(this).parent().attr('data-rating',rating);
+			paint($(this).parent());
+			settings.onClick.call( $(this).parent() );
+		})
+		function paint(div)
+		{
+			rating = parseInt(div.attr('data-rating'));
+			div.find("input").val(rating);	//if there is an input in the div lets set it's value
+			div.find("span.ratingicon").each(function(){	//now paint the stars
+				
+				var rating = parseInt($(this).parent().attr('data-rating'));
+				var value = parseInt($(this).attr('data-value'));
+				if (value > rating) { $(this).css('color',settings.coloroff); }
+				else { $(this).css('color',settings.coloron); }
+			})
+		}
+
+    };
+ 
+}( jQuery ));
+
+$(document).ready(function(){
+
+	$("#stars-default").rating();
+	$("#stars-green").rating('create',{coloron:'green',onClick:function(){ alert('rating is ' + this.attr('data-rating')); }});
+	$("#stars-herats").rating('create',{coloron:'red',limit:10,glyph:'glyphicon-heart'});	
+});
 </script>
 </html>
 
