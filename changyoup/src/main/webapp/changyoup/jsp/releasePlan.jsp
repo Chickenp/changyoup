@@ -436,7 +436,7 @@
 					publisher:publisher
 					},
 					success : function(data){
-						window.location.href="<%=url%>";
+						window.location.href="allPlansPro";
 					}
 				})
         		<%} else {%>
