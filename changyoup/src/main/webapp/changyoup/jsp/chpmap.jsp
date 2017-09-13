@@ -57,7 +57,7 @@ div.col-sm-10 div {
 			    ArrayList<String> tagnames =new ArrayList<String>();
 			    ArrayList<Integer> tagids =new ArrayList<Integer>();
 			    ArrayList<Routecomment> comments =new ArrayList<Routecomment>();
-			    double point=0.0;
+			    String point="";
 			    int yourpoint=0;
 			    if (request.getAttribute("location_1") != null) {
 			    	location_1 = (ArrayList<String>) request.getAttribute("location_1");
@@ -78,7 +78,7 @@ div.col-sm-10 div {
 				comments = (ArrayList<Routecomment>) request.getAttribute("comments");
 				    }
 			    if (request.getAttribute("point") != null) {
-			        point=(double)request.getAttribute("point");
+			        point=(String)request.getAttribute("point");
 			    }
 			    if (request.getAttribute("Yourpoint") != null) {
 			        yourpoint=(Integer)request.getAttribute("Yourpoint");

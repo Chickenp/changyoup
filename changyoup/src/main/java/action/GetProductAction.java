@@ -35,7 +35,9 @@ public class GetProductAction extends BaseAction{
         List<Route> routes = routeService.getRoutesById(routeid);
         List<String> location_1=new ArrayList<String>();
         List<String> location_2=new ArrayList<String>();
-        double avg=routelikeService.getAvg(routeid);
+        double avg=0.0;
+        avg=routelikeService.getAvg(routeid);
+        String stravg = Double.toString(avg) ;
         int yourpoint=session().getAttribute("uid")==null?0:routelikeService.getLikeByUser(new RoutelikeId(routeid,(Integer)session().getAttribute("uid"))).getPoint();
         for (int i=0; i<routes.size(); i++){
         		Route route=routes.get(i);
@@ -60,7 +62,7 @@ public class GetProductAction extends BaseAction{
         request().setAttribute("location_2",location_2);
         request().setAttribute("tagnames",tag_name );
         request().setAttribute("tagids",tag_id );
-        request().setAttribute("point", avg);
+        request().setAttribute("point", stravg);
         request().setAttribute("Yourpoint", yourpoint);
         return SUCCESS;
     }
