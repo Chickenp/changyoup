@@ -24,7 +24,10 @@ public class RouteLikeDaoImpl extends HibernateDaoSupport implements RouteLikeDa
         return liked;
     }
     public double getAvg(int routeid){
-        return (double)(getHibernateTemplate().find("select avg(r.point) from Routelike as r where r.id.routeid=?",routeid).get(0));
+        @SuppressWarnings("unchecked")
+        List <Object> res=getHibernateTemplate().find("select avg(r.point) from Routelike as r where r.id.routeid=?",routeid);
+        return res.get(0)!=null?(double)(res.get(0)):0.0;
+       
     }
 	
 }
