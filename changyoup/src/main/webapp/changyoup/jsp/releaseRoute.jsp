@@ -6,14 +6,12 @@
 <script type="text/javascript"
 	src="http://api.map.baidu.com/api?v=2.0&ak=UKr8XUoQlaYbozgGhyzG0c88inkDGUfV"></script>
 <head>
-
-<meta charset="UTF-8">
-<title>Release Travel Route</title>
-
-<script src="/changyoup/changyoup/js/jquery.min.js"></script>
-
-<link href="../css/Releaseplan.css" rel="stylesheet" type="text/css">
-
+	<meta charset="UTF-8">
+	<title>Release Travel Route</title>
+	<script src="/changyoup/changyoup/js/jquery.min.js"></script>
+	<%@include file="logincheckadmin.jsp"%>
+	<%@include file="CommonHead.jsp"%>
+	<link href="../css/Releaseplan.css" rel="stylesheet" type="text/css">
 </head>
 
 
@@ -46,87 +44,93 @@
 					location2 = sroute.getLocation2();
 				}
 	%>
-	<div class="container">
-		<div>
-			<button id="btn1">获取html</button>
-			<button id="btn2">获取text</button>
-		</div>
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<%@include file="Navbar.jsp"%>
 
-		<div>
-			<h3>
-				Day
-				<%=day%></h3>
-		</div>
-		<div>
-			<h4>
-				Route id
-				<%=session.getAttribute("rid")%></h4>
-		</div>
-
-		<form action="" method="post" name="routeform" id="routeform">
-
-			<div style="float: left">
-				经度：<input type="text" name="location1" id="location1"
-					value="<%=location1%>" readonly="readonly">&nbsp;
-			</div>
-			<div>
-				纬度：<input type="text" name="location2" id="location2"
-					value="<%=location2%>" readonly="readonly">
-			</div>
-			<br>
-
-			<div id="toolbar_div" class="toolbar"></div>
-			<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
-			<div id="text_div" class="text">
-				<%=scontent%>
-			</div>
-			<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
-			<script type="text/javascript"
-				src="../js/wangEditor/wangEditor.min.js"></script>
-			<script type="text/javascript">
-				var E = window.wangEditor
-				var editor = new E('#toolbar_div', '#text_div') // 或者 var editor = new E( document.getElementById('#editor') )
-				editor.customConfig.uploadImgShowBase64 = true // 使用 base64 保存图片
-				editor.create()
-
-				document.getElementById('btn1').addEventListener('click',
-						function() {
-							// 读取 html
-							alert(editor.txt.html())
-						}, false)
-
-				document.getElementById('btn2').addEventListener('click',
-						function() {
-							// 读取 text
-							alert(editor.txt.text())
-						}, false)
-			</script>
-			<br>
-		</form>
-		<div style="height: 600px;">
-		<div id="r-result">
-			请输入关键词并点地图以加入坐标:<input type="text" id="suggestId" size="20" value="百度"
-				style="width: 150px;" />
-		<div id="l-map" style="height:350px;"></div>
+			<div class="fh5co-hero">
+				<div class="fh5co-overlay"></div>
+				<div class="fh5co-cover text-center"
+					data-stellar-background-ratio="0.5"
+					style="background-image: url(/changyoup/changyoup/images/beachchair.jpg);">
+					<div class="desc animate-box">
+						<h2>Day <%=day%> of <%=session.getAttribute("routetitle") %></h2>
+					</div>
+				</div>
+			</div>	
+			
+			<div class="fh5co-section">
+				<div class="container">
+					<form action="" method="post" name="routeform" id="routeform">
+						<!-- <div>
+							<button id="btn1">获取html</button>
+							<button id="btn2">获取text</button>
+						</div> -->
+						<div id="toolbar_div" class="toolbar"></div>
+						<div style="padding: 5px 0; color: #ccc">中间隔离带</div>
+						<div id="text_div" class="text">
+							<%=scontent%>
+						</div>
+						<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+						<script type="text/javascript"
+							src="../js/wangEditor/wangEditor.min.js"></script>
+						<script type="text/javascript">
+							var E = window.wangEditor
+							var editor = new E('#toolbar_div', '#text_div') // 或者 var editor = new E( document.getElementById('#editor') )
+							editor.customConfig.uploadImgShowBase64 = true // 使用 base64 保存图片
+							editor.create()
+							
+							document.getElementById('btn1').addEventListener('click',
+								function() {
+									// 读取 html
+									alert(editor.txt.html())
+								}, false)
+							document.getElementById('btn2').addEventListener('click',
+								function() {
+									// 读取 text
+									alert(editor.txt.text())
+								}, false)
+						</script>
+						<br>
+					</form>
+					
+					<div style="height: 600px;">
+						<div id="r-result" style="color:#fff;">
+							请输入关键词并点地图以加入坐标：<input type="text" id="suggestId" size="20" value="百度"
+								style="width:150px; color:#000;" />&nbsp;
+				
+							经度：<input type="text" name="location1" id="location1"
+								value="<%=location1%>" readonly="readonly" style="color:#000;">&nbsp;
+			
+							纬度：<input type="text" name="location2" id="location2"
+								value="<%=location2%>" readonly="readonly" style="color:#000;">
+							<br><br>
+							<div id="l-map" style="height:500px;"></div>
+						</div>
+						<div id="searchResultPanel"
+							style="border: 1px solid #C0C0C0; width: 150px; height: auto; display: none;"></div>
+					</div>
+					<button onclick="preday()" <%if (day <= 1) {%> disabled="true" <%}%> style="color:#000;">上一天</button>&nbsp;
+					<button onclick="release()" style="color:#000;">发布路线</button>&nbsp;
+					<button onclick="nextday()" <%if (day >= maxday) {%> disabled="true"<%}%> style="color:#000;">下一天</button>
+					
+					<div style="float:right;color:#fff;">
+						<button id="jump" onclick="jumpto()" style="color:#000;">跳转</button>
+						到第 <input type="int" name="targetday" id="targetday" value="1"
+							size="5" maxlength="5" onblur="check()" style="color:#000;"> 页
+					</div>
+					<br><br>
 		
-		</div>
-		<div id="searchResultPanel"
-			style="border: 1px solid #C0C0C0; width: 150px; height: auto; display: none;"></div>
+					<button onclick="confirmclear()" style="color:#000;">清空内容</button>
+				</div>
+				<!-- end container -->
 			</div>
-		<button onclick="preday()" <%if (day <= 1) {%> disabled="true" <%}%>>上一天</button>
-		&nbsp;
-		<button onclick="release()">发布路线</button>
-		&nbsp;
-		<button onclick="nextday()" <%if (day >= maxday) {%> disabled="true"
-			<%}%>>下一天</button>
-		<div style="float: right">
-			<button id="jump" onclick="jumpto()">跳转</button>
-			到第 <input type="int" name="targetday" id="targetday" value="1"
-				size="5" maxlength="5" onblur="check()"> 页
+			
+		<%@include file="Foot.jsp"%>
 		</div>
-		<br>
-		<button onclick="confirmclear()">清空内容</button>
+		<!-- END fh5co-page -->
 	</div>
+	<!-- END fh5co-wrapper -->
 
 	<script type="text/javascript">		
 		// 百度地图API功能
