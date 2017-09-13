@@ -121,8 +121,12 @@ public class RouteAction extends BaseAction{
 	}
 	
 	public String view() throws Exception{
-		routedate = (Integer)session().getAttribute("day");
-		routeid = (Integer)session().getAttribute("rid");
+		if (session().getAttribute("day")!=null){
+			routedate = (Integer)session().getAttribute("day");
+		}
+		if(session().getAttribute("rid")!=null){
+			routeid = (Integer)session().getAttribute("rid");
+		}
 		String title="";
 		title=routeinfoService.getRouteInfoById(routeid).getRoutetitle();
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
