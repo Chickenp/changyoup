@@ -122,4 +122,20 @@ margin-left: auto;
 .tags a:hover:before {
 	border-color: transparent #555 transparent transparent;
 }
+
+#container2222 {
+	height: 400px;
+	width: 100%;
+}
+
+div.col-sm-10 div {
+	height: 500px;
+	font-size: 28px;
+}
+
+#section1 {
+	color: #00000;
+	background-color: #ffffff;
+	overflow: auto;
+}
 </style>

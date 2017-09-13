@@ -20,6 +20,7 @@ public class RouteAction extends BaseAction{
 	private int targetday;
 	
 	private RouteService routeService;
+	private RouteInfoService routeinfoService;
 	
 	public String getRouteMongoid() {
 		return this.routeMongoid;
@@ -81,6 +82,10 @@ public class RouteAction extends BaseAction{
 		this.routeService = routeService;
 	}
 	
+	public void setRouteinfoService(RouteInfoService routeinfoService) {
+		this.routeinfoService = routeinfoService;
+	}
+	
 	private void save(){
 		routedate = (Integer)session().getAttribute("day");
 		routeid = (Integer)session().getAttribute("rid");
@@ -118,13 +123,14 @@ public class RouteAction extends BaseAction{
 	public String view() throws Exception{
 		routedate = (Integer)session().getAttribute("day");
 		routeid = (Integer)session().getAttribute("rid");
-		
+		String title="";
+		title=routeinfoService.getRouteInfoById(routeid).getRoutetitle();
 		String id = Integer.toString(routeid) + Integer.toString(routedate);
 		String scontent = routeService.getRouteContentbyId(id);
 		Route sroute = routeService.getSingleRoute(id);
 		request().setAttribute("scontent", scontent);
 		request().setAttribute("sroute", sroute);
-		
+		request().setAttribute("title", title);
 		return SUCCESS;
 	}
 	

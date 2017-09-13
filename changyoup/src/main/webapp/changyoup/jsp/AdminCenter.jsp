@@ -27,8 +27,6 @@
 			<div class="fh5co-listing">
 				<div class="container">
 					<div class="row">
-					<div class="col-md-3 col-sm-3 fh5co-item-wrap">
-					</div>
 						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
 							<a class="fh5co-listing-item" href="newRoute"> <img
 								src="/changyoup/changyoup/images/toolicons/Librariesalt.png"
@@ -68,6 +66,19 @@
 								alt="设置旅游攻略是否在首页显示" class="img-responsive">
 								<div class="fh5co-listing-copy">
 									<h2>置顶旅游攻略</h2>
+									<span class="icon"> <i class="icon-chevron-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
+						<%	int NavUid;
+							NavUid=(Integer) session.getAttribute("uid"); %>
+							<a class="fh5co-listing-item" href="Account?id=<%=NavUid%>"> <img
+								src="/changyoup/changyoup/images/toolicons/UserNo-Frame.png"
+								alt="查看管理员个人中心" class="img-responsive">
+								<div class="fh5co-listing-copy">
+									<h2>我的个人中心</h2>
 									<span class="icon"> <i class="icon-chevron-right"></i>
 									</span>
 								</div>

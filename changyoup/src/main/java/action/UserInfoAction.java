@@ -97,11 +97,13 @@ public class UserInfoAction extends BaseAction{
 	
 	public String getInfobyId()throws Exception{
 		int uid=0;
-		HttpSession httpSession=session();
-		if (httpSession.getAttribute("uid")!=null){
-			uid = (Integer)httpSession.getAttribute("uid");
-			}
+		//HttpSession httpSession=session();
+		//if (httpSession.getAttribute("uid")!=null){
+		//	uid = (Integer)httpSession.getAttribute("uid");
+		//	}
+		uid=id;
 		UserInfo info=userinfoService.getUserInfoById(uid);
+		request().setAttribute("userid", uid);
 		request().setAttribute("info", info);
 		return SUCCESS;
 	}

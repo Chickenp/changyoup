@@ -91,106 +91,7 @@ div.col-sm-10 div {
 
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-			<div id="fh5co-header">
-				<header id="fh5co-header-section">
-					<div class="container">
-						<div class="nav-header">
-							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-							<h1 id="fh5co-logo">
-								<a href="index.jsp">Listing</a>
-							</h1>
-							<!-- START #fh5co-menu-wrap -->
-							<nav id="fh5co-menu-wrap" role="navigation">
-								<ul class="sf-menu" id="fh5co-primary-menu">
-									<li class="active"><a href="index.jsp">Home</a></li>
-									<li><a href="listing.html" class="fh5co-sub-ddown">Listing</a>
-										<ul class="fh5co-sub-menu">
-											<li><a
-												href="#/preview/?item=build-free-html5-bootstrap-template"
-												target="_blank">Build</a></li>
-											<li><a
-												href="#/preview/?item=work-free-html5-template-bootstrap"
-												target="_blank">Work</a></li>
-											<li><a
-												href="#/preview/?item=light-free-html5-template-bootstrap"
-												target="_blank">Light</a></li>
-											<li><a
-												href="#/preview/?item=relic-free-html5-template-using-bootstrap"
-												target="_blank">Relic</a></li>
-											<li><a
-												href="#/preview/?item=display-free-html5-template-using-bootstrap"
-												target="_blank">Display</a></li>
-											<li><a
-												href="#/preview/?item=sprint-free-html5-template-bootstrap"
-												target="_blank">Sprint</a></li>
-										</ul></li>
-									<li><a href="#" class="fh5co-sub-ddown">Dropdown</a>
-										<ul class="fh5co-sub-menu">
-											<li><a href="left-sidebar.html">Web Development</a></li>
-											<li><a href="right-sidebar.html">Branding &amp;
-													Identity</a></li>
-											<li><a href="#" class="fh5co-sub-ddown">Free HTML5</a>
-												<ul class="fh5co-sub-menu">
-													<li><a
-														href="#/preview/?item=build-free-html5-bootstrap-template"
-														target="_blank">Build</a></li>
-													<li><a
-														href="#/preview/?item=work-free-html5-template-bootstrap"
-														target="_blank">Work</a></li>
-													<li><a
-														href="#/preview/?item=light-free-html5-template-bootstrap"
-														target="_blank">Light</a></li>
-													<li><a
-														href="#/preview/?item=relic-free-html5-template-using-bootstrap"
-														target="_blank">Relic</a></li>
-													<li><a
-														href="#/preview/?item=display-free-html5-template-using-bootstrap"
-														target="_blank">Display</a></li>
-													<li><a
-														href="#/preview/?item=sprint-free-html5-template-bootstrap"
-														target="_blank">Sprint</a></li>
-												</ul></li>
-											<li><a href="#">UI Animation</a></li>
-											<li><a href="#">Copywriting</a></li>
-											<li><a href="#">Photography</a></li>
-										</ul></li>
-									<li><a href="contact.html">Contact</a></li>
-									<%
-									    if ((session.getAttribute("uid") == null)
-																																																																																													|| (session.getAttribute("uid") == "")) {
-									%>
-									<li><a data-toggle="modal" href="#myModal">User Center</a></li>
-									<%
-									    } else {
-									%>
-									<li><a href="Usercenter.jsp">User Center</a></li>
-									<%
-									    }
-									%>
-
-									<%
-									    if ((session.getAttribute("uid") == null)
-																																																																																													|| (session.getAttribute("uid") == "")) {
-									%>
-									<li><a href="#" data-toggle="modal"
-										data-target="#login-modal">Login</a></li>
-									<%
-									    } else {
-									%>
-									<li><a href="logout.jsp">Logout</a></li>
-									<%
-									    }
-									%>
-
-
-
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</header>
-
-			</div>
+			<%@include file="Navbar.jsp"%>
 
 			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog">
@@ -233,7 +134,7 @@ div.col-sm-10 div {
 							%>
 					</div>
 				</div>
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+				<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true"
 				style="display: none;">
 				<div class="modal-dialog">
@@ -290,7 +191,18 @@ div.col-sm-10 div {
 
 				<div class="container">
 					<div id="container2222"></div>
+					<%
+						if (session.getAttribute("role") != null) {
+							int role = (Integer) session.getAttribute("role");
+							if (role == 0) {
+					%>
+					<!-- edit route for admin -->
+					<input type="button" class="btn btn-primary"
+					onclick="window.location.href='ViewRoute'"
+					value="修改路线"></input>
 
+					<%		}
+						} %>
 					<div class="row">
 						<div class="col-md-6 fh5co-news">
 							<h3>News</h3>
@@ -397,7 +309,7 @@ div.col-sm-10 div {
 	//var strarr = [ "", "day1:eat poo", "day2:eat shit", "day3:think about 312" ];
 	var secc = document.getElementById("section1");
 	var num = 1;
-	var content = [ "", "普陀区粪便处理厂", "浙江省宁波市奉化市茅坑村", "想想隔壁312" ];
+	//var content = [ "", "普陀区粪便处理厂", "浙江省宁波市奉化市茅坑村", "想想隔壁312" ];
 	var geo = new Array(<%=location_1.size()+1%>);
 	var doc = new Array();
 	var loc = new Array();
@@ -417,9 +329,9 @@ div.col-sm-10 div {
 	secc.innerHTML = doc[num];
 	map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
 	map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-	map.openInfoWindow(infoWindow, point); //开启信息窗口
-	var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
-	map.openInfoWindow(infoWindow, point); //开启信息窗口
+	//map.openInfoWindow(infoWindow, point); //开启信息窗口
+	//var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
+	//map.openInfoWindow(infoWindow, point); //开启信息窗口
 	map.enableScrollWheelZoom(true);
 	function change_day(butid) {
 
@@ -429,8 +341,8 @@ div.col-sm-10 div {
 		secc.innerHTML = doc[num];
 		var point = new BMap.Point(geo[num][0], geo[num][1]);
 		map.centerAndZoom(point, 24); // 初始化地图,设置中心点坐标和地图级别
-		var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
-		map.openInfoWindow(infoWindow, point); //开启信息窗口
+		//var infoWindow = new BMap.InfoWindow(content[num]); // 创建信息窗口对象
+		//map.openInfoWindow(infoWindow, point); //开启信息窗口
 	}
 	function htmlEncode(value) {
 		//create a in-memory div, set it's inner text(which jQuery automatically encodes)

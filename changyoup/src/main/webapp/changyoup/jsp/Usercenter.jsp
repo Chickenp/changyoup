@@ -21,7 +21,6 @@
 	} else if (sex == 2) {
 		gender = "女";
 	}
-
 	String email = userinfo.getEmail();
 	String nickname = userinfo.getNickname();
 	Date birthday = userinfo.getBirthday();
@@ -95,14 +94,17 @@
 									<h3><%=area%></h3>
 								</div>
 							</div>
+							
+							<%if (uid==id){ %>
+							<!-- 修改个人信息 -->
 							<button class="btn btn-default"
 								onclick="window.open('UpdateAccount?id=<%=uid%>')" type="button"
 								id="editinfo">Edit Info</button>
+							<%} %>	
+							
 							<div class="row">
-								<a href="Account" class="active"><i class="fa fa-user fa-fw"></i>
-									Userinfo</a> <a href="allPlansPro"><i class="fa fa-book fa-fw"></i>
+								<a href="allPlansPro"><i class="fa fa-book fa-fw"></i>
 									我的日志</a>
-
 							</div>
 
 						</div>

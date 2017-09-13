@@ -36,12 +36,17 @@
 					scontent = (String) request.getAttribute("scontent");
 				}
 
+				
 				String location1 = "";
 				String location2 = "";
+				String title="";
 				if (request.getAttribute("sroute") != null) {
 					Route sroute = (Route) request.getAttribute("sroute");
 					location1 = sroute.getLocation1();
 					location2 = sroute.getLocation2();
+				}
+				if (request.getAttribute("title") != null) {
+					title = (String) request.getAttribute("title");
 				}
 	%>
 	<div id="fh5co-wrapper">
@@ -54,7 +59,7 @@
 					data-stellar-background-ratio="0.5"
 					style="background-image: url(/changyoup/changyoup/images/beachchair.jpg);">
 					<div class="desc animate-box">
-						<h2>Day <%=day%> of <%=session.getAttribute("routetitle") %></h2>
+						<h2>Day <%=day%> of <%=title%></h2>
 					</div>
 				</div>
 			</div>	

@@ -53,6 +53,7 @@ public class GetProductAction extends BaseAction{
         	tag_id.add(tags.get(i).getTagid());
         }
         List<Routecomment> comments=appService.getCommentByRoute(routeid);
+        session().setAttribute("rid", routeid);
         request().setAttribute("comments",comments);
         request().setAttribute("document", days);
         request().setAttribute("location_1",location_1);

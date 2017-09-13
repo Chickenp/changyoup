@@ -106,10 +106,9 @@
 								    for (int i = 0; i < plans.size(); i++) {
 																				Planinfo plan = plans.get(i);
 								%>
-								<li><a href="viewPlan?planid=<%=plan.getPlanid()%>"> <span class="fh5co-date">Sep.
-											10, 2016</span>
+								<li><a href="viewPlan?planid=<%=plan.getPlanid()%>"> 
 										<h3><%=plan.getTitle()%></h3>
-										<p><%=plan.getPublisher()%></p></li>
+										<p><%=plan.getPublisher()%></p></a></li>
 								<div>
 								<input type="button" class="btn btn-primary"
 									onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
