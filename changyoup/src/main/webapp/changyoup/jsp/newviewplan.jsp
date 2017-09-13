@@ -122,7 +122,8 @@
 	}
 	if (role == 0){
 	%>
-	<a href="passPlan?planid=<%= planid %>">pass</a>
+	<button onclick="pass()" style="color:#000;">pass</button>&nbsp;
+	<!-- <a href="passPlan?planid=<%= planid %>">pass</a>-->
 	<%} %>
        
 
@@ -240,6 +241,26 @@ var but=document.getElementById("timeline_post_btn").classList.add('disabled');
 }
 </script>
 <script type="text/javascript">
+
+function pass(){
+	var planid=<%=planid%>;
+	jQuery.ajax({
+		type:'POST',
+		url:'passPlan',
+		processData : true,
+		dataType : "text",
+		data : {
+			planid:planid,
+		},
+		success : function(data){
+			window.location.href="examinePlan";
+		}
+	})
+	//document.getElementById("content").value=editor.txt.html();
+	//document.forms.routeform.action="ReleaseRoute";
+	//document.forms.routeform.submit();
+}
+
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL
 				.split('&'), sParameterName, i;
