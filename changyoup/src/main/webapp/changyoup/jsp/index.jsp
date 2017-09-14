@@ -68,8 +68,12 @@ S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
 							<p>
 								<ul class="tags" >
 									<li><a href="TagSearchPro?tagid=1">7-day-trip</a></li>
-									<li><a href="TagSearchPro?tagid=1">Yourself</a></li>
-									<li><a href="TagSearchPro?tagid=1">DOG</a></li>
+									<li><a href="TagSearchPro?tagid=7">Bangkok</a></li>
+									<li><a href="TagSearchPro?tagid=21">LiJiang</a></li>
+									<li><a href="TagSearchPro?tagid=24">Paris</a></li>
+									<li><a href="TagSearchPro?tagid=25">Tokyo</a></li>
+									<li><a href="TagSearchPro?tagid=26">family trip</a></li>
+									<li><a href="TagSearchPro?tagid=27">Australia</a></li>
 								</ul>
 							
 						
