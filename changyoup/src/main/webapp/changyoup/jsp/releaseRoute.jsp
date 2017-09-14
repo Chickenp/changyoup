@@ -248,7 +248,7 @@
 					content : content,
 				},
 				success : function(data){
-					window.location.href="<%=url%>";
+					window.location.href="Admincenter";
 				}
 			})
 			//document.getElementById("content").value=editor.txt.html();
