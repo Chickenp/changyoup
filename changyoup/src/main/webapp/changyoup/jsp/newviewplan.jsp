@@ -205,33 +205,18 @@
 						</div>
 					</form>
 			</div>
-
-			<footer>
-				<div id="footer">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 text-center">
-								<p class="fh5co-social-icons">
-									<a href="#"><i class="icon-twitter2"></i></a> <a href="#"><i
-										class="icon-facebook2"></i></a> <a href="#"><i
-										class="icon-instagram"></i></a> <a href="#"><i
-										class="icon-dribbble2"></i></a> <a href="#"><i
-										class="icon-youtube"></i></a>
-								</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
-
-
+			<%@include file="Foot.jsp"%>
 		</div>
 		<!-- END fh5co-page -->
 
 	</div>
 	<!-- END fh5co-wrapper -->
-
+	<script src="/changyoup/changyoup/js/jquery.min.js"></script>
+	<script src="/changyoup/changyoup/js/bootstrap.min.js"></script>
+	<script>
+		var div1 = document.getElementById('planli');
+		div1.setAttribute("class", "active");
+	</script>
 
 
 </body>

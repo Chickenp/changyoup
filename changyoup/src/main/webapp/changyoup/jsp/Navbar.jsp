@@ -10,27 +10,8 @@
 				<nav id="fh5co-menu-wrap" role="navigation">
 					<ul class="sf-menu" id="fh5co-primary-menu">
 						<li id="homeli"><a href="Home">Home</a></li>
-						<li id="listingli"><a href="allRoutes" class="fh5co-sub-ddown">Listing</a>
-							<ul class="fh5co-sub-menu">
-								<li><a
-									href="#/preview/?item=build-free-html5-bootstrap-template"
-									target="_blank">Build</a></li>
-								<li><a
-									href="#/preview/?item=work-free-html5-template-bootstrap"
-									target="_blank">Work</a></li>
-								<li><a
-									href="#/preview/?item=light-free-html5-template-bootstrap"
-									target="_blank">Light</a></li>
-								<li><a
-									href="#/preview/?item=relic-free-html5-template-using-bootstrap"
-									target="_blank">Relic</a></li>
-								<li><a
-									href="#/preview/?item=display-free-html5-template-using-bootstrap"
-									target="_blank">Display</a></li>
-								<li><a
-									href="#/preview/?item=sprint-free-html5-template-bootstrap"
-									target="_blank">Sprint</a></li>
-							</ul></li>
+						<li id="routeli"><a href="allRoutes">Routes</a></li>
+						<li id="planli"><a href="allPlan">Plans</a></li>
 						<li><a href="#" class="fh5co-sub-ddown">Dropdown</a>
 							<ul class="fh5co-sub-menu">
 								<li><a href="left-sidebar.html">Web Development</a></li>

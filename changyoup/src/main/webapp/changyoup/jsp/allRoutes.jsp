@@ -72,7 +72,16 @@
 					%>
 				</div>
 			</div>
+			<%@include file="Foot.jsp"%>
 		</div>
 	</div>
+	
+	
+	<script src="<%=path%>/changyoup/js/jquery.min.js"></script>
+	<script src="<%=path%>/changyoup/js/bootstrap.min.js"></script>
+	<script>
+		var div1 = document.getElementById('routeli');
+		div1.setAttribute("class", "active");
+	</script>
 </body>
 </html>
