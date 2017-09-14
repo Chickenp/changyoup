@@ -61,17 +61,6 @@
 							</a>
 						</div>
 						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
-							<a class="fh5co-listing-item" href="AddRouteInfo"> <img
-								src="/changyoup/changyoup/images/toolicons/Pin.png"
-								alt="设置旅游攻略是否在首页显示" class="img-responsive">
-								<div class="fh5co-listing-copy">
-									<h2>置顶旅游攻略</h2>
-									<span class="icon"> <i class="icon-chevron-right"></i>
-									</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-3 fh5co-item-wrap">
 						<%	int NavUid;
 							NavUid=(Integer) session.getAttribute("uid"); %>
 							<a class="fh5co-listing-item" href="Account?id=<%=NavUid%>"> <img
@@ -96,7 +85,7 @@
 							<li><a href="examinePlan">审核用户发布的旅游攻略</a>
 							<li><a href="topPlan">设置旅游攻略是否在首页显示</a>
 							<li><a href="#">其他还没有想到的功能</a>
-							<li><a href="#">谁想到什么新功能也一起加上来好了</a>
+							<li><a href="#">谁想到什么新功能就发邮件给我们好了</a>
 						</ul>
 					</div>
 				</div>

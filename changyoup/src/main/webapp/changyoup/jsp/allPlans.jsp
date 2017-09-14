@@ -23,16 +23,16 @@
 
 <%@include file="CommonHead.jsp"%>
 <%
-    String path = request.getContextPath();
+	String path = request.getContextPath();
 %>
 <link href="<%=path%>/changyoup/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<%
-	    ArrayList<Planinfo> plans = new ArrayList<Planinfo>();
-				if (request.getAttribute("allplans") != null) {
-					plans = (ArrayList<Planinfo>) request.getAttribute("allplans");
-				}
+		ArrayList<Planinfo> plans = new ArrayList<Planinfo>();
+		if (request.getAttribute("allplans") != null) {
+			plans = (ArrayList<Planinfo>) request.getAttribute("allplans");
+		}
 	%>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
@@ -61,7 +61,8 @@
 					data-stellar-background-ratio="0.5"
 					style="background-image: url(/changyoup/changyoup/images/cover_bg_1.jpg);">
 					<div class="desc animate-box">
-					<h2>Travel Plans From Our Users</h2></div>
+						<h2>Travel Plans From Our Users</h2>
+					</div>
 				</div>
 
 			</div>
@@ -104,30 +105,58 @@
 
 							<ul>
 								<%
-								    for (int i = 0; i < plans.size(); i++) {
-																				Planinfo plan = plans.get(i);
+									for (int i = 0; i < plans.size(); i++) {
+										Planinfo plan = plans.get(i);
 								%>
-								<li><a href="viewPlan?planid=<%=plan.getPlanid()%>"> 
+								<li><a href="viewPlan?planid=<%=plan.getPlanid()%>">
 										<h3><%=plan.getTitle()%></h3>
-										<p><%=plan.getPublisher()%></p></a></li>
+										<p><%=plan.getPublisher()%></p>
+								</a></li>
 								<div>
-								<input type="button" class="btn btn-primary"
-									onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
-									value="查看攻略"></input>
-								</a>
+									<input type="button" class="btn btn-primary"
+										onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
+										value="查看攻略"></input>
+								</div>
 								<%
-								    }
+									}
 								%>
 
 							</ul>
 						</div>
 						<div class="col-md-6 fh5co-testimonial">
-							<img src="/changyoup/changyoup/images/cover_bg_1.jpg"
-								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
-								class="img-responsive mb20"> <img
-								src="/changyoup/changyoup/images/cover_bg_1.jpg"
-								alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
-								class="img-responsive">
+							<div class="fh5co-listing">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-6 col-sm-6 fh5co-item-wrap">
+											<a class="fh5co-listing-item" href="GetProductPro?routeid=1">
+												<img src="/changyoup/changyoup/images/img-1.jpg"
+												alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
+												class="img-responsive">
+												<div class="fh5co-listing-copy">
+													<h2>Paris</h2>
+													<span class="icon"> <i class="icon-chevron-right"></i>
+													</span>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-sm-6 fh5co-item-wrap">
+											<a class="fh5co-listing-item" href="GetProductPro?routeid=2">
+												<img src="/changyoup/changyoup/images/img-5.jpg"
+												alt="Free HTML5 Bootstrap Template by FreeHTML5.co"
+												class="img-responsive">
+												<div class="fh5co-listing-copy">
+													<h2>Australia</h2>
+													<span class="icon"> <i class="icon-chevron-right"></i>
+													</span>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
 						</div>
 					</div>
 				</div>
@@ -141,8 +170,8 @@
 
 	</div>
 	<!-- END fh5co-wrapper -->
-	
-	
+
+
 	<script src="<%=path%>/changyoup/js/jquery.min.js"></script>
 	<script src="<%=path%>/changyoup/js/bootstrap.min.js"></script>
 	<script>
