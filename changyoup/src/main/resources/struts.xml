@@ -159,6 +159,7 @@
         </action>
         <action name="editConfirm" class="action.PlanAction" method="update">
         </action>
+        
         <action name="allPlansPro" class="action.PlanAction" method="getPlanbyPublisher">
         	<result name="success">/changyoup/jsp/userPlans.jsp</result>
         </action>
@@ -171,7 +172,9 @@
         	<result name="success">/changyoup/jsp/ExaminePlans.jsp</result>
         </action>
         
-        
+        <action name="allPlan" class="action.ExamineplanAction" method="getAllpassedPlan">
+        	<result name="success">/changyoup/jsp/allPlans.jsp</result>
+        </action>
         <!-- Cart -->
         <action name="UserCart" class="action.CartAction">
 			<result name="success">/changyoup/jsp/usercart.jsp</result>

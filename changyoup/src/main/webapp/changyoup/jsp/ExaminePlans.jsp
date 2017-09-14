@@ -167,6 +167,11 @@ div.col-sm-10 div {
 
 	</div>
 	<!-- END fh5co-wrapper -->
-
+	<script src="<%=path%>/changyoup/js/jquery.min.js"></script>
+	<script src="<%=path%>/changyoup/js/bootstrap.min.js"></script>
+	<script>
+		var div1 = document.getElementById('planli');
+		div1.setAttribute("class", "active");
+	</script>
 </body>
 </html>

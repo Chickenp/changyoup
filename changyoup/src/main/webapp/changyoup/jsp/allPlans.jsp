@@ -30,8 +30,8 @@
 <body>
 	<%
 	    ArrayList<Planinfo> plans = new ArrayList<Planinfo>();
-				if (request.getAttribute("userplans") != null) {
-					plans = (ArrayList<Planinfo>) request.getAttribute("userplans");
+				if (request.getAttribute("allplans") != null) {
+					plans = (ArrayList<Planinfo>) request.getAttribute("allplans");
 				}
 	%>
 	<div id="fh5co-wrapper">
@@ -61,7 +61,7 @@
 					data-stellar-background-ratio="0.5"
 					style="background-image: url(/changyoup/changyoup/images/cover_bg_1.jpg);">
 					<div class="desc animate-box">
-					<h2>User's Plans</h2></div>
+					<h2>Travel Plans From Our Users</h2></div>
 				</div>
 
 			</div>
@@ -114,9 +114,6 @@
 								<input type="button" class="btn btn-primary"
 									onclick="window.location.href='viewPlan?planid=<%=plan.getPlanid()%>'"
 									value="查看攻略"></input>
-								<input type="button" class="btn btn-primary"
-									onclick="window.location.href='editPlan?planid=<%=plan.getPlanid()%>'"
-									value="修改攻略"></input></div>
 								</a>
 								<%
 								    }
@@ -144,14 +141,16 @@
 
 	</div>
 	<!-- END fh5co-wrapper -->
-
-
+	
+	
 	<script src="<%=path%>/changyoup/js/jquery.min.js"></script>
 	<script src="<%=path%>/changyoup/js/bootstrap.min.js"></script>
 	<script>
 		var div1 = document.getElementById('planli');
 		div1.setAttribute("class", "active");
 	</script>
+
+
 </body>
 <script type="text/javascript">
 	
