@@ -287,8 +287,8 @@
 											<input type="submit"
 												id="submitbutton" name="submitbutton"
 												class="col-xs-12 btn btn-primary btn-load btn-lg"
-												data-loading-text="Changing Password..."
-												value="Change Password">
+												data-loading-text="Wait..."
+												value="Register!">
 										</form>
 									</div>
 									<!--/col-sm-6-->
